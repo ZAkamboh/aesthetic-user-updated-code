@@ -16,6 +16,12 @@ function About () {
         return (
             <div style={{'backgroundImage': `url(${slideImages[1]})`, height: screenHeight, width: screenWidth}}>
                 <h1>about page</h1>
+
+                <h1>about page</h1>
+
+                <h1>about page</h1>
+                <h1>about page</h1>
+
             </div>
         )
 }
