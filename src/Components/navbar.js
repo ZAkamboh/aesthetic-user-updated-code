@@ -15,6 +15,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import { Link } from "react-router-dom";
+import logo from "../Assets/Images/heart.jpg"
+
 
 
 
@@ -77,18 +79,23 @@ function Navbar() {
   );
   return (
     <div className={classes.root}>
-        <AppBar position="static">
+        <AppBar position="fixed"  color="transparent">
           <Toolbar>
-            <IconButton edge="start" onClick={toggleDrawer('left', true)} className={classes.menuButton} color="inherit" aria-label="menu">
+            <IconButton edge="start" onClick={toggleDrawer('left', true)} className={classes.menuButton} color="primary" aria-label="menu">
               <MenuIcon />
             </IconButton>
+            <img  src={logo} alt="Title" style={{ height: "5%", width:"5%" }} />
+            
             <Drawer open={state.left} onClose={toggleDrawer('left', false)}>
               {sideList('left')}
             </Drawer>
-            <Typography variant="h6" className={classes.title}>
+            <Typography variant="h6" className={classes.title} style={{color:"black",fontFamily:"serif",marginLeft:10}}>
               AL SHIFA MEDICAL CENTER
         </Typography>
-            <Button color="inherit">Login</Button>
+        <Typography variant="h8" color="primary">
+
+        E/177 E Market Imam Ahmed Road PECHS Block 6 Karachi
+        </Typography>
           </Toolbar>
         </AppBar>
     </div>
