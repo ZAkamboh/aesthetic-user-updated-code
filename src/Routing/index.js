@@ -6,6 +6,8 @@ import Home from "../Components/homeComponent"
 import Adminhome from "../Components/adminPanel/adminHome"
 import AdminLogin from "../Components/adminPanel/login"
 import Logout from "../Components/adminPanel/login/logout"
+import Footer from "../Components/footer"
+
 import createBrowserHistory from "history/createBrowserHistory";
 import { Router,Route } from "react-router-dom";
 import { connect } from "react-redux";
@@ -21,6 +23,7 @@ render(){
       {!this.props.navbar &&  <Navbar/> } 
         <Route exact path="/" component={Home} />
         <Route path="/about" component={About} />
+        <Route path="/footer" component={Footer} />
         <Route path="/contact" component={Contact} />
         <Route path="/admin" component={AdminLogin} />
         <Route path="/adminhome" component={Adminhome} />
