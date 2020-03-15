@@ -1,18 +1,10 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import  store  from "./store"
+import { Provider } from "react-redux";
+import Routing from "./Routing"
 
 
-import About from "./Components/aboutComponent"
-import Contact from "./Components/contactComponent"
-import Navbar from "./Components/navbar"
-import Home from "./Components/homeComponent"
-
-
-import createBrowserHistory from "history/createBrowserHistory";
-import { Router,Route } from "react-router-dom";
-
-
-const customHistory = createBrowserHistory();
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -40,12 +32,9 @@ function App() {
 
   return (
     <div className={classes.root}>
-      <Router history={customHistory}>
-       <Navbar/>
-        <Route exact path="/" component={Home} />
-        <Route path="/about" component={About} />
-        <Route path="/contact" component={Contact} />
-      </Router>
+      <Provider store={store}>
+        <Routing />
+      </Provider>
     </div>
   );
 }

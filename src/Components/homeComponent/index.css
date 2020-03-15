@@ -1,3 +1,23 @@
-.zubair{
-    height: "100%";
+.centerDiv{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 60px);
 }
+
+
+.centerDiv2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 60px);
+}
+
+
+.centerDiv3{
+    display: flex;
+}
+
+
+

@@ -1,105 +1,105 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import Drawer from '@material-ui/core/Drawer';
-import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import { Link } from "react-router-dom";
-import logo from "../Assets/Images/heart.jpg"
+import NavBar from 'react-responsive-menubar/lib/NavBar';
+import Background from "../Assets/Images/paper3.jpg"
+import logo from "../Assets/Images/logo8.png"
+import { connect } from "react-redux";
+import { AppActions } from "../store/actions"
 
 
 
-
-const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    flexGrow: 1,
-  },
-  list: {
-    width: 250,
-  },
-  fullList: {
-    width: 'auto',
-  },
-}));
-
-
-
-
-function Navbar() {
-  const classes = useStyles();
-  const [state, setState] = React.useState({
-    left: false
-  });
-  const toggleDrawer = (side, open) => event => {
-    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-      return;
+class Navbar extends React.Component {
+constructor(props){
+    super(props)
+    this.state={
+        admin:""
     }
-
-    setState({ ...state, [side]: open });
-  };
-  const sideList = side => (
-    <div
-      className={classes.list}
-      role="presentation"
-      onClick={toggleDrawer(side, false)}
-      onKeyDown={toggleDrawer(side, false)}
-    >
-      <List>
-          <ListItem button >
-            <ListItemIcon><InboxIcon /></ListItemIcon>
-            <ListItemText> <Link style={{ textDecoration: 'none', color: 'black' }}  to="/contact">contact</Link> </ListItemText>
-          </ListItem>
-      </List>
-      <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
-    </div>
-  );
-  return (
-    <div className={classes.root}>
-        <AppBar position="fixed"  color="transparent">
-          <Toolbar>
-            <IconButton edge="start" onClick={toggleDrawer('left', true)} className={classes.menuButton} color="primary" aria-label="menu">
-              <MenuIcon />
-            </IconButton>
-            <img  src={logo} alt="Title" style={{ height: "5%", width:"5%" }} />
-            
-            <Drawer open={state.left} onClose={toggleDrawer('left', false)}>
-              {sideList('left')}
-            </Drawer>
-            <Typography variant="h6" className={classes.title} style={{color:"black",fontFamily:"serif",marginLeft:10}}>
-              AL SHIFA MEDICAL CENTER
-        </Typography>
-        <Typography variant="h8" color="primary">
-
-        E/177 E Market Imam Ahmed Road PECHS Block 6 Karachi
-        </Typography>
-          </Toolbar>
-        </AppBar>
-    </div>
-  );
 }
+   
+    state = { showSideNav: false }
 
-export default Navbar;
+
+    handleSideNavToggle = () => {
+        this.setState((currentState) => {
+            return { showSideNav: !currentState.showSideNav }
+        })
+    }
+    render() {
+        return (
+            <header style={{ backgroundImage: `url(${Background})`, position: "relative" }}>
+                <div style={{ width: "100%", backgroundColor: "rgba(17, 23, 118, 0.40)" }}>
+                    {this.props.adminn===null ? 
+                    <NavBar
+                        handleSideNavToggle={this.handleSideNavToggle}
+                        showSideNav={this.state.showSideNav}
+                        logoStyles={{ height: "75px", width: "77%" }}
+                        navBarStyles={{ color: "red" }}
+                        linkStyles={{ color: "red", fontWeight: "bold" }}
+                        logo={logo}
+
+                    >
+
+                        <Link to="/">Home</Link>
+                        <Link to="/about">About</Link>
+                        <Link to="/">Services</Link>
+                        <Link to="/">Contact</Link>
+
+                        <Link to="/"></Link>
+
+                        <Link to="/"></Link>
+
+                        <Link to="/"></Link>
+
+                        <Link to="/"></Link>
+
+                        <Link to="/"></Link>
+                        <Link to="/"></Link>
+                    </NavBar>
+                    :
+                    <NavBar
+                    handleSideNavToggle={this.handleSideNavToggle}
+                    showSideNav={this.state.showSideNav}
+                    logoStyles={{ height: "75px", width: "77%" }}
+                    navBarStyles={{ color: "red" }}
+                    linkStyles={{ color: "white", fontWeight: "bold" }}
+                    logo={logo}
+
+                >
+
+                    <Link to="/">Admin</Link>
+                    <Link to="/">Admin</Link>
+                    <Link to="/">Admin</Link>
+                    <Link to="/">Admin</Link>
+
+                    <Link to="/"></Link>
+
+                    <Link to="/"></Link>
+
+                    <Link to="/"></Link>
+
+                    <Link to="/"></Link>
+
+                    <Link to="/"></Link>
+                    <Link to="/logout">Logout</Link>
+                </NavBar>
+    }
+                </div>
+            </header>
+        )
+    }
+}
+function mapState(state) {
+    console.log(state.AppReducer)
+    return {
+      adminn: state.AppReducer.admin,
+    };
+  }
+  function mapDispatch(dispatch) {
+    return {
+        
+      };
+  }
+  export default connect(
+    mapState,
+    mapDispatch
+  )(Navbar);
