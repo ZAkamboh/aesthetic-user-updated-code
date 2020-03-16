@@ -22,8 +22,10 @@ class Adminhome extends React.Component {
     render() {
         return (
             <div className="centerDiv" style={{ backgroundImage: `url(${Background})`, height: screenHeight / 1.3, width: screenWidth }}>
-                <h1 style={{ color: "red", fontSize: "70px" }}>Al-Shifa-Medical-Center</h1>
-
+            <div className="centerDiv" style={{background: "linear-gradient(45deg, #c75f22 30%, #a0114c 90%)", height: screenHeight / 1.3, width: screenWidth }}>
+           
+                <h1 style={{ color:"#ffffff", fontSize: "70px" }}>Al-Shifa-Medical-Center</h1>
+</div>
             </div>
         )
     }

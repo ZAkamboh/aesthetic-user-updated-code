@@ -11,6 +11,7 @@ import stem from "../../Assets/Images/stemcell.jpg"
 import "./index.css"
 import Truncate from 'react-truncate';
 import { Link } from "react-router-dom";
+import firebase from "../../database"
 import { connect } from "react-redux";
 
 var screenHeight = window.screen.availHeight;
@@ -30,6 +31,7 @@ class Homecopy extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            localdata:[],
             data: [
                 { name: "zubair", lastname: "aslam", surname: "kamboh", title: "Stem Cell Therapy Safety", id: 12, desc: "assalamoalikum my name is zubair aslam i am from Pakistan karachi my language is panjabi and my cast is kamboh i am 24 year old and my parents background from bahawalnagar and he live in Pakistan karachi i have 3 brother and 1 sister my elder brother is married and i have 1 nephew she name is ayesha qazi abubakr" },
                 { name: "zubair", lastname: "aslam", surname: "kamboh", id: 5 },
@@ -42,9 +44,24 @@ class Homecopy extends React.Component {
             ]
         }
     }
+
+    componentWillMount(){
+        var values = [];
+        firebase
+      .database()
+      .ref(`homedata`)
+      .once("value", snap => {
+        var data = snap.val();
+        for (let keys in data) {
+          values.push({ ...data[keys], key: keys });
+        }
+        this.setState({ localdata: values });
+      })
+    }
     render() {
         return (
             <div >
+            
                 <Grid style={{ height: screenHeight, width: "100%", marginTop: "2px" }} container >
                     <Grid item xs={12}>
                         <Paper style={{ height: screenHeight / 1.5 }} >
@@ -117,7 +134,7 @@ class Homecopy extends React.Component {
                     </Grid>
 
                     {/* one object fetching grid */}
-                    {this.state.data.map((item, index) => {
+                    {this.state.localdata.map((item, index) => {
                         return (
                             <div className="centerDiv3" style={{ height: screenHeight / 2, width: "100%" }}>
                                 <Grid item xs={0} sm={1} style={{ height: screenHeight / 2.2, marginTop: "6%" }}>

@@ -41,15 +41,15 @@ export default class AppActions {
     };
   }
 
-  // static admin() {
-  //   return dispatch => {
-  //     var admin = localStorage.getItem('admin')
-  //     dispatch({
-  //       type: AppActions.LOGIN,
-  //       payload: admin
-  //     });
-  //   };
-  // }
+  static admin() {
+    return dispatch => {
+      var admin = localStorage.getItem('admin')
+      dispatch({
+        type: AppActions.ADMIN,
+        payload: admin
+      });
+    };
+  }
 
   static logout() {
     return dispatch => {

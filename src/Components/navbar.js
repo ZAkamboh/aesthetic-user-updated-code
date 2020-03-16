@@ -14,6 +14,8 @@ constructor(props){
     this.state={
         admin:""
     }
+
+    this.props.admin()
 }
    
     state = { showSideNav: false }
@@ -27,8 +29,8 @@ constructor(props){
     render() {
         return (
             <header style={{ backgroundImage: `url(${Background})`, position: "relative" }}>
-                <div style={{ width: "100%", backgroundColor: "rgba(17, 23, 118, 0.40)" }}>
-                    {this.props.adminn===null ? 
+                    {!this.props.adminn ? 
+                    <div style={{ width: "100%", backgroundColor: "rgba(17, 23, 118, 0.40)" }}>
                     <NavBar
                         handleSideNavToggle={this.handleSideNavToggle}
                         showSideNav={this.state.showSideNav}
@@ -55,7 +57,11 @@ constructor(props){
                         <Link to="/"></Link>
                         <Link to="/"></Link>
                     </NavBar>
+                    </div>
                     :
+                    
+                    (
+                        <div style={{background: "linear-gradient(45deg, #a0114c 30%, #a0114c 90%)"}}>
                     <NavBar
                     handleSideNavToggle={this.handleSideNavToggle}
                     showSideNav={this.state.showSideNav}
@@ -66,10 +72,10 @@ constructor(props){
 
                 >
 
-                    <Link to="/">Admin</Link>
-                    <Link to="/">Admin</Link>
-                    <Link to="/">Admin</Link>
-                    <Link to="/">Admin</Link>
+                    <Link to="/homeintegration">Home</Link>
+                    <Link to="/">About</Link>
+                    <Link to="/">Services</Link>
+                    <Link to="/">Contact</Link>
 
                     <Link to="/"></Link>
 
@@ -82,8 +88,10 @@ constructor(props){
                     <Link to="/"></Link>
                     <Link to="/logout">Logout</Link>
                 </NavBar>
-    }
                 </div>
+                    )
+    }
+                
             </header>
         )
     }
@@ -96,7 +104,9 @@ function mapState(state) {
   }
   function mapDispatch(dispatch) {
     return {
-        
+        admin: () => {
+            dispatch(AppActions.admin());
+          },
       };
   }
   export default connect(

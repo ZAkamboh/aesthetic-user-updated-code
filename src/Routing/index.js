@@ -7,6 +7,7 @@ import Adminhome from "../Components/adminPanel/adminHome"
 import AdminLogin from "../Components/adminPanel/login"
 import Logout from "../Components/adminPanel/login/logout"
 import Footer from "../Components/footer"
+import Homeinteg from "../Components/adminPanel/adminHome/adminHomeintegration"
 
 import createBrowserHistory from "history/createBrowserHistory";
 import { Router,Route } from "react-router-dom";
@@ -27,6 +28,7 @@ render(){
         <Route path="/contact" component={Contact} />
         <Route path="/admin" component={AdminLogin} />
         <Route path="/adminhome" component={Adminhome} />
+        <Route path="/homeintegration" component={Homeinteg} />
         <Route path="/logout" component={Logout} />
       </Router>
     </div>
