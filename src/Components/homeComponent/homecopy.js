@@ -156,7 +156,8 @@ class Homecopy extends React.Component {
                                                     {item.desc}
                                                 </p>
                                             </Truncate>
-                                            <button style={{ marginTop: "7%", background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)", color: "#ffffff", marginLeft: "2%", borderTopLeftRadius: 20, borderBottomRightRadius: 20 }}>Read more about {item.title}</button>
+                                            <button    onClick={() => this.props.history.push("/homeDetail", {item: item })}
+                         style={{ marginTop: "7%", background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)", color: "#ffffff", marginLeft: "2%", borderTopLeftRadius: 20, borderBottomRightRadius: 20 }}>Read more about {item.title}</button>
                                         </div>
                                     </Paper>
                                 </Grid>

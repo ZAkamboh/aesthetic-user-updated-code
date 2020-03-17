@@ -97,7 +97,6 @@ constructor(props){
     }
 }
 function mapState(state) {
-    console.log(state.AppReducer)
     return {
       adminn: state.AppReducer.admin,
     };

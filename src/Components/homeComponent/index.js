@@ -12,7 +12,7 @@ class Home extends React.Component {
   render() {
     return (
       <div  style={{height:"100%",width:"100%"}}>
-        <Homecopy/>
+        <Homecopy history={this.props.history}/>
       </div>
     )
 

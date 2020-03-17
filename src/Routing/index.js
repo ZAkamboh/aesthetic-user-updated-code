@@ -8,6 +8,7 @@ import AdminLogin from "../Components/adminPanel/login"
 import Logout from "../Components/adminPanel/login/logout"
 import Footer from "../Components/footer"
 import Homeinteg from "../Components/adminPanel/adminHome/adminHomeintegration"
+import Homedetail from "../Components/homeComponent/homedetail"
 
 import createBrowserHistory from "history/createBrowserHistory";
 import { Router,Route } from "react-router-dom";
@@ -23,6 +24,7 @@ render(){
       <Router history={customHistory}>
       {!this.props.navbar &&  <Navbar/> } 
         <Route exact path="/" component={Home} />
+        <Route exact path="/homeDetail" component={Homedetail} />
         <Route path="/about" component={About} />
         <Route path="/footer" component={Footer} />
         <Route path="/contact" component={Contact} />
