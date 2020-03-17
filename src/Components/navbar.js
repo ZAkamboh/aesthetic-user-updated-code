@@ -28,7 +28,7 @@ constructor(props){
     }
     render() {
         return (
-            <header style={{ backgroundImage: `url(${Background})`, position: "relative" }}>
+            <header style={{ background: "linear-gradient(45deg, #303f72 30%, #21CBF3 90%)" }}>
                     {!this.props.adminn ? 
                     <div style={{ width: "100%", backgroundColor: "rgba(17, 23, 118, 0.40)" }}>
                     <NavBar

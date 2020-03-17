@@ -1,3 +1,12 @@
-.para{
-    background-color: green;
+.container{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
 }

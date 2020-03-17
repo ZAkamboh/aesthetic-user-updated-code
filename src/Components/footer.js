@@ -2,9 +2,10 @@ import React from "react"
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import dr from "../Assets/Images/drshareef.jpg"
-import StickyFooter from 'react-sticky-footer';
-var screenHeight = window.screen.availHeight;
+import MailIcon from '@material-ui/icons/Mail';
+import AddIcCallIcon from '@material-ui/icons/AddIcCall';
 
+var screenHeight = window.screen.availHeight;
 
 class Footer extends React.Component{
     render(){
@@ -18,9 +19,9 @@ return(
                           <p>
 E/177 E Market Imam Ahmed Road PECHS Block 6 Karachi
 </p>
-<p style={{color:"#ffffff"}}>+92 336 5777715        +92 21 34325599</p>
-<p style={{color:"#ffffff"}}>info@stemcell.com.pk</p>
-<p style={{color:"#ffffff"}}>info@stemcell.com.pk</p>
+<p style={{color:"#ffffff"}}> <AddIcCallIcon style={{color:"red"}}/> +92 336 5777715        +92 21 34325599</p>
+<p style={{color:"#ffffff"}}> <MailIcon style={{color:"red"}} /> info@stemcell.com.pk</p>
+<p style={{color:"#ffffff"}}> <MailIcon style={{color:"red"}}/> info@stemcell.com.pk</p>
                     </div>
                   </Paper>
                 </Grid>
