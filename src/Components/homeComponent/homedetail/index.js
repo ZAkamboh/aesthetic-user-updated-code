@@ -1,29 +1,36 @@
 import React from "react"
+import './index.css'
 
-class Homedetail extends React.Component{
-constructor(props){
-    super(props);
-    this.state={
-        detail:{}
-        
+var screenHeight = window.screen.availHeight;
+
+
+class Homedetail extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            detail: {}
+
+        }
     }
-}
-    componentWillMount(){
-        var detaildata=this.props.location.state.item
-        this.setState({detail:detaildata})
+    componentWillMount() {
+        var detaildata = this.props.location.state.item
+        this.setState({ detail: detaildata })
     }
-    render(){
-return(
-    <div>
-        
-            
-            <h1>{this.state.detail.title}</h1>
-<p>{this.state.detail.desc}</p>
+    render() {
+        return (
+            <div style={{ height: screenHeight, width: "100%", backgroundColor: "red" }}>
 
-            
+                <div style={{height:screenHeight/6,backgroundColor:"blue"}}>
+                    <h1>{this.state.detail.title}</h1>
+                </div>
+                <div className="para">
+                    <p>{this.state.detail.desc}</p>
+                </div>
 
-    </div>
-)
+
+
+            </div>
+        )
     }
 }
 
