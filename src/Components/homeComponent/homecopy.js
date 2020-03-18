@@ -4,9 +4,15 @@ import { Slide } from 'react-slideshow-image';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import med1 from "../../Assets/Images/newmed5.jpg"
-import med2 from "../../Assets/Images/newmed2.jpg"
-import med3 from "../../Assets/Images/newmed4.jpg"
-import stem from "../../Assets/Images/stemcell.jpg"
+import face1 from "../../Assets/Images/face2.jpg"
+import stem3 from "../../Assets/Images/stemcell4.jpg"
+import dentist from "../../Assets/Images/dentist.jpg"
+
+
+
+
+
+
 
 import "./index.css"
 import Truncate from 'react-truncate';
@@ -17,7 +23,7 @@ import { connect } from "react-redux";
 var screenHeight = window.screen.availHeight;
 
 const properties = {
-    duration: 20000,
+    duration: 6000,
     transitionDuration: 500,
     infinite: true,
     indicators: true,
@@ -57,7 +63,7 @@ class Homecopy extends React.Component {
                         <Paper style={{ height: screenHeight / 1.5 }} >
                             <Slide {...properties}>
                                 <div >
-                                    <div className="centerDiv2" style={{ height: screenHeight / 1.4, width: "100%", backgroundColor: "#123889", backgroundImage: `url(${med1})` }}>
+                                    <div className="containImage" style={{ height: screenHeight / 1.4, width: "100%", backgroundColor: "#123889", backgroundImage: `url(${med1})` }}>
 
                                         <div className="centerDiv2" style={{ height: screenHeight / 1.4, width: "100%", backgroundColor: "rgba(17, 23, 118, 0.40)" }}>
 
@@ -93,15 +99,16 @@ class Homecopy extends React.Component {
                                     </div>
                                 </div>
 
+                                <div style={{backgroundColor: "rgba(17, 23, 118, 0.40)"}}>
+                                    <div className="containImage" style={{backgroundColor: "rgba(17, 23, 118, 0.40)"}}>
+                                        <img src={dentist} alt="Title" style={{ height: screenHeight / 1.4, width: "100%" }} />
+                                    </div>
+                                </div>
 
 
-
-                                <div  >
-                                    <div style={{ height: screenHeight / 1.4, width: "100%", backgroundImage: `url(${med2})` }} >
-                                        <div className="centerDiv2" style={{ height: screenHeight / 1.4, width: "100%", backgroundColor: "rgba(17, 23, 118, 0.40)" }}>
-                                        </div>
-                                        {/* <img src={med2} alt="Title" style={{ height: screenHeight / 1.4, width: "100%",backgroundColor:"red" }} />  */}
-
+                                <div style={{backgroundColor: "rgba(17, 23, 118, 0.40)"}}>
+                                    <div className="containImage" style={{backgroundColor: "rgba(17, 23, 118, 0.40)"}}>
+                                        <img src={stem3} alt="Title" style={{ height: screenHeight / 1.4, width: "100%" }} />
                                     </div>
                                 </div>
 
@@ -111,8 +118,8 @@ class Homecopy extends React.Component {
 
 
                                 <div>
-                                    <div>
-                                        <img src={med3} alt="Title" style={{ height: screenHeight / 1.4, width: "100%" }} />
+                                    <div className="containImage">
+                                        <img src={face1} alt="Title" style={{ height: screenHeight / 1.4, width: "100%" }} />
                                     </div>
                                 </div>
 
@@ -158,7 +165,8 @@ class Homecopy extends React.Component {
                                 <Grid item xs={12} sm={3} style={{ height: screenHeight / 2.2, marginTop: "6%" }}>
                                     <Paper style={{ height: screenHeight / 2.2 }} >
                                         <div style={{ fontFamily: "verdana", height: screenHeight / 2 }}>
-                                            <img src={item.url} alt="Title" style={{ height: "90%", width: "100%", borderRadius: 20 }} />
+                                             <img src={item.url} alt="Title" style={{ height: "90%", width: "100%", borderRadius: 20 }} /> 
+   
                                         </div>
                                     </Paper>
                                 </Grid>

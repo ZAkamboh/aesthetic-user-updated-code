@@ -16,6 +16,7 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import Button from '@material-ui/core/Button';
 import { Link } from "react-router-dom";
+import ReactPlayer from 'react-player'
 
 import Adminnavbar from "./adminPanel/adminNavbar"
 
@@ -108,6 +109,13 @@ function Navbar() {
        <Typography variant="h8" color="primary">
 
        E/177 E Market Imam Ahmed Road PECHS Block 6 Karachi
+       <ReactPlayer
+      className='react-player'
+      url='https://www.facebook.com/dunyanews/videos/211536363285342/'
+      controls	
+      height="10%"
+      width="50%"
+    />
        </Typography>
          </Toolbar>
        </AppBar>
