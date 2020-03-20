@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import NavBar from 'react-responsive-menubar/lib/NavBar';
-import Background from "../Assets/Images/paper3.jpg"
 import logo from "../Assets/Images/logo8.png"
 import { connect } from "react-redux";
 import { AppActions } from "../store/actions"
@@ -44,7 +43,7 @@ constructor(props){
                         <Link to="/">Home</Link>
                         <Link to="/about">About</Link>
                         <Link to="/">Services</Link>
-                        <Link to="/">Contact</Link>
+                        <Link to="/contact">Contact</Link>
 
                         <Link to="/"></Link>
 
@@ -73,7 +72,7 @@ constructor(props){
                 >
 
                     <Link to="/homeintegration">Home</Link>
-                    <Link to="/">About</Link>
+                    <Link to="/adminabout">About</Link>
                     <Link to="/">Services</Link>
                     <Link to="/">Contact</Link>
 

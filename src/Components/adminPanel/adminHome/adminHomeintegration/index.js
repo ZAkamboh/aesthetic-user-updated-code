@@ -144,7 +144,10 @@ class Homeinteg extends React.Component {
             <div style={{ marginTop: 20, textAlign: "center" }}>
               <Button type="submit" variant="contained" color="secondary" onClick={this._handleClick.bind(this)}>
                 Add
-                      </Button>
+              </Button>
+              <Button style={{marginLeft:"2%"}} type="submit" variant="contained" color="primary" onClick={()=>this.props.history.push('/adminhomerecord')}>
+                Home Records
+              </Button>
             </div>
           </div>
         </div>

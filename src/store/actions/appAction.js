@@ -1,5 +1,5 @@
 import firebase from "../../database"
-
+import { failureActionOf, successActionOf } from "./index"
 
 export default class AppActions {
   static CLICKED = "CLICKED";
@@ -7,7 +7,7 @@ export default class AppActions {
   static LOGIN = "LOGIN"
   static LOGOUT = "LOGOUT"
   static ADMIN = "ADMIN"
-  static LOGOUT="LOGOUT"
+  static LOGOUT = "LOGOUT"
 
   static actionNavbar(payload) {
     return {
@@ -22,7 +22,9 @@ export default class AppActions {
     };
   }
   static login(payload) {
+
     return dispatch => {
+      dispatch({ type: AppActions.LOGIN,})
       firebase
         .auth()
         .signInWithEmailAndPassword(payload.email, payload.password)
@@ -30,7 +32,7 @@ export default class AppActions {
           var user = response.user.uid
           localStorage.setItem("admin", user)
           dispatch({
-            type: AppActions.LOGIN,
+            type: successActionOf(AppActions.LOGIN),
             payload: true
           });
         })
@@ -54,14 +56,14 @@ export default class AppActions {
   static logout() {
     return dispatch => {
       firebase
-      .auth()
-      .signOut()
-      .then(() => {
-        localStorage.removeItem("admin");
-        dispatch({
-          type: AppActions.LOGOUT
+        .auth()
+        .signOut()
+        .then(() => {
+          localStorage.removeItem("admin");
+          dispatch({
+            type: AppActions.LOGOUT
+          });
         });
-      });
     };
   }
 }

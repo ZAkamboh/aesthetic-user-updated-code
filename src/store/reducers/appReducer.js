@@ -1,7 +1,8 @@
-import { AppActions } from "../actions"
+import { AppActions,successActionOf} from "../actions"
 var initialState = {
   navbar: false,
-  login:false
+  login:false,
+  loader: false,
 };
 
 export default function AppReducer(state = initialState, action) {
@@ -11,11 +12,18 @@ export default function AppReducer(state = initialState, action) {
       return Object.assign({}, state, { navbar: action.payload });
 
     
-      case  AppActions.LOGIN:
-        return Object.assign({}, state, {login:action.payload,admin:action.payload });
+
+      case AppActions.LOGIN:
+        return { ...state, loader: true };
+    case successActionOf(AppActions.LOGIN):
+        return { ...state, loader: false, login:action.payload,admin:action.payload }
+  
+
+      // case  AppActions.LOGIN:
+      //   return Object.assign({}, state, {login:action.payload,admin:action.payload});
 
         case AppActions.ADMIN:
-          return Object.assign({}, state, { admin: action.payload });
+          return Object.assign({}, state, { admin: action.payload,loader:false });
 
 
       case AppActions.LOGOUT:

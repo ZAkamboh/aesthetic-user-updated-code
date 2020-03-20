@@ -3,4 +3,21 @@
     align-items: center;
     justify-content: center;
     height: calc(100vh - 60px);
+    height:100%;
 }
+
+
+.rotate{
+    animation: rotation 2s infinite linear;
+    height: 60px;
+    width:180px
+  }
+  
+    @keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
+  }

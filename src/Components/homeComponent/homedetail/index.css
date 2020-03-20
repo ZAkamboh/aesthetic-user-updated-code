@@ -10,3 +10,9 @@
     align-items: center;
     
 }
+
+.para{
+    display: flex;
+    width:90%;
+    margin-left: 5%;
+}

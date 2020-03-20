@@ -5,7 +5,7 @@ import { TextField, Button } from '@material-ui/core';
 import Background from "../../../Assets/Images/paper3.jpg"
 //import firebase from "../../../database"
 import "./index.css"
-
+import Loader from "./loader"
 var screenHeight = window.screen.availHeight;
 var screenWidth = window.screen.availWidth
 class AdminLogin extends React.Component {
@@ -93,6 +93,8 @@ class AdminLogin extends React.Component {
         </div>
          {this.props.Loginn && this.props.history.push('/adminhome')} 
          </div>
+         {this.props.loader && <Loader />}
+
       </div>
     )
   }
@@ -101,7 +103,9 @@ class AdminLogin extends React.Component {
 function mapState(state) {
 console.log("login page",state.AppReducer)
   return {
-    Loginn: state.AppReducer.login
+    Loginn: state.AppReducer.login,
+    loader: state.AppReducer.loader,
+
   };
 }
 function mapDispatch(dispatch) {
