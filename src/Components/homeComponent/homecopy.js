@@ -102,21 +102,51 @@ class Homecopy extends React.Component {
                                     </div>
                                 </div>
 
-                                <div style={{ backgroundColor: "rgba(17, 23, 118, 0.40)" }}>
-                                    <div className="containImage" style={{ backgroundColor: "rgba(17, 23, 118, 0.40)" }}>
-                                        <img src={dentist} alt="Title" style={{ height: screenHeight / 1.4, width: "100%" }} />
+                                <div >
+                                    <div className="containImage" style={{ height: screenHeight / 1.4, width: "100%", backgroundColor: "#123889", backgroundImage: `url(${dentist})` }}>
+                                        <div className="centerDiv2" style={{ height: screenHeight / 1.4, width: "100%", backgroundColor: "rgba(17, 23, 118, 0.40)" }}>
+                                            <div style={{ width: "70%", textAlign: "center" }}>
+                                                <h1 style={{ color: "#ffffff" }} >
+                                                    Your resource for Al-Shifa-Medical-Center
+                                             </h1>
+                                                <Truncate style={{ color: "#ffffff", fontFamily: "italic", fontSize: 27 }} lines={2} ellipsis={<span >... <Link style={{ color: "red" }} to='/about'>Read more</Link></span>}>
+                                                    Al Shifa Medical center Located at E Market Imam Ahmed Road PECHS Karachi. Which is symbol of primary healthcare sector,with a vision to provide specially Stem cell therapy,which is newly introduced in Pakistan and this Stem cell therapy is performed by Dr Asad Ullah Awan Assistant Professor Plastic surgery.
+                                            </Truncate>
+                                                <button onClick={() => this.props.history.push('/about')} style={{ backgroundColor: "red", color: "white", borderRadius: 50, marginTop: "5%" }}>Leran more about alShifa </button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
 
-                                <div style={{ backgroundColor: "rgba(17, 23, 118, 0.40)" }}>
-                                    <div className="containImage" style={{ backgroundColor: "rgba(17, 23, 118, 0.40)" }}>
-                                        <img src={stem3} alt="Title" style={{ height: screenHeight / 1.4, width: "100%" }} />
+                                <div >
+                                    <div className="containImage" style={{ height: screenHeight / 1.4, width: "100%", backgroundColor: "#123889", backgroundImage: `url(${stem3})` }}>
+                                        <div className="centerDiv2" style={{ height: screenHeight / 1.4, width: "100%", backgroundColor: "rgba(17, 23, 118, 0.40)" }}>
+                                            <div style={{ width: "70%", textAlign: "center" }}>
+                                                <h1 style={{ color: "#ffffff" }} >
+                                                    Your resource for Al-Shifa-Medical-Center
+                                             </h1>
+                                                <Truncate style={{ color: "#ffffff", fontFamily: "italic", fontSize: 27 }} lines={2} ellipsis={<span >... <Link style={{ color: "red" }} to='/about'>Read more</Link></span>}>
+                                                    Al Shifa Medical center Located at E Market Imam Ahmed Road PECHS Karachi. Which is symbol of primary healthcare sector,with a vision to provide specially Stem cell therapy,which is newly introduced in Pakistan and this Stem cell therapy is performed by Dr Asad Ullah Awan Assistant Professor Plastic surgery.
+                                            </Truncate>
+                                                <button onClick={() => this.props.history.push('/about')} style={{ backgroundColor: "red", color: "white", borderRadius: 50, marginTop: "5%" }}>Leran more about alShifa </button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div>
-                                    <div className="containImage">
-                                        <img src={face1} alt="Title" style={{ height: screenHeight / 1.4, width: "100%" }} />
+                                <div >
+                                    <div className="containImage" style={{ height: screenHeight / 1.4, width: "100%", backgroundColor: "#123889", backgroundImage: `url(${face1})` }}>
+                                        <div className="centerDiv2" style={{ height: screenHeight / 1.4, width: "100%", backgroundColor: "rgba(17, 23, 118, 0.40)" }}>
+                                            <div style={{ width: "70%", textAlign: "center" }}>
+                                                <h1 style={{ color: "#ffffff" }} >
+                                                    Your resource for Al-Shifa-Medical-Center
+                                             </h1>
+                                                <Truncate style={{ color: "#ffffff", fontFamily: "italic", fontSize: 27 }} lines={2} ellipsis={<span >... <Link style={{ color: "red" }} to='/about'>Read more</Link></span>}>
+                                                    Al Shifa Medical center Located at E Market Imam Ahmed Road PECHS Karachi. Which is symbol of primary healthcare sector,with a vision to provide specially Stem cell therapy,which is newly introduced in Pakistan and this Stem cell therapy is performed by Dr Asad Ullah Awan Assistant Professor Plastic surgery.
+                                            </Truncate>
+                                                <button onClick={() => this.props.history.push('/about')} style={{ backgroundColor: "red", color: "white", borderRadius: 50, marginTop: "5%" }}>Leran more about alShifa </button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </Slide>
