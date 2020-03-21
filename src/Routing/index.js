@@ -6,7 +6,7 @@ import Home from "../Components/homeComponent"
 import Homedetail from "../Components/homeComponent/homedetail"
 import Footer from "../Components/footer"
 import Services from "../Components/servicesComponents"
-
+import Events from "../Components/events";
 
 
 
@@ -17,6 +17,7 @@ import Logout from "../Components/adminPanel/login/logout"
 import Homeinteg from "../Components/adminPanel/adminHome/adminHomeintegration"
 import AdminHomerecords from "../Components/adminPanel/adminHome/adminHomerecords"
 import Service from "../Components/adminPanel/servicesadmin"
+import Eventsadmin from "../Components/adminPanel/eventsadmin"
 
 import createBrowserHistory from "history/createBrowserHistory";
 import { Router,Route } from "react-router-dom";
@@ -36,6 +37,7 @@ render(){
         <Route path="/about" component={About} />
         <Route path="/contact" component={Contact} />
         <Route path="/services" component={Services} />
+        <Route path="/event" component={Events} />
 
 
         <Route path="/admin" component={AdminLogin} />
@@ -44,6 +46,8 @@ render(){
         <Route path="/adminhomerecord" component={AdminHomerecords} />
         <Route path="/adminabout" component={Adminabout} />
         <Route path="/adminservices" component={Service} />
+        <Route path="/adminevents" component={Eventsadmin} />
+
         <Route path="/logout" component={Logout} />
         <Footer/>
       </Router>
