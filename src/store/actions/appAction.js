@@ -8,6 +8,7 @@ export default class AppActions {
   static LOGOUT = "LOGOUT"
   static ADMIN = "ADMIN"
   static LOGOUT = "LOGOUT"
+  static HOMEDATA ="HOMEDATA"
 
   static actionNavbar(payload) {
     return {
@@ -15,6 +16,33 @@ export default class AppActions {
       payload
     };
   }
+
+
+static fetchhomedata(){
+  return dispatch =>{
+     var values = [];
+        firebase
+            .database()
+            .ref(`homedata`)
+            .once("value", snap => {
+                var data = snap.val();
+                for (let keys in data) {
+                    values.push({ ...data[keys], key: keys });
+                }
+               // this.setState({ localdata: values });
+               dispatch({
+                type: AppActions.HOMEDATA,
+                payload: values
+              });
+            })
+  }
+}
+
+
+
+
+
+
 
   static clear() {
     return dispatch => {

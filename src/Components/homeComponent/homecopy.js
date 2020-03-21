@@ -1,4 +1,5 @@
 import React from "react"
+import {AppActions} from "../../store/actions"
 //import { makeStyles } from '@material-ui/core/styles';
 import { Slide } from 'react-slideshow-image';
 import Paper from '@material-ui/core/Paper';
@@ -30,24 +31,30 @@ class Homecopy extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            localdata: [],
+            data: [],
             scrolled: false
         }
+        this.props.fetchhomedata()
     }
 
-    componentWillMount() {
-        var values = [];
-        firebase
-            .database()
-            .ref(`homedata`)
-            .once("value", snap => {
-                var data = snap.val();
-                for (let keys in data) {
-                    values.push({ ...data[keys], key: keys });
-                }
-                this.setState({ localdata: values });
-            })
+    componentWillReceiveProps(nextProps){
+        if(nextProps && nextProps.homedata.length >0){
+            this.setState({data:nextProps.homedata})
+               }
     }
+    // componentWillMount() {
+    //     var values = [];
+    //     firebase
+    //         .database()
+    //         .ref(`homedata`)
+    //         .once("value", snap => {
+    //             var data = snap.val();
+    //             for (let keys in data) {
+    //                 values.push({ ...data[keys], key: keys });
+    //             }
+    //             this.setState({ localdata: values });
+    //         })
+    // }
     gotoTop() {
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
@@ -155,7 +162,7 @@ class Homecopy extends React.Component {
 
                     {/* one object fetching grid */}
                     <div style={{ width: "100%", paddingBottom: 70 }}>
-                        {this.state.localdata.map((item, index) => {
+                        {this.state.data.map((item, index) => {
                             return (
                                 <div className="centerDiv3" style={{ height: screenHeight / 2, width: "100%" }}>
                                     <Grid item xs={0} sm={1} style={{ height: screenHeight / 2.2, marginTop: "6%" }}>
@@ -209,12 +216,14 @@ class Homecopy extends React.Component {
 }
 function mapState(state) {
     return {
-        data: state.AppReducer.data
+        homedata: state.AppReducer.homedata
     };
 }
 function mapDispatch(dispatch) {
     return {
-
+        fetchhomedata: () => {
+            dispatch(AppActions.fetchhomedata());
+          }
     };
 }
 export default connect(

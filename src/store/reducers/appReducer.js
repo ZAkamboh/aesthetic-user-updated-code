@@ -19,8 +19,8 @@ export default function AppReducer(state = initialState, action) {
         return { ...state, loader: false, login:action.payload,admin:action.payload }
   
 
-      // case  AppActions.LOGIN:
-      //   return Object.assign({}, state, {login:action.payload,admin:action.payload});
+      case  AppActions.HOMEDATA:
+        return Object.assign({}, state, {homedata:action.payload});
 
         case AppActions.ADMIN:
           return Object.assign({}, state, { admin: action.payload,loader:false });

@@ -42,7 +42,8 @@ constructor(props){
 
                         <Link to="/">Home</Link>
                         <Link to="/about">About</Link>
-                        <Link to="/">Services</Link>
+                        <Link to="/services">Services</Link>
+                        <Link to="/event">Events</Link>
                         <Link to="/contact">Contact</Link>
 
                         <Link to="/"></Link>
@@ -73,7 +74,7 @@ constructor(props){
 
                     <Link to="/homeintegration">Home</Link>
                     <Link to="/adminabout">About</Link>
-                    <Link to="/">Services</Link>
+                    <Link to="/adminservices">Services</Link>
                     <Link to="/">Contact</Link>
 
                     <Link to="/"></Link>

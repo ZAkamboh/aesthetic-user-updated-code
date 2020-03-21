@@ -17,6 +17,7 @@ class Homedetail extends React.Component {
     }
     componentWillMount() {
         var detaildata = this.props.location.state.item
+        console.log(this.props)
         this.setState({ detail: detaildata })
     }
     gotoTop() {

@@ -1,10 +1,9 @@
 import React from "react"
 import { TextField, Button } from '@material-ui/core';
-import firebase from '../../../../database'
-import { storage } from '../../../../database'
+import firebase from "../../../database"
+import { storage } from '../../../database'
 import LinearProgress from '@material-ui/core/LinearProgress';
 import { connect } from "react-redux";
-import {AppActions} from "../../../../store/actions"
 
 
 
@@ -13,7 +12,7 @@ var screenWidth = window.screen.availWidth;
 
 
 
-class Homeinteg extends React.Component {
+class Service extends React.Component {
   constructor() {
     super()
     this.state = {
@@ -22,58 +21,38 @@ class Homeinteg extends React.Component {
       file: null,
       url: "",
       progress: '',
-      url2:[]
     }
-
   }
 
   componentWillMount() {
     if (!this.props.adminn) {
       this.props.history.push('/admin')
     }
-    else{
-      this.props.fetchhomedata();
 
-    }
   }
-
-  componentWillReceiveProps(nextprops){
-   // this.setState({url2:nextprops.homedata})
-   
-   for (var i=0;i<nextprops.homedata.length;i++){
-             //  this.setState({url2:[nextprops.homedata[i].url]})
-            //   array=[nextprops.homedata[i].url]
-            //  // console.log(array)
-   }
-  }
-
   upload() {
-if(this.state.file ===this.state.url2){
-alert("this image is already uploaded plz select another")
- 
-}
-else{
-const { file } = this.state
-const uploadTask = storage.ref(`images/${file.name}`).put(file)
-uploadTask.on('state_changed', (snapshot) => {
-  const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
-  this.setState({ progress });
 
-},
-  (error) => {
-    console.log(error)
-  },
+    const { file } = this.state
+    const uploadTask = storage.ref(`images/${file.name}`).put(file)
+    uploadTask.on('state_changed', (snapshot) => {
+      const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+      this.setState({ progress });
 
-  () => {
-    storage.ref('images').child(file.name).getDownloadURL().then(url => {
-      
-      this.setState({ url: url })
+    },
+      (error) => {
+        console.log(error)
+      },
 
-    })
+      () => {
+        storage.ref('images').child(file.name).getDownloadURL().then(url => {
+          console.log(url)
+          this.setState({ url: url }, () => {
+            console.log(this.state.url);
+          })
 
-  })
-}
-   
+        })
+
+      })
 
   }
 
@@ -94,13 +73,10 @@ uploadTask.on('state_changed', (snapshot) => {
     else if (data.url === "") {
       alert("please upload any picture")
     }
-    else if (data.url === "") {
-      alert("please upload any picture")
-    }
     else {
       firebase
         .database()
-        .ref(`homedata`)
+        .ref(`servicedata`)
         .push(data)
         .then(response => {
           alert("successfully add")
@@ -125,7 +101,7 @@ uploadTask.on('state_changed', (snapshot) => {
 
             </div>
             <div style={{ marginTop: 20, textAlign: "center" }}>
-              <h5 style={{ color: "red", fontFamily: "italic" }}>Home Integration</h5>
+              <h5 style={{ color: "red", fontFamily: "italic" }}>Service Integration</h5>
             </div>
             <div style={{ marginTop: 20 }}>
               <TextField
@@ -143,7 +119,7 @@ uploadTask.on('state_changed', (snapshot) => {
                 placeholder="upload image"
                 onChange={e =>
                   this.setState({ file: e.target.files[0] }, () => {
-                    console.log(this.state.file);
+                
                   })
                 }
 
@@ -170,12 +146,11 @@ uploadTask.on('state_changed', (snapshot) => {
                 Add
               </Button>
               <Button style={{marginLeft:"2%"}} type="submit" variant="contained" color="primary" onClick={()=>this.props.history.push('/adminhomerecord')}>
-                Home Records
+                See Services data
               </Button>
             </div>
           </div>
         </div>
-
       </div>
     )
   }
@@ -184,15 +159,12 @@ uploadTask.on('state_changed', (snapshot) => {
 function mapStateToProps(state) {
   return {
     adminn: state.AppReducer.admin,
-    homedata:state.AppReducer.homedata
   }
 }
 function mapDispatch(dispatch) {
   return {
-    fetchhomedata: () => {
-      dispatch(AppActions.fetchhomedata());
-    }
+
 
   }
 }
-export default connect(mapStateToProps, mapDispatch)(Homeinteg)
+export default connect(mapStateToProps, mapDispatch)(Service)
