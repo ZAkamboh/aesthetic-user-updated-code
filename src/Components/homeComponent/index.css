@@ -30,31 +30,22 @@
     background-color: red; /* Set a background color */
     color: white; /* Text color */
     cursor: pointer; /* Add a mouse pointer on hover */
-    padding: 15px; /* Some padding */
     border-radius: 10px; /* Rounded corners */
-    font-size: 18px; /* Increase font size */
+    font-size: 28px; /* Increase font size */
     height: 50px;
     width: 50px;
+    text-align: center;
   }
   #myBtn:hover {
     background-color: #555; /* Add a dark-grey background on hover */
   }
-/* @media only screen and (min-width: 600px) {
-    .centerDiv2{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: calc(100vh - 60px);
-    }
-    .containImage{
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        height: 600px;
-    }
+  .homeCopyMainClass{
+    margin-top: 90px;
   }
-  @media only screen and (max-width: 599px) {
+@media only screen and (max-width: 400px) {
+    
+}
+   /* @media only screen and (max-width: 599px) {
     .centerDiv2{
         display: flex;
         flex-direction: column;

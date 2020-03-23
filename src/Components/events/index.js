@@ -39,35 +39,35 @@ class Events extends React.Component {
     render() {
 
         return (
-            <div style={{  width: "100%", background: "linear-gradient(45deg, #2e2565 30%, #682560 90%)" }}>
-                <div  style={{ width:"100%" }}>
-                    {this.state.data.map((item, index) => {
-                        return (
-                            <div style={{height:screenHeight,paddingTop:"4%",paddingLeft:"20%"}}>
-                                <Card style={{ maxWidth: 800 }}>
-                                    <CardActionArea>
-                                    <ReactPlayer
-                                            className='react-player'
-                                            url={item.url}
-                                            controls	
-                                            height="6%"
-                                            width="800px"
-                                          />
-                                        <CardContent>
-                                            <Typography variant="body2" color="textSecondary" component="p">
-                                              {item.desc}
-                                             </Typography>
-                                        </CardContent>
-                                    </CardActionArea>
-                                    <CardActions>
-                                     
-                                    </CardActions>
-                                </Card>
-                            </div>
-                        )
-                    })}
+            <div style={{ width: "100%", background: "linear-gradient(45deg, #133054 60%, #3667a2 90%)", marginTop: 90 }}>
+                <div style={{ width: "100%" }}>
+                    <center>
+                        {this.state.data.map((item, index) => {
+                            return (
+                                <div style={{ height: "80%", paddingTop: "4%" }}>
+                                    <Card style={{ maxWidth: 800 }}>
+                                        <CardActionArea>
+                                            <ReactPlayer
+                                                className='react-player'
+                                                url={item.url}
+                                                controls
+                                                height="6%"
+                                                width="100%"
+                                            />
+                                            <CardContent>
+                                                <Typography variant="body2" color="textSecondary" component="p">
+                                                    {item.desc}
+                                                </Typography>
+                                            </CardContent>
+                                        </CardActionArea>
+                                        <CardActions>
 
-
+                                        </CardActions>
+                                    </Card>
+                                </div>
+                            )
+                        })}
+                    </center>
                 </div>
             </div>
         )

@@ -4,10 +4,10 @@ import firebase from "../../database"
 var screenHeight = window.screen.availHeight;
 
 class About extends React.Component {
-    constructor(){
+    constructor() {
         super()
-        this.state={
-               data:[]
+        this.state = {
+            data: []
         }
     }
 
@@ -28,27 +28,23 @@ class About extends React.Component {
 
     render() {
         return (
-            <div style={{ height: "100%", width: "100%",background: "linear-gradient(45deg, #2e2565 30%, #682560 90%)" }} className='player-wrapper'>
-                <div className="childDiv" style={{height:screenHeight/1}}>
-                {this.state.data.map((item,index)=>{
-                           return(
+            <div style={{ height: "100%", width: "100%", background: "linear-gradient(45deg, #133054 60%, #3667a2 90%)",marginTop:90 }} className='player-wrapper'>
+                <div className="childDiv" style={{height:"100%",paddingTop:30 }}>
+                    {this.state.data.map((item, index) => {
+                        return (
                             <div>
-                <h1 style={{textAlign:"center",fontFamily:"italic"}}>{item.title}</h1>
-                            <p style={{color:"black",fontWeight:"bold"}}>
-                            {item.desc}
-                            </p>
-    
-    
-    
-                       </div> 
-                           )
-                       })}
-         
-                   <div >
-                          <h1 style={{color:"red"}}>Dr Ambreen Khan</h1>
-                          <h2 style={{color:"red"}}>Director</h2>
-                          <h2 style={{color:"red"}}>Al Shifa Medical Center</h2>
-                   </div>
+                                <h1 style={{ textAlign: "center", fontFamily: "italic",color:"#ffffff" }}>{item.title}</h1>
+                                <p style={{ color: "#bbbcc1", fontWeight: "bold" }}>
+                                    {item.desc}
+                                </p>
+                            </div>
+                        )
+                    })}
+                    <div >
+                        <h1 style={{ color: "#ffffff" }}>Dr Ambreen Khan</h1>
+                        <h2 style={{ color: "#ffffff" }}>Director</h2>
+                        <h2 style={{ color: "#ffffff" }}>Al Shifa Medical Center</h2>
+                    </div>
                 </div>
             </div>
         )

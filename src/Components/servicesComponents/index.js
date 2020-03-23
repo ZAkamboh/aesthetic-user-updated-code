@@ -37,43 +37,42 @@ class Services extends React.Component {
             })
     }
     render() {
-
         return (
-            <div style={{  width: "100%", background: "linear-gradient(45deg, #2e2565 30%, #682560 90%)" }}>
-                <div  style={{ width:"100%" }}>
-                    {this.state.data.map((item, index) => {
-                        return (
-                            <div style={{height:screenHeight,paddingTop:"4%",paddingLeft:"20%"}}>
-                                <Card style={{ maxWidth: 800 }}>
-                                    <CardActionArea>
-                                        <CardMedia
-                                            style={{ height: 300 }}
-                                            image={item.url}
-                                            title="Contemplative Reptile"
-                                        />
-                                        <CardContent>
-                                            <Typography gutterBottom variant="h5" component="h2">
-                                                {item.title}
-                                           </Typography>
-                                            <Typography variant="body2" color="textSecondary" component="p">
-                                              {item.desc}
-                                             </Typography>
-                                        </CardContent>
-                                    </CardActionArea>
-                                    <CardActions>
-                                        <Button size="small" color="primary">
-                                            Share
+            <div style={{ width: "100%", background: "linear-gradient(45deg, #2e2565 30%, #682560 90%)", marginTop: 90 }}>
+                <div style={{ width: "100%",overflow:"scroll",paddingBottom:50 }}>
+                    <center>
+                        {this.state.data.map((item, index) => {
+                            return (
+                                <div style={{ height: "80%", paddingTop: "4%" }}>
+                                    <Card style={{ maxWidth: 800 }}>
+                                        <CardActionArea>
+                                            <CardMedia
+                                                style={{ height: 300 }}
+                                                image={item.url}
+                                                title="Contemplative Reptile"
+                                            />
+                                            <CardContent>
+                                                <Typography gutterBottom variant="h5" component="h2">
+                                                    {item.title}
+                                                </Typography>
+                                                <Typography variant="body2" color="textSecondary" component="p">
+                                                    {item.desc}
+                                                </Typography>
+                                            </CardContent>
+                                        </CardActionArea>
+                                        <CardActions>
+                                            <Button size="small" color="primary">
+                                                Share
                                         </Button>
-                                        <Button size="small" color="primary">
-                                            Learn More
+                                            <Button size="small" color="primary">
+                                                Learn More
                                          </Button>
-                                    </CardActions>
-                                </Card>
-                            </div>
-                        )
-                    })}
-
-
+                                        </CardActions>
+                                    </Card>
+                                </div>
+                            )
+                        })}
+                    </center>
                 </div>
             </div>
         )

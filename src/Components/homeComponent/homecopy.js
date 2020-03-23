@@ -1,5 +1,5 @@
 import React from "react"
-import {AppActions} from "../../store/actions"
+import { AppActions } from "../../store/actions"
 //import { makeStyles } from '@material-ui/core/styles';
 import { Slide } from 'react-slideshow-image';
 import Paper from '@material-ui/core/Paper';
@@ -37,10 +37,10 @@ class Homecopy extends React.Component {
         this.props.fetchhomedata()
     }
 
-    componentWillReceiveProps(nextProps){
-        if(nextProps && nextProps.homedata.length >0){
-            this.setState({data:nextProps.homedata})
-               }
+    componentWillReceiveProps(nextProps) {
+        if (nextProps && nextProps.homedata.length > 0) {
+            this.setState({ data: nextProps.homedata })
+        }
     }
     // componentWillMount() {
     //     var values = [];
@@ -68,10 +68,10 @@ class Homecopy extends React.Component {
             }
         }.bind(this)
         return (
-            <div>
+            <div className="homeCopyMainClass">
                 <Grid style={{ width: "100%", marginTop: "2px" }} container >
                     {
-                        
+
                     }
                     <Grid item xs={12}>
                         <Paper style={{ height: screenHeight / 1.5 }} >
@@ -96,7 +96,7 @@ class Homecopy extends React.Component {
 
                                         <div className="centerDiv2" style={{ height: screenHeight / 1.4, width: "100%", backgroundColor: "rgba(17, 23, 118, 0.40)" }}>
 
-                                        <div style={{ width: "70%", textAlign: "center" }}>
+                                            <div style={{ width: "70%", textAlign: "center" }}>
                                                 <h1 style={{ color: "#ffffff" }} >
                                                     Your resource for Al-Shifa-Medical-Center
                                              </h1>
@@ -161,52 +161,54 @@ class Homecopy extends React.Component {
                     </Grid>
 
                     {/* one object fetching grid */}
-                    <div style={{ width: "100%", paddingBottom: 70 }}>
+                    <div style={{ width: "100%", paddingBottom: 70,marginTop:40 }}>
                         {this.state.data.map((item, index) => {
                             return (
-                                <div className="centerDiv3" style={{ height: screenHeight / 2, width: "100%" }}>
-                                    <Grid item xs={0} sm={1} style={{ height: screenHeight / 2.2, marginTop: "6%" }}>
-                                        <Paper style={{ height: screenHeight / 2.2 }} >
-                                            <div style={{ fontFamily: "verdana", height: screenHeight / 2.2 }}>
-                                            </div>
-                                        </Paper>
-                                    </Grid>
-                                    <Grid item xs={12} sm={7} style={{ height: screenHeight / 2.2, marginTop: "6%" }}>
-                                        <Paper style={{ height: screenHeight / 2.2 }} >
-                                            <div style={{ paddingTop: "3%", background: "linear-gradient(45deg, #303f72 30%, #21CBF3 90%)", fontFamily: "verdana", height: screenHeight / 2.2, width: "100%", borderRadius: 50 }}>
-                                                <h1 style={{ paddingTop: "5%", paddingLeft: "5%", fontFamily: "italic", color: "#ffffff" }}>{item.title}</h1>
-                                                <div style={{ width: "90%", marginLeft: "5%" }}>
-                                                    <Truncate style={{ color: "#ffffff", fontFamily: "italic", fontSize: 20 }} lines={3}   >
-                                                        <p >
-                                                            {item.desc}
-                                                        </p>
-                                                    </Truncate>
+                                <div className="centerDiv3" style={{ width: "100%" }}>
+                                    <Grid container>
+                                        <Grid item xs={0} sm={1} style={{ height: screenHeight / 2.2, marginTop: "3%" }}>
+                                            <div style={{ height: screenHeight / 2.2 }} >
+                                                <div style={{ fontFamily: "verdana", height: screenHeight / 2.2 }}>
                                                 </div>
-                                                <button onClick={() => this.props.history.push("/homeDetail", { item: item })}
-                                                    style={{ marginTop: "3%", background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)", color: "#ffffff", marginLeft: "5%", borderTopLeftRadius: 20, borderBottomRightRadius: 20 }}>Read more about {item.title}</button>
                                             </div>
-                                        </Paper>
-                                    </Grid>
-                                    <Grid item xs={12} sm={3} style={{ height: screenHeight / 2.2, marginTop: "6%" }}>
-                                        <Paper style={{ height: screenHeight / 2.2 }} >
-                                            <div style={{ fontFamily: "verdana", height: screenHeight / 2 }}>
-                                                <img src={item.url} alt="Title" style={{ height: "90%", width: "100%", borderRadius: 20 }} />
+                                        </Grid>
+                                        <Grid item xs={12} sm={7} style={{ height: screenHeight / 2.2, marginTop: "3%" }}>
+                                            <div style={{ height: screenHeight / 2.2 }} >
+                                                <div style={{ paddingTop: "3%", background: "linear-gradient(45deg, #303f72 30%, #21CBF3 90%)", fontFamily: "verdana", height: screenHeight / 2.2, width: "100%", borderRadius: 50 }}>
+                                                    <h3 style={{ paddingTop: "5%", paddingLeft: "5%", fontFamily: "italic", color: "#ffffff" }}>{item.title}</h3>
+                                                    <div style={{ width: "90%", marginLeft: "5%" }}>
+                                                        <Truncate style={{ color: "#ffffff", fontFamily: "italic", fontSize: 18 }} lines={3}   >
+                                                            <p >
+                                                                {item.desc}
+                                                            </p>
+                                                        </Truncate>
+                                                    </div>
+                                                    <button onClick={() => this.props.history.push("/homeDetail", { item: item })}
+                                                        style={{ marginTop: "3%", background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)", color: "#ffffff", marginLeft: "5%", borderTopLeftRadius: 20, borderBottomRightRadius: 20 }}>Read more about {item.title}</button>
+                                                </div>
+                                            </div>
+                                        </Grid>
+                                        <Grid item xs={12} sm={3} style={{ height: screenHeight / 2.2, marginTop: "3%" }}>
+                                            <div style={{ height: screenHeight / 2.2 }} >
+                                                <div style={{ fontFamily: "verdana", height: screenHeight / 2 }}>
+                                                    <img src={item.url} alt="Title" style={{ height: "90%", width: "100%", borderRadius: 20 }} />
 
+                                                </div>
                                             </div>
-                                        </Paper>
-                                    </Grid>
-                                    <Grid item xs={0} sm={1} style={{ height: screenHeight / 2.2, marginTop: "6%" }}>
-                                        <Paper style={{ height: screenHeight / 2.2 }} >
-                                            <div style={{ fontFamily: "verdana", height: screenHeight / 2 }}>
+                                        </Grid>
+                                        <Grid item xs={0} sm={1} style={{ height: screenHeight / 2.2, marginTop: "3%" }}>
+                                            <div style={{ height: screenHeight / 2.2 }} >
+                                                <div style={{ fontFamily: "verdana", height: screenHeight / 2 }}>
+                                                </div>
                                             </div>
-                                        </Paper>
+                                        </Grid>
                                     </Grid>
                                 </div>
                             )
                         })}
                     </div>
                     <div id="myBtn" style={{ display: this.state.scrolled ? "block" : "none" }} onClick={() => this.gotoTop()}>
-                        <ArrowUpwardIcon/>
+                        <ArrowUpwardIcon />
                     </div>
                 </Grid>
 
@@ -223,7 +225,7 @@ function mapDispatch(dispatch) {
     return {
         fetchhomedata: () => {
             dispatch(AppActions.fetchhomedata());
-          }
+        }
     };
 }
 export default connect(
