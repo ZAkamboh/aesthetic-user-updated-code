@@ -41,50 +41,23 @@ const rows = [
 
 
 
-class AdminHomedata extends React.Component {
+class Aboutdataadmin extends React.Component {
   componentWillMount() {
     if (!this.props.adminn) {
         this.props.history.push('/admin')
     }
-    else {
-        this.props.clear()
-    }
+  
 }
     render() {
         return (
-            <div style={{ height: screenHeight, width: "100%" }}>
+            <div style={{ height: screenHeight, width: "100%",marginTop:"20%" }}>
                 <div>
-                  <h1>admin home data</h1>
-                {/* <TableContainer component={Paper}>
-      <Table style={{minWidth:700}} aria-label="customized table">
-        <TableHead>
-          <TableRow>
-            <StyledTableCell>Dessert (100g serving)</StyledTableCell>
-            <StyledTableCell align="right">Calories</StyledTableCell>
-            <StyledTableCell align="right">Fat&nbsp;(g)</StyledTableCell>
-            <StyledTableCell align="right">Carbs&nbsp;(g)</StyledTableCell>
-            <StyledTableCell align="right">Protein&nbsp;(g)</StyledTableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map(row => (
-            <StyledTableRow key={row.name}>
-              <StyledTableCell component="th" scope="row">
-                {row.name}
-              </StyledTableCell>
-              <StyledTableCell align="right">zubair</StyledTableCell>
-              <StyledTableCell align="right">kamboh</StyledTableCell>
-              <StyledTableCell align="right">owais</StyledTableCell>
-              <StyledTableCell align="right">aslam</StyledTableCell>
-            </StyledTableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer> */}
+                  <h1>about admin data</h1>
+           
                 </div>
             </div>
         )
     }
 }
 
-export default AdminHomedata
+export default Aboutdataadmin

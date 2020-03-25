@@ -28,7 +28,7 @@ class About extends React.Component {
 
     render() {
         return (
-            <div style={{ height: "100%", width: "100%", background: "linear-gradient(45deg, #133054 60%, #3667a2 90%)",marginTop:90 }} className='player-wrapper'>
+            <div style={{ height: "100%", width: "100%", background: "linear-gradient(45deg, #133054 60%, #3667a2 90%)",marginTop:120 }} className='player-wrapper'>
                 <div className="childDiv" style={{height:"100%",paddingTop:30 }}>
                     {this.state.data.map((item, index) => {
                         return (

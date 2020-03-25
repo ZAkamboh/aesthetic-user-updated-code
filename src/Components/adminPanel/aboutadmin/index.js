@@ -3,11 +3,8 @@ import { AppActions } from "../../../store/actions"
 import { connect } from "react-redux";
 import { TextField, Button } from '@material-ui/core';
 import firebase from "../../../database"
-
-var screenHeight = window.screen.availHeight;
-var screenWidth = window.screen.availWidth
-
-
+import background from "../../../Assets/Images/wall6.jpg"
+import { Link } from "react-router-dom";
 
 class Adminabout extends React.Component {
     constructor(){
@@ -71,10 +68,9 @@ class Adminabout extends React.Component {
         this.setState({ [key]: event.target.value })
       }
     render() {
-        {console.log(this.state.data)}
+      
         return (
-            <div className="centerDiv" style={{ background: "linear-gradient(45deg, #c75f22 30%, #a0114c 90%)", height: screenHeight / 1.4, width: screenWidth }}>
-                <div className="centerDiv" style={{ backgroundColor: "rgba(255,255,255,0.8)", height: screenHeight / 1.4, width: screenWidth / 2, borderRadius: 10 }}>
+            <div className="centerDivLogin" style={{backgroundImage: `url(${background})`, width:"100%"}}>
           <div>
            
             <div style={{ marginTop: 20, textAlign: "center" }}>
@@ -85,7 +81,7 @@ class Adminabout extends React.Component {
                 onChange={this._handleChange.bind(this, "title")}
                 label="Enter Title"
                 variant="outlined"
-                style={{ width: 300 }}
+                style={{ width: 300,backgroundColor:"#ffffff" }}
 
               />
             </div>
@@ -97,14 +93,12 @@ class Adminabout extends React.Component {
               <Button type="submit" variant="contained" color="secondary" onClick={this._handleClick.bind(this)}>
                 Add
               </Button>
-              <Button style={{marginLeft:"2%"}} type="submit" variant="contained" color="primary" onClick={()=>this.props.history.push('/adminhomerecord')}>
+              <Button style={{marginLeft:"2%"}} type="submit" variant="contained" color="primary" onClick={()=>this.props.history.push('/adminaboutshowdata')}>
                 See Your About
               </Button>
             </div>
           </div>
         </div>
-
-            </div>
         )
     }
 }

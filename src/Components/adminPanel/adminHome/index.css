@@ -4,3 +4,10 @@
     justify-content: center;
     height: calc(100vh - 60px);
 }
+
+.adminHome{
+ background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+}
+

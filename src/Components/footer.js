@@ -13,7 +13,7 @@ class Footer extends React.Component {
       <div style={{ display: "flex" }}>
         <Grid container style={{ backgroundColor: "#0f2540" }} >
           <Grid item xs={12} sm={4}>
-            <div style={{ height: screenHeight / 1.7, backgroundColor: "#0f2540" }} >
+            <div style={{ height: screenHeight / 1.6, backgroundColor: "#0f2540" }} >
               <div style={{ height: screenHeight / 2, textAlign: "center", paddingTop: "15%" }}>
                 <h4 style={{ color: "#ffffff" }}>AL SHIFA MEDICAL CENTER</h4>
                 <p style={{ color: "#dcdadaf5" }}>We also perform skin laser treatment,Recostructive plastic surgery and stem cell therapy</p>
@@ -27,7 +27,7 @@ class Footer extends React.Component {
             </div>
           </Grid>
           <Grid sm={8} xs={12} container style={{ backgroundColor: "#0f2540" }} >
-            <Grid item sm={6} xs={8}>
+            <Grid item sm={6} xs={12}>
               <div style={{ height: screenHeight / 1.7, backgroundColor: "#0f2540" }} >
                 <div style={{ height: screenHeight / 2, textAlign: "center", paddingTop: "15%" }}>
                   <h5 style={{ color: "#ffffff" }}>Working Days:</h5>
@@ -40,7 +40,7 @@ class Footer extends React.Component {
                 </div>
               </div>
             </Grid>
-            <Grid item sm={6} xs={4}>
+            <Grid item sm={6} xs={12}>
               <div style={{ height: screenHeight / 1.7, backgroundColor: "#0f2540" }} >
                 <div style={{ height: screenHeight / 2, paddingTop: "6%",textAlign:"center" }}>
                   <img src={dr} alt="Title" style={{ height: "100%", width: "90%" }} />

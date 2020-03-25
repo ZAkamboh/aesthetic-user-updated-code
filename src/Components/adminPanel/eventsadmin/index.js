@@ -1,14 +1,11 @@
 import React from "react"
 import { TextField, Button } from '@material-ui/core';
 import firebase from "../../../database"
-import { storage } from '../../../database'
-import LinearProgress from '@material-ui/core/LinearProgress';
 import { connect } from "react-redux";
+import background from "../../../Assets/Images/wall6.jpg"
 
 
 
-var screenHeight = window.screen.availHeight;
-var screenWidth = window.screen.availWidth;
 
 
 
@@ -63,8 +60,7 @@ class Eventsadmin extends React.Component {
   }
   render() {
     return (
-      <div className="centerDiv" style={{ background: "linear-gradient(45deg, #c75f22 30%, #a0114c 90%)", height: screenHeight, width: "100%" }}>
-        <div className="centerDiv" style={{ backgroundColor: "rgba(255,255,255,0.8)", height: screenHeight / 1.4, width: screenWidth / 2, borderRadius: 10 }}>
+      <div className="centerDivLogin" style={{backgroundImage: `url(${background})`, width: "100%" }}>
           <div>
             <div style={{ textAlign: "center" }}>
               {/* <img src={TitleLogo} alt="Title" style={{ height: screenHeight / 10, width: screenWidth / 7 }} /> */}
@@ -78,7 +74,7 @@ class Eventsadmin extends React.Component {
                 onChange={this._handleChange.bind(this, "url")}
                 label="Enter Video Url"
                 variant="outlined"
-                style={{ width: 300 }}
+                style={{ width: 300,backgroundColor:"#ffffff" }}
 
               />
             </div>
@@ -97,7 +93,6 @@ class Eventsadmin extends React.Component {
             </div>
           </div>
         </div>
-      </div>
     )
   }
 }

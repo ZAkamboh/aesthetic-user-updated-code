@@ -33,8 +33,8 @@ class Homedetail extends React.Component {
             }
         }.bind(this)
         return (
-            <div style={{ height: screenHeight, marginTop: "1%", width: "100%", background: "linear-gradient(45deg, #2e2565 30%, #682560 90%)" }}>
-                <div style={{ height: "100%", width: "100%" }}>
+            <div style={{ width: "100%", background: "linear-gradient(45deg, #2e2565 30%, #682560 90%)", marginTop: 90 }}>
+                <div style={{  width: "100%",paddingBottom:90,overflow:"scroll" }}>
                     <div className="title" style={{ height: screenHeight / 6 }}>
                         <h1 style={{ color: "#ffffff" }}>{this.state.detail.title}</h1>
                     </div>

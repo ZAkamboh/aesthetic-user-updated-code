@@ -2,7 +2,7 @@ import React from "react"
 import { connect } from "react-redux";
 import { AppActions } from "../../../store/actions"
 import { TextField, Button } from '@material-ui/core';
-import Background from "../../../Assets/Images/paper3.jpg"
+import Background from "../../../Assets/Images/wall4.jpg"
 //import firebase from "../../../database"
 import "./index.css"
 import Loader from "./loader"
@@ -47,10 +47,10 @@ class AdminLogin extends React.Component {
   render() {
     return (
 
-      <div className="centerDiv" style={{ backgroundImage: `url(${Background})`, height: screenHeight, width: screenWidth }}>
-      <div className="centerDiv" style={{ backgroundColor:"rgba(17, 23, 118, 0.40)", height: screenHeight, width: screenWidth }}>
+      <div className="centerDivLogin" style={{ backgroundImage: `url(${Background})`, width:"100%", }}>
+      <div className="centerDivLogin" style={{ width:"100%"}}>
     
-        <div className="centerDiv" style={{ backgroundColor: "rgba(255,255,255,0.8)", height: screenHeight / 2, width: screenWidth / 2, borderRadius: 10 }}>
+        <div className="centerDivLogin" style={{ borderRadius: 50, }}>
           <div>
             <div style={{ textAlign: "center" }}>
               {/* <img src={TitleLogo} alt="Title" style={{ height: screenHeight / 10, width: screenWidth / 7 }} /> */}
@@ -59,7 +59,7 @@ class AdminLogin extends React.Component {
             {this.props.error && <div style={{ marginTop: 20, textAlign: "center" }}>
               <h5>{this.props.error}</h5>
             </div>}
-            <div style={{ marginTop: 20 }}>
+            <div style={{ marginTop: 20,backgroundColor:"white",borderRadius:20 }}>
               <TextField
                 required
                 onChange={this._handleChange.bind(this, "email")}
@@ -71,7 +71,7 @@ class AdminLogin extends React.Component {
                 helperText={this.state.emailError ? "Incorrect Entry" : ""}
               />
             </div>
-            <div style={{ marginTop: 20 }}>
+            <div style={{ marginTop: 20,backgroundColor:"white",borderRadius:20  }}>
               <TextField
                 required
                 onChange={this._handleChange.bind(this, "password")}
