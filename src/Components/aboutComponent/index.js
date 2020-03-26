@@ -57,7 +57,6 @@ function mapStateToProps(state) {
 console.log(state.AppReducer)
     return {
         loader: state.AppReducer.loader,
-
         aboutdataa: state.AppReducer.aboutdataa,
     }
 }
@@ -66,7 +65,6 @@ function mapDispatch(dispatch) {
         aboutdata: () => {
             dispatch(AppActions.aboutdata());
         }
-
     }
 }
 export default connect(mapStateToProps, mapDispatch)(About)
