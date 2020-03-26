@@ -17,6 +17,11 @@ export default function AppReducer(state = initialState, action) {
         return { ...state, loader: true };
     case successActionOf(AppActions.LOGIN):
         return { ...state, loader: false, login:action.payload,admin:action.payload }
+
+        case AppActions.ABOUTDATA:
+          return { ...state, loader: true };
+      case successActionOf(AppActions.ABOUTDATA):
+          return { ...state, loader: false, aboutdataa:action.payload}
   
 
       case  AppActions.HOMEDATA:

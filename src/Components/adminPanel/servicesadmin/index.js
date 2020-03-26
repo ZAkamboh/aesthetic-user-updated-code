@@ -138,8 +138,8 @@ class Service extends React.Component {
               <Button type="submit" variant="contained" color="secondary" onClick={this._handleClick.bind(this)}>
                 Add
               </Button>
-              <Button style={{marginLeft:"2%"}} type="submit" variant="contained" color="primary" onClick={()=>this.props.history.push('/adminhomerecord')}>
-                See Services data
+              <Button style={{marginLeft:"2%"}} type="submit" variant="contained" color="primary" onClick={()=>this.props.history.push('/adminservicedata')}>
+                show Services data
               </Button>
             </div>
           </div>

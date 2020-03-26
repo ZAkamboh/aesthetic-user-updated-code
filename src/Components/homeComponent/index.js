@@ -1,18 +1,17 @@
 import React from "react"
 import "./index.css"
 import { connect } from "react-redux";
-import Homecopy from "./homecopy"
+import  Homechild from "./home"
 class Home extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-     
+    this.state = {  
     }
   }
   render() {
     return (
       <div  style={{height:"100%",width:"100%"}}>
-        <Homecopy history={this.props.history}/>
+        <Homechild history={this.props.history}/>
       </div>
     )
 

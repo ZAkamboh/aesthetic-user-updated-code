@@ -169,7 +169,7 @@ uploadTask.on('state_changed', (snapshot) => {
               <Button type="submit" variant="contained" color="secondary" onClick={this._handleClick.bind(this)}>
                 Add
               </Button>
-              <Button style={{marginLeft:"2%"}}  variant="contained" color="primary" onClick={()=>this.props.history.push("/seeadminhomedata")}>
+              <Button style={{marginLeft:"2%"}}  variant="contained" color="primary" onClick={()=>this.props.history.push("/adminhomedata")}>
                 Home Records
               </Button>
             </div>

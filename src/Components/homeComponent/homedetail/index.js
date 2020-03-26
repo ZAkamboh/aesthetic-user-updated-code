@@ -1,9 +1,6 @@
 import React from "react"
 import './index.css'
-
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
-
-
 var screenHeight = window.screen.availHeight;
 
 
@@ -14,16 +11,19 @@ class Homedetail extends React.Component {
             detail: {},
             scrolled: false
         }
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
     }
     componentWillMount() {
         var detaildata = this.props.location.state.item
-        console.log(this.props)
         this.setState({ detail: detaildata })
     }
+
     gotoTop() {
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
     }
+
     render() {
         window.onscroll = function () {
             if (document.body.scrollTop > 60 || document.documentElement.scrollTop > 60) {

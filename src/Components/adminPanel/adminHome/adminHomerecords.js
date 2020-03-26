@@ -1,4 +1,6 @@
 import React from "react"
+import { AppActions } from "../../../store/actions"
+
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -7,84 +9,123 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-var screenHeight = window.screen.availHeight;
+import { Button } from '@material-ui/core';
+import firebase from "../../../database"
+
+import { connect } from "react-redux";
+
 const StyledTableCell = withStyles(theme => ({
-    head: {
-      backgroundColor: theme.palette.common.black,
-      color: theme.palette.common.white,
+  head: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
+  },
+  body: {
+    fontSize: 14,
+  },
+}))(TableCell);
+
+const StyledTableRow = withStyles(theme => ({
+  root: {
+    '&:nth-of-type(odd)': {
+      backgroundColor: theme.palette.background.default,
     },
-    body: {
-      fontSize: 14,
-    },
-  }))(TableCell);
-  
-  const StyledTableRow = withStyles(theme => ({
-    root: {
-      '&:nth-of-type(odd)': {
-        backgroundColor: theme.palette.background.default,
-      },
-    },
-  }))(TableRow);
+  },
+}))(TableRow);
 
 function createData(name, calories, fat, carbs, protein) {
-    return { name, calories, fat, carbs, protein };
-  }
+  return { name, calories, fat, carbs, protein };
+}
 
 const rows = [
-    createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-    createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-    createData('Eclair', 262, 16.0, 24, 6.0),
-    createData('Cupcake', 305, 3.7, 67, 4.3),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-  ];
+  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
+  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
+  createData('Eclair', 262, 16.0, 24, 6.0),
+  createData('Cupcake', 305, 3.7, 67, 4.3),
+  createData('Gingerbread'),
+];
 
 
 
 
-class AdminHomedata extends React.Component {
+class Adminhomedata extends React.Component {
+  constructor(props){
+    super(props)
+    this.state={
+      data:[]
+    }
+  }
   componentWillMount() {
     if (!this.props.adminn) {
-        this.props.history.push('/admin')
+      this.props.history.push('/admin')
     }
-    else {
-        this.props.clear()
+    else{
+      this.props.fetchhomedata()
+
+    }
+  }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps && nextProps.homedata.length > 0) {
+        this.setState({ data: nextProps.homedata })
     }
 }
-    render() {
-        return (
-            <div style={{ height: screenHeight, width: "100%" }}>
-                <div>
-                  <h1>admin home data</h1>
-                {/* <TableContainer component={Paper}>
-      <Table style={{minWidth:700}} aria-label="customized table">
-        <TableHead>
-          <TableRow>
-            <StyledTableCell>Dessert (100g serving)</StyledTableCell>
-            <StyledTableCell align="right">Calories</StyledTableCell>
-            <StyledTableCell align="right">Fat&nbsp;(g)</StyledTableCell>
-            <StyledTableCell align="right">Carbs&nbsp;(g)</StyledTableCell>
-            <StyledTableCell align="right">Protein&nbsp;(g)</StyledTableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map(row => (
-            <StyledTableRow key={row.name}>
-              <StyledTableCell component="th" scope="row">
-                {row.name}
-              </StyledTableCell>
-              <StyledTableCell align="right">zubair</StyledTableCell>
-              <StyledTableCell align="right">kamboh</StyledTableCell>
-              <StyledTableCell align="right">owais</StyledTableCell>
-              <StyledTableCell align="right">aslam</StyledTableCell>
-            </StyledTableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer> */}
-                </div>
-            </div>
-        )
-    }
+delete(index,key){
+  var data=this.state.data
+   var newdata=data.filter((item,i) =>i!== index )
+   this.setState({data:newdata})
+   firebase
+   .database()
+   .ref(`homedata/${key}`)
+   .remove()
+   .then(() => {
+     alert("successfully delete")
+
+   }).catch((error)=>{
+            alert(error)
+   });
+}
+  render() {
+    return (
+      <div style={{ width: "100%",marginTop:120 }}>
+        <div style={{paddingBottom:100}}>
+          <TableContainer component={Paper}>
+            <Table style={{ minWidth: 700 }} aria-label="customized table">
+              <TableHead>
+                <TableRow>
+                  <StyledTableCell align="right">Title</StyledTableCell>
+                  <StyledTableCell align="right">Description</StyledTableCell>
+                  <StyledTableCell align="right">Delete Record</StyledTableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {this.state.data.map((row,index) => (
+                  <StyledTableRow>
+                    <StyledTableCell style={{fontWeight:"bold"}} align="right">{row.title}</StyledTableCell>
+                <StyledTableCell align="right">{row.desc}</StyledTableCell>
+                    <StyledTableCell align="right"><Button style={{color:"red"}} onClick={this.delete.bind(this,index,row.key)}  >Delete</Button></StyledTableCell>
+                  </StyledTableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </div>
+      </div>
+    )
+  }
 }
 
-export default AdminHomedata
+function mapStateToProps(state) {
+  return {
+    adminn: state.AppReducer.admin,
+    homedata: state.AppReducer.homedata
+
+  }
+}
+function mapDispatch(dispatch) {
+  return {
+    fetchhomedata: () => {
+      dispatch(AppActions.fetchhomedata());
+  }
+
+  }
+}
+export default connect(mapStateToProps, mapDispatch)(Adminhomedata)

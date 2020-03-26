@@ -5,9 +5,7 @@ import { TextField, Button } from '@material-ui/core';
 import Background from "../../../Assets/Images/wall4.jpg"
 //import firebase from "../../../database"
 import "./index.css"
-import Loader from "./loader"
-var screenHeight = window.screen.availHeight;
-var screenWidth = window.screen.availWidth
+import Loader1 from "./loader"
 class AdminLogin extends React.Component {
   constructor(props) {
     super(props);
@@ -93,7 +91,7 @@ class AdminLogin extends React.Component {
         </div>
          {this.props.Loginn && this.props.history.push('/adminhome')} 
          </div>
-         {this.props.loader && <Loader />}
+         {this.props.loader && <Loader1 />}
 
       </div>
     )

@@ -7,6 +7,8 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import { connect } from "react-redux";
+
 var screenHeight = window.screen.availHeight;
 const StyledTableCell = withStyles(theme => ({
     head: {
@@ -46,9 +48,6 @@ class Adminaboutdata extends React.Component {
     if (!this.props.adminn) {
         this.props.history.push('/admin')
     }
-    else {
-        this.props.clear()
-    }
 }
     render() {
         return (
@@ -62,4 +61,15 @@ class Adminaboutdata extends React.Component {
     }
 }
 
-export default Adminaboutdata
+function mapStateToProps(state) {
+    return {
+      adminn: state.AppReducer.admin,
+    }
+  }
+  function mapDispatch(dispatch) {
+    return {
+  
+  
+    }
+  }
+  export default connect(mapStateToProps, mapDispatch)(Adminaboutdata)

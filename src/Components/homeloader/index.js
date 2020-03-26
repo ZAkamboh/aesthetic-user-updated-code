@@ -1,23 +1,18 @@
 import React from "react";
-import "./index.css"
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 import Loader from 'react-loader-spinner'
-
-var screenHeight = window.screen.availHeight;
-var screenWidth = window.screen.availWidth;
+import "./index.css"
 
 
-export default class Loader1 extends React.Component {
+export default class Loader2 extends React.Component {
     render() {
         return (
-            <div className="centerDiv" style={{ position: "absolute", height: screenHeight, width: screenWidth }}>
+            <div className="loader" style={{ position: "absolute", width: "100%" }}>
                 <Loader
                     type="TailSpin"
                     color="red"
                     height={200}
                     width={200}
-                //3 secs
-
                 />
             </div>
         )

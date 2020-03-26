@@ -11,15 +11,16 @@ import Events from "../Components/events";
 
 
 import Adminabout from "../Components/adminPanel/aboutadmin"
-import Adminaboutdata from "../Components/adminPanel/aboutadmindata"
+import Adminaboutdata from "../Components/adminPanel/aboutadmin/adminaboutdata"
 import Adminhome from "../Components/adminPanel/adminHome"
+import Adminhomedata from "../Components/adminPanel/adminHome/adminHomerecords"
 import AdminLogin from "../Components/adminPanel/login"
 import Logout from "../Components/adminPanel/login/logout"
 import Homeinteg from "../Components/adminPanel/adminHome/adminHomeintegration"
-import AdminHomedata from "../Components/adminPanel/adminHome/adminHomerecords"
 import Service from "../Components/adminPanel/servicesadmin"
+import Adminservicedata from "../Components/adminPanel/servicesadmin/adminservicesdata"
 import Eventsadmin from "../Components/adminPanel/eventsadmin"
-import Aboutdataadmin from "../Components/adminpaneldata/aboutdata"
+import Admineventdata from "../Components/adminPanel/eventsadmin/admineventdata"
 import createBrowserHistory from "history/createBrowserHistory";
 import { Router,Route } from "react-router-dom";
 import { connect } from "react-redux";
@@ -44,14 +45,13 @@ render(){
         <Route path="/admin" component={AdminLogin} />
         <Route path="/adminhome" component={Adminhome} />
         <Route path="/homeintegration" component={Homeinteg} />
-        <Route path="/seeadminhomedata" component={AdminHomedata} />
+        <Route path="/adminhomedata" component={Adminhomedata} />
         <Route path="/adminabout" component={Adminabout} />
         <Route path="/adminaboutdata" component={Adminaboutdata} />
         <Route path="/adminservices" component={Service} />
+        <Route path="/adminservicedata" component={Adminservicedata} />
         <Route path="/adminevents" component={Eventsadmin} />
-        <Route path="/adminaboutshowdata" component={Aboutdataadmin} />
-
-
+        <Route path="/admineventdata" component={Admineventdata} />
         <Route path="/logout" component={Logout} />
         <Footer/>
       </Router>

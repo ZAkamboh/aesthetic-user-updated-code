@@ -93,8 +93,8 @@ class Adminabout extends React.Component {
               <Button type="submit" variant="contained" color="secondary" onClick={this._handleClick.bind(this)}>
                 Add
               </Button>
-              <Button style={{marginLeft:"2%"}} type="submit" variant="contained" color="primary" onClick={()=>this.props.history.push('/adminaboutshowdata')}>
-                See Your About
+              <Button style={{marginLeft:"2%"}} type="submit" variant="contained" color="primary" onClick={()=>this.props.history.push('/adminaboutdata')}>
+                show About data
               </Button>
             </div>
           </div>

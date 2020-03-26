@@ -8,7 +8,8 @@ export default class AppActions {
   static LOGOUT = "LOGOUT"
   static ADMIN = "ADMIN"
   static LOGOUT = "LOGOUT"
-  static HOMEDATA ="HOMEDATA"
+  static HOMEDATA = "HOMEDATA"
+  static ABOUTDATA = "ABOUTDATA"
 
   static actionNavbar(payload) {
     return {
@@ -18,31 +19,45 @@ export default class AppActions {
   }
 
 
-static fetchhomedata(){
-  return dispatch =>{
-     var values = [];
-        firebase
-            .database()
-            .ref(`homedata`)
-            .once("value", snap => {
-                var data = snap.val();
-                for (let keys in data) {
-                    values.push({ ...data[keys], key: keys });
-                }
-               // this.setState({ localdata: values });
-               dispatch({
-                type: AppActions.HOMEDATA,
-                payload: values
-              });
-            })
+  static fetchhomedata() {
+    return dispatch => {
+      var values = [];
+      firebase
+        .database()
+        .ref(`homedata`)
+        .once("value", snap => {
+          var data = snap.val();
+          for (let keys in data) {
+            values.push({ ...data[keys], key: keys });
+          }
+          // this.setState({ localdata: values });
+          dispatch({
+            type: AppActions.HOMEDATA,
+            payload: values
+          });
+        })
+    }
   }
-}
 
-
-
-
-
-
+  static aboutdata() {
+    return dispatch => {
+    dispatch({ type: AppActions.ABOUTDATA, })
+      var values = [];
+      firebase
+        .database()
+        .ref(`aboutdata`)
+        .once("value", snap => {
+          var data = snap.val();
+          for (let keys in data) {
+            values.push({ ...data[keys], key: keys });
+          }
+          dispatch({
+            type: successActionOf(AppActions.ABOUTDATA),
+            payload: values
+          });
+        })
+    }
+  }
 
   static clear() {
     return dispatch => {
@@ -52,7 +67,7 @@ static fetchhomedata(){
   static login(payload) {
 
     return dispatch => {
-      dispatch({ type: AppActions.LOGIN,})
+      dispatch({ type: AppActions.LOGIN, })
       firebase
         .auth()
         .signInWithEmailAndPassword(payload.email, payload.password)

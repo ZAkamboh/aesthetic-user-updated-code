@@ -13,7 +13,6 @@ import "./index.css"
 import Truncate from 'react-truncate';
 import { Link } from "react-router-dom";
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
-import firebase from "../../database"
 import { connect } from "react-redux";
 var screenHeight = window.screen.availHeight;
 const properties = {
@@ -27,7 +26,7 @@ const properties = {
     }
 }
 
-class Homecopy extends React.Component {
+class Homechild extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -42,19 +41,7 @@ class Homecopy extends React.Component {
             this.setState({ data: nextProps.homedata })
         }
     }
-    // componentWillMount() {
-    //     var values = [];
-    //     firebase
-    //         .database()
-    //         .ref(`homedata`)
-    //         .once("value", snap => {
-    //             var data = snap.val();
-    //             for (let keys in data) {
-    //                 values.push({ ...data[keys], key: keys });
-    //             }
-    //             this.setState({ localdata: values });
-    //         })
-    // }
+
     gotoTop() {
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
@@ -161,7 +148,7 @@ class Homecopy extends React.Component {
                     </Grid>
 
                     {/* one object fetching grid */}
-                    <div style={{ width: "100%", paddingBottom: 70,marginTop:40 }}>
+                    <div style={{ width: "100%", paddingBottom: 70, marginTop: 40 }}>
                         {this.state.data.map((item, index) => {
                             return (
                                 <div className="centerDiv3" style={{ width: "100%" }}>
@@ -231,4 +218,4 @@ function mapDispatch(dispatch) {
 export default connect(
     mapState,
     mapDispatch
-)(Homecopy);
+)(Homechild);
