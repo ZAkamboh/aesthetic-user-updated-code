@@ -10,10 +10,9 @@ import background from "../../../../Assets/Images/wall6.jpg"
 
 
 var screenHeight = window.screen.availHeight;
-var screenWidth = window.screen.availWidth;
 
 
-
+var array=[]
 class Homeinteg extends React.Component {
   constructor() {
     super()
@@ -38,44 +37,35 @@ class Homeinteg extends React.Component {
     }
   }
 
-  componentWillReceiveProps(nextprops){
-   // this.setState({url2:nextprops.homedata})
-   
+  componentWillReceiveProps(nextprops){   
    for (var i=0;i<nextprops.homedata.length;i++){
-             //  this.setState({url2:[nextprops.homedata[i].url]})
-            //   array=[nextprops.homedata[i].url]
-            //  // console.log(array)
+      array.push(nextprops.homedata[i].file)
    }
   }
 
   upload() {
-if(this.state.file ===this.state.url2){
-alert("this image is already uploaded plz select another")
+
  
-}
-else{
-const { file } = this.state
-const uploadTask = storage.ref(`images/${file.name}`).put(file)
-uploadTask.on('state_changed', (snapshot) => {
-  const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
-  this.setState({ progress });
-
-},
-  (error) => {
-    console.log(error)
-  },
-
-  () => {
-    storage.ref('images').child(file.name).getDownloadURL().then(url => {
-      
-      this.setState({ url: url })
-
-    })
-
-  })
-}
-   
-
+    const { file } = this.state
+    const sessionId = new Date().getTime()
+    const uploadTask = storage.ref(`images/${sessionId}`).put(file)
+    uploadTask.on('state_changed', (snapshot) => {
+      const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+      this.setState({ progress });
+    
+    },
+      (error) => {
+        console.log(error)
+      },
+    
+      () => {
+        storage.ref('images').child(file.name).getDownloadURL().then(url => {
+          
+          this.setState({ url: url, })
+    
+        })
+    
+      }) 
   }
 
 
@@ -85,15 +75,13 @@ uploadTask.on('state_changed', (snapshot) => {
       title: this.state.title,
       desc: this.state.desc,
       url: this.state.url,
+      file:this.state.file.name
     }
     if (data.title === "") {
       alert("title field is required")
     }
     else if (data.desc === "") {
       alert("desc field is required")
-    }
-    else if (data.url === "") {
-      alert("please upload any picture")
     }
     else if (data.url === "") {
       alert("please upload any picture")
@@ -130,17 +118,16 @@ uploadTask.on('state_changed', (snapshot) => {
             <div style={{ marginTop: 20 }}>
               <TextField
                 onChange={this._handleChange.bind(this, "title")}
-                label="Enter Title"
+                placeholder="Enter Title" 
                 variant="outlined"
                 style={{ width: 300 ,backgroundColor:"#ffffff"}}
-
               />
             </div>
             <div style={{ marginTop: 20 }}>
               <input
                 className=""
                 type="file"
-                placeholder="upload image"
+                placeholder="Upload Image"
                 onChange={e =>
                   this.setState({ file: e.target.files[0] }, () => {
                     console.log(this.state.file);

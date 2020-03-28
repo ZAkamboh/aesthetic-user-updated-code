@@ -1,5 +1,7 @@
+
 import React from "react"
-import { withStyles, makeStyles } from '@material-ui/core/styles';
+import { AppActions } from "../../../store/actions"
+import { withStyles} from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -7,69 +9,123 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import { Button } from '@material-ui/core';
+import firebase from "../../../database"
+
 import { connect } from "react-redux";
 
-var screenHeight = window.screen.availHeight;
 const StyledTableCell = withStyles(theme => ({
-    head: {
-      backgroundColor: theme.palette.common.black,
-      color: theme.palette.common.white,
+  head: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
+  },
+  body: {
+    fontSize: 14,
+  },
+}))(TableCell);
+
+const StyledTableRow = withStyles(theme => ({
+  root: {
+    '&:nth-of-type(odd)': {
+      backgroundColor: theme.palette.background.default,
     },
-    body: {
-      fontSize: 14,
-    },
-  }))(TableCell);
-  
-  const StyledTableRow = withStyles(theme => ({
-    root: {
-      '&:nth-of-type(odd)': {
-        backgroundColor: theme.palette.background.default,
-      },
-    },
-  }))(TableRow);
+  },
+}))(TableRow);
 
 function createData(name, calories, fat, carbs, protein) {
-    return { name, calories, fat, carbs, protein };
-  }
+  return { name, calories, fat, carbs, protein };
+}
 
 const rows = [
-    createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-    createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-    createData('Eclair', 262, 16.0, 24, 6.0),
-    createData('Cupcake', 305, 3.7, 67, 4.3),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-  ];
-
-
-
+  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
+  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
+  createData('Eclair', 262, 16.0, 24, 6.0),
+  createData('Cupcake', 305, 3.7, 67, 4.3),
+  createData('Gingerbread'),
+];
 
 class Admineventdata extends React.Component {
+  constructor(props){
+    super(props)
+    this.state={
+      data:[]
+    }
+  }
+
+
   componentWillMount() {
     if (!this.props.adminn) {
-        this.props.history.push('/admin')
+      this.props.history.push('/admin')
+    }
+    else{
+      this.props.event()
+    }
+  }
+
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps && nextProps.eventdataa) {
+        this.setState({ data: nextProps.eventdataa })
     }
 }
-    render() {
-        return (
-            <div style={{ height: screenHeight, width: "100%" }}>
-                <div>
-                  <h1>event admin data</h1>
-           
-                </div>
-            </div>
-        )
-    }
+
+
+delete(index,key){
+  var data=this.state.data
+   var newdata=data.filter((item,i) =>i!== index )
+   this.setState({data:newdata})
+   firebase
+   .database()
+   .ref(`Eventsdata/${key}`)
+   .remove()
+   .then(() => {
+     alert("successfully delete")
+
+   }).catch((error)=>{
+            alert(error)
+   });
+}
+  render() {
+    return (
+      <div style={{ width: "100%",marginTop:120 }}>
+        <div style={{paddingBottom:100}}>
+          <TableContainer component={Paper}>
+            <Table style={{ minWidth: 700 }} aria-label="customized table">
+              <TableHead>
+                <TableRow>
+                  <StyledTableCell align="right">Title</StyledTableCell>
+                  <StyledTableCell align="right">Description</StyledTableCell>
+                  <StyledTableCell align="right">Delete Record</StyledTableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {this.state.data.map((row,index) => (
+                  <StyledTableRow>
+                    <StyledTableCell style={{fontWeight:"bold"}} align="right">{row.url}</StyledTableCell>
+                <StyledTableCell align="right">{row.desc}</StyledTableCell>
+                    <StyledTableCell align="right"><Button style={{color:"red"}} onClick={this.delete.bind(this,index,row.key)}  >Delete</Button></StyledTableCell>
+                  </StyledTableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </div>
+      </div>
+    )
+  }
 }
 
 function mapStateToProps(state) {
-    return {
-      adminn: state.AppReducer.admin,
-    }
+  return {
+    adminn: state.AppReducer.admin,
+    eventdataa: state.AppReducer.eventdataa,
   }
-  function mapDispatch(dispatch) {
-    return {
-  
-  
-    }
+}
+function mapDispatch(dispatch) {
+  return {
+    event: () => {
+      dispatch(AppActions.event());
   }
-  export default connect(mapStateToProps, mapDispatch)(Admineventdata)
+  }
+}
+export default connect(mapStateToProps, mapDispatch)(Admineventdata)

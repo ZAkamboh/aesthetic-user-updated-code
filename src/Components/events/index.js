@@ -1,18 +1,14 @@
 import React from "react"
 import { connect } from "react-redux";
+import { AppActions } from "../../store/actions"
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import ReactPlayer from 'react-player'
-
-import firebase from "../../database"
-
+import Loader2 from "../homeloader"
 import "./index.css"
-var screenHeight = window.screen.availHeight;
 
 
 class Events extends React.Component {
@@ -22,25 +18,26 @@ class Events extends React.Component {
         this.state = {
             data: []
         }
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
     }
     componentWillMount() {
-        var values = [];
-        firebase
-            .database()
-            .ref(`Eventsdata`)
-            .once("value", snap => {
-                var data = snap.val();
-                for (let keys in data) {
-                    values.push({ ...data[keys], key: keys });
-                }
-                this.setState({ data: values });
-            })
+        this.props.event()
     }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps && nextProps.eventdataa) {
+            nextProps.eventdataa.sort((a, b) => a - b).reverse()
+            this.setState({ data: nextProps.eventdataa })
+        }
+    }
+
     render() {
 
         return (
             <div style={{ width: "100%", background: "linear-gradient(45deg, #133054 60%, #3667a2 90%)", marginTop: 90 }}>
                 <div style={{ width: "100%" }}>
+                {this.props.loader && <Loader2 />}
                     <center>
                         {this.state.data.map((item, index) => {
                             return (
@@ -79,12 +76,15 @@ class Events extends React.Component {
 
 function mapState(state) {
     return {
-
+        loader: state.AppReducer.loader,
+        eventdataa: state.AppReducer.eventdataa,
     };
 }
 function mapDispatch(dispatch) {
     return {
-
+        event: () => {
+            dispatch(AppActions.event());
+        }
     };
 }
 export default connect(

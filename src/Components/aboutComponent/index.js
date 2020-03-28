@@ -11,6 +11,8 @@ class About extends React.Component {
         this.state = {
             data: []
         }
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
     }
 
     componentWillMount() {
@@ -18,6 +20,7 @@ class About extends React.Component {
     }
     componentWillReceiveProps(nextProps) {
         if (nextProps && nextProps.aboutdataa) {
+            nextProps.aboutdataa.sort((a, b) => a - b).reverse()
             this.setState({ data: nextProps.aboutdataa })
         }
     }

@@ -79,7 +79,7 @@ class Adminabout extends React.Component {
             <div style={{ marginTop: 20 }}>
               <TextField
                 onChange={this._handleChange.bind(this, "title")}
-                label="Enter Title"
+                placeholder="Enter Title"
                 variant="outlined"
                 style={{ width: 300,backgroundColor:"#ffffff" }}
 

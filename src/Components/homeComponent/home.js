@@ -38,6 +38,7 @@ class Homechild extends React.Component {
 
     componentWillReceiveProps(nextProps) {
         if (nextProps && nextProps.homedata.length > 0) {
+            nextProps.homedata.sort((a, b) => a - b).reverse()
             this.setState({ data: nextProps.homedata })
         }
     }

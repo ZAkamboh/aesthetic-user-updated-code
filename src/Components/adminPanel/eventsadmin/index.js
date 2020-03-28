@@ -72,7 +72,7 @@ class Eventsadmin extends React.Component {
             <div style={{ marginTop: 20 }}>
               <TextField
                 onChange={this._handleChange.bind(this, "url")}
-                label="Enter Video Url"
+                placeholder="Enter Video Url"
                 variant="outlined"
                 style={{ width: 300,backgroundColor:"#ffffff" }}
 

@@ -1,5 +1,5 @@
 import firebase from "../../database"
-import { failureActionOf, successActionOf } from "./index"
+import { successActionOf } from "./index"
 
 export default class AppActions {
   static CLICKED = "CLICKED";
@@ -10,6 +10,9 @@ export default class AppActions {
   static LOGOUT = "LOGOUT"
   static HOMEDATA = "HOMEDATA"
   static ABOUTDATA = "ABOUTDATA"
+  static SERVICEDATA = "SERVICEDATA"
+  static EVENT = "EVENT"
+
 
   static actionNavbar(payload) {
     return {
@@ -17,7 +20,6 @@ export default class AppActions {
       payload
     };
   }
-
 
   static fetchhomedata() {
     return dispatch => {
@@ -41,7 +43,7 @@ export default class AppActions {
 
   static aboutdata() {
     return dispatch => {
-    dispatch({ type: AppActions.ABOUTDATA, })
+      dispatch({ type: AppActions.ABOUTDATA, })
       var values = [];
       firebase
         .database()
@@ -58,6 +60,50 @@ export default class AppActions {
         })
     }
   }
+
+
+
+  static servicedata() {
+    return dispatch => {
+      dispatch({ type: AppActions.SERVICEDATA, })
+      var values = [];
+      firebase
+        .database()
+        .ref(`servicedata`)
+        .once("value", snap => {
+          var data = snap.val();
+          for (let keys in data) {
+            values.push({ ...data[keys], key: keys });
+          }
+          dispatch({
+            type: successActionOf(AppActions.SERVICEDATA),
+            payload: values
+          });
+        })
+    }
+  }
+
+  static event() {
+    return dispatch => {
+      dispatch({ type: AppActions.EVENT, })
+      var values = [];
+      firebase
+        .database()
+        .ref(`Eventsdata`)
+        .once("value", snap => {
+          var data = snap.val();
+          for (let keys in data) {
+            values.push({ ...data[keys], key: keys });
+          }
+          dispatch({
+            type: successActionOf(AppActions.EVENT),
+            payload: values
+          });
+        })
+    }
+  }
+
+
 
   static clear() {
     return dispatch => {

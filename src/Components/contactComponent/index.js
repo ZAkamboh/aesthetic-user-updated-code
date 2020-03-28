@@ -12,6 +12,8 @@ class Contact extends React.Component {
     this.state = {
 
     }
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;      
   }
   static defaultProps = {
     center: {

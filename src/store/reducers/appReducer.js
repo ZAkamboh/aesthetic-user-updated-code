@@ -22,7 +22,19 @@ export default function AppReducer(state = initialState, action) {
           return { ...state, loader: true };
       case successActionOf(AppActions.ABOUTDATA):
           return { ...state, loader: false, aboutdataa:action.payload}
-  
+
+        
+
+          case AppActions.SERVICEDATA:
+            return { ...state, loader: true };
+        case successActionOf(AppActions.SERVICEDATA):
+            return { ...state, loader: false,servicedataa:action.payload}
+
+            case AppActions.EVENT:
+              return { ...state, loader: true };
+          case successActionOf(AppActions.EVENT):
+              return { ...state, loader: false,eventdataa:action.payload}
+
 
       case  AppActions.HOMEDATA:
         return Object.assign({}, state, {homedata:action.payload});

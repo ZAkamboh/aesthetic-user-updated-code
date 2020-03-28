@@ -7,13 +7,9 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import stem3 from "../../Assets/Images/stemcell4.jpg"
-import firebase from "../../database"
-
+import { AppActions } from "../../store/actions"
+import Loader2 from "../homeloader"
 import "./index.css"
-var screenHeight = window.screen.availHeight;
-
-
 class Services extends React.Component {
 
 
@@ -22,24 +18,23 @@ class Services extends React.Component {
         this.state = {
             data: []
         }
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
     }
     componentWillMount() {
-        var values = [];
-        firebase
-            .database()
-            .ref(`servicedata`)
-            .once("value", snap => {
-                var data = snap.val();
-                for (let keys in data) {
-                    values.push({ ...data[keys], key: keys });
-                }
-                this.setState({ data: values });
-            })
+        this.props.servicedata()
+    }
+    componentWillReceiveProps(nextProps) {
+        if (nextProps && nextProps.servicedataa) {
+            nextProps.servicedataa.sort((a, b) => a - b).reverse()
+            this.setState({ data: nextProps.servicedataa })
+        }
     }
     render() {
         return (
             <div style={{ width: "100%", background: "linear-gradient(45deg, #2e2565 30%, #682560 90%)", marginTop: 90 }}>
-                <div style={{ width: "100%",overflow:"scroll",paddingBottom:50 }}>
+                <div style={{ width: "100%", overflow: "scroll", paddingBottom: 50 }}>
+                {this.props.loader && <Loader2 />}
                     <center>
                         {this.state.data.map((item, index) => {
                             return (
@@ -84,12 +79,15 @@ class Services extends React.Component {
 
 function mapState(state) {
     return {
-
+        loader: state.AppReducer.loader,
+        servicedataa: state.AppReducer.servicedataa,
     };
 }
 function mapDispatch(dispatch) {
     return {
-
+        servicedata: () => {
+            dispatch(AppActions.servicedata());
+        }
     };
 }
 export default connect(

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import NavBar from 'react-responsive-menubar/lib/NavBar';
-import logo from "../Assets/Images/logo.png"
+import logo from "../Assets/Images/cap2.jpg"
 import { connect } from "react-redux";
 import { AppActions } from "../store/actions"
 import { Navbar, Nav, Image, NavDropdown, Form, FormControl } from "react-bootstrap";
@@ -32,20 +32,22 @@ class NavbarComponent extends React.Component {
                 {/* <header style={{ background: "linear-gradient(45deg, #303f72 30%, #21CBF3 90%)" }}> */}
                 {!this.props.adminn ?
                     < div >
-                        <Navbar collapseOnSelect expand="sm" variant="dark" fixed="top" style={{ marginBottom: 50, backgroundColor: "#0f2540" }}>
+                        <Navbar collapseOnSelect expand="sm" variant="dark" fixed="top" style={{ marginBottom: 50, backgroundColor: "#efefef" }}>
                             {/* <Navbar.Brand href="#home"> */}
                             <img src={logo} alt="logo" style={{ height: 80, width: 150 }} />
+                            
                             {/* </Navbar.Brand> */}
                             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                             <Navbar.Collapse id="responsive-navbar-nav">
 
                                 <Nav className="mr-auto" >
 
-                                    <Link to="/" style={{ fontSize: 18, color: "#ffffff", marginLeft: 20 }}>Home</Link>
-                                    <Link to="/services" style={{ fontSize: 18, color: "#ffffff", marginLeft: 20 }}>Services</Link>
-                                    <Link to="/event" style={{ fontSize: 18, color: "#ffffff", marginLeft: 20 }}>Events</Link>
-                                    <Link to="/contact" style={{ fontSize: 18, color: "#ffffff", marginLeft: 20 }}>Contact</Link>
-                                    <Link to="/about" style={{ fontSize: 18, color: "#ffffff", marginLeft: 20 }}>About</Link>
+                                    <Link to="/" style={{ fontSize: 18, color: "red", marginLeft: 40,fontWeight:"bold" }}>Home</Link>
+                                    <Link to="/services" style={{ fontSize: 18, color: "red", marginLeft: 20,fontWeight:"bold" }}>Services</Link>
+                                    <Link to="/event" style={{ fontSize: 18, color: "red", marginLeft: 20 ,fontWeight:"bold"}}>Events</Link>
+                                    <Link to="/contact" style={{ fontSize: 18, color: "red", marginLeft: 20 ,fontWeight:"bold"}}>Contact</Link>
+                                    <Link to="/about" style={{ fontSize: 18, color: "red", marginLeft: 20,fontWeight:"bold" }}>About</Link>
+                                    <div style={{backgroundColor:"red",height:"10%",width:"10%"}}></div>
                                 </Nav>
                             </Navbar.Collapse>
                         </Navbar>

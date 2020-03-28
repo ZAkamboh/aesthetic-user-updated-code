@@ -23,18 +23,7 @@ class AdminLogin extends React.Component {
     this.setState({ [key]: event.target.value })
   }
 
-  _handleClick = () => {
-    //  firebase
-    //       .auth()
-    //       .signInWithEmailAndPassword(this.state.email, this.state.password)
-    //       .then(response => {
-    //             var user=response.user.email
-    //              localStorage.setItem("admin",user)    
-    //              this.props.history.push("/adminhome");  
-    //       })
-    //       .catch(error => {
-    //           alert(error.message);
-    //       });   
+  _handleClick = () => {  
     var logindata = {
       email: this.state.email,
       password: this.state.password
@@ -57,33 +46,34 @@ class AdminLogin extends React.Component {
             {this.props.error && <div style={{ marginTop: 20, textAlign: "center" }}>
               <h5>{this.props.error}</h5>
             </div>}
-            <div style={{ marginTop: 20,backgroundColor:"white",borderRadius:20 }}>
+            <div style={{ marginTop: 20,backgroundColor:"white",borderRadius:5 }}>
               <TextField
                 required
                 onChange={this._handleChange.bind(this, "email")}
                 id={!this.state.error ? "outlined-basic" : "outlined-basic-error"}
-                label="Admin Email"
+                placeholder="Admin Email"
                 variant="outlined"
-                style={{ width: 300 }}
+                pl
+                style={{ width: 300,}}
                 error={this.state.emailError}
                 helperText={this.state.emailError ? "Incorrect Entry" : ""}
               />
             </div>
-            <div style={{ marginTop: 20,backgroundColor:"white",borderRadius:20  }}>
+            <div style={{ marginTop: 20,backgroundColor:"white",borderRadius:5 }}>
               <TextField
                 required
                 onChange={this._handleChange.bind(this, "password")}
                 id="outlined-basic"
                 type="password"
-                label="Admin Password"
+                placeholder="Admin Password"
                 variant="outlined"
                 error={this.state.passwordError}
                 style={{ width: 300 }}
                 helperText={this.state.passwordError ? "Incorrect Entry" : ""}
               />
             </div>
-            <div style={{ marginTop: 20, textAlign: "center" }}>
-              <Button type="submit" variant="contained" color="secondary" onClick={this._handleClick.bind(this)}>
+            <div style={{ marginTop: 20, textAlign: "center"}}>
+              <Button type="submit" variant="contained" style={{backgroundColor:"green",color:"white"}} onClick={this._handleClick.bind(this)}>
                 Login
                       </Button>
             </div>
