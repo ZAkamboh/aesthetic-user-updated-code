@@ -56,12 +56,12 @@ class Homechild extends React.Component {
             }
         }.bind(this)
         return (
-            <div className="homeCopyMainClass">
+            <div className="homeCopyMainClass" style={{background: "linear-gradient(45deg, #133054 60%, #ba093f 90%)"}} >
                 <Grid style={{ width: "100%", marginTop: "2px" }} container >
                     {
 
                     }
-                    <Grid item xs={12}>
+                    <Grid item xs={12} style={{marginTop:10}}>
                         <Paper style={{ height: screenHeight / 1.5 }} >
                             <Slide {...properties}>
                                 <div >
@@ -80,7 +80,7 @@ class Homechild extends React.Component {
                                     </div>
                                 </div>
                                 <div >
-                                    <div className="centerDiv2" style={{ height: screenHeight / 1.4, width: "100%", backgroundColor: "#123889", backgroundImage: `url(${med1})` }}>
+                                    <div className="containImage" style={{ height: screenHeight / 1.4, width: "100%", backgroundColor: "#123889", backgroundImage: `url(${med1})` }}>
 
                                         <div className="centerDiv2" style={{ height: screenHeight / 1.4, width: "100%", backgroundColor: "rgba(17, 23, 118, 0.40)" }}>
 
