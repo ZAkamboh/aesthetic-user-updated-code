@@ -32,11 +32,11 @@ class NavbarComponent extends React.Component {
                 {/* <header style={{ background: "linear-gradient(45deg, #303f72 30%, #21CBF3 90%)" }}> */}
                 {!this.props.adminn ?
                     < div >
-                        <Navbar collapseOnSelect expand="sm" variant="dark" fixed="top" style={{ marginBottom: 50, background: "linear-gradient(45deg, #133054 60%, #3667a2 90%)" }}>
+                        <Navbar collapseOnSelect expand="sm" variant="dark" fixed="top" style={{ marginBottom: 50,background: "linear-gradient(45deg, #133054 60%, #ba093f 90%)" }}>
                             {/* <Navbar.Brand href="#home"> */}
                             {/* <img src={""} alt="logo" style={{ height: 80, width: 150 }} /> */}
                             <div style={{height:80,width:150,paddingTop:12}}>
-                            <p style={{color:"#ba093f",fontWeight:"bold",fontSize:20}} >Al Shifa Medical Center</p>
+                            <p style={{color:"#303f72",fontWeight:"bold",fontSize:20}} >Al Shifa Medical Center</p>
                             </div>
                             <br></br>
         
@@ -47,11 +47,11 @@ class NavbarComponent extends React.Component {
 
                                 <Nav className="mr-auto" >
 
-                                    <Link to="/" style={{ fontSize: 18, color: "#21CBF3", marginLeft: 25,fontWeight:"bold" }}>Home</Link>
-                                    <Link to="/services" style={{ fontSize: 18, color: "#21CBF3", marginLeft: 25,fontWeight:"bold" }}>Services</Link>
-                                    <Link to="/event" style={{ fontSize: 18, color: "#21CBF3", marginLeft: 25 ,fontWeight:"bold"}}>Events</Link>
-                                    <Link to="/contact" style={{ fontSize: 18, color: "#21CBF3", marginLeft: 25 ,fontWeight:"bold"}}>Contact</Link>
-                                    <Link to="/about" style={{ fontSize: 18, color: "#21CBF3", marginLeft: 25,fontWeight:"bold" }}>About</Link>
+                                    <Link to="/" style={{ fontSize: 18, color: "red", marginLeft: 25,fontWeight:"bold" }}>Home</Link>
+                                    <Link to="/services" style={{ fontSize: 18, color: "red", marginLeft: 25,fontWeight:"bold" }}>Services</Link>
+                                    <Link to="/event" style={{ fontSize: 18, color: "red", marginLeft: 25 ,fontWeight:"bold"}}>Events</Link>
+                                    <Link to="/contact" style={{ fontSize: 18, color: "red", marginLeft: 25 ,fontWeight:"bold"}}>Contact</Link>
+                                    <Link to="/about" style={{ fontSize: 18, color: "red", marginLeft: 25,fontWeight:"bold" }}>About</Link>
                                 </Nav>
                             </Navbar.Collapse>
                         </Navbar>
@@ -63,7 +63,8 @@ class NavbarComponent extends React.Component {
 
                             <Navbar collapseOnSelect expand="sm" variant="dark" fixed="top" style={{ marginBottom: 50, backgroundColor: "#1A416F" }}>
                                 {/* <Navbar.Brand href="#home"> */}
-                                <img src={logo} alt="logo" style={{ height: 80, width: 150 }} />
+                                {/* <img src={logo} alt="logo" style={{ height: 80, width: 150 }} /> */}
+                                <p style={{height:"50px",width:"150",fontWeight:"bold",color:"red"}}>Al-Shifa-Medical-Center</p>
                                 {/* </Navbar.Brand> */}
                                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                                 <Navbar.Collapse id="responsive-navbar-nav">

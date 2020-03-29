@@ -35,7 +35,7 @@ class Events extends React.Component {
     render() {
 
         return (
-            <div style={{ width: "100%", background: "linear-gradient(45deg, #133054 60%, #3667a2 90%)", marginTop: 90 }}>
+            <div style={{ width: "100%",background: "linear-gradient(45deg, #133054 60%, #ba093f 90%)", marginTop: 90 }}>
                 <div style={{ width: "100%" }}>
                 {this.props.loader && <Loader2 />}
                     <center>

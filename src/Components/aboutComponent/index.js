@@ -1,9 +1,11 @@
 import React from "react"
 import "./index.css"
-import firebase from "../../database"
 import { AppActions } from "../../store/actions"
 import { connect } from "react-redux";
+import drambreen from "../../Assets/Images/drambreen2.jpg"
 import Loader2 from "../homeloader"
+import Grid from '@material-ui/core/Grid';
+
 
 class About extends React.Component {
     constructor() {
@@ -29,9 +31,9 @@ class About extends React.Component {
     render() {
         return (
 
-            <div style={{ width: "100%", background: "linear-gradient(45deg, #133054 60%, #3667a2 90%)", marginTop: 120 }} className='player-wrapper'>
-            {this.props.loader && <Loader2 />}
-              
+            <div style={{ width: "100%", background: "linear-gradient(45deg, #133054 60%, #ba093f 90%)", marginTop: 100 }} className='player-wrapper'>
+                {this.props.loader && <Loader2 />}
+
                 <div className="childDiv" style={{ height: "100%", paddingTop: 30 }}>
                     {this.state.data.map((item, index) => {
                         return (
@@ -44,20 +46,28 @@ class About extends React.Component {
                             </div>
                         )
                     })}
-                    <div >
-                        <h1 style={{ color: "#ffffff" }}>Dr Ambreen Khan</h1>
-                        <h2 style={{ color: "#ffffff" }}>Director</h2>
-                        <h2 style={{ color: "#ffffff" }}>Al Shifa Medical Center</h2>
-                    </div>
+                    <Grid container >
+                        <Grid item xs={7} sm={4} >
+                            <h1 style={{ color: "#ffffff" }}>Dr Ambreen Khan</h1>
+                            <h2 style={{ color: "#ffffff" }}>Director</h2>
+                            <h2 style={{ color: "#ffffff" }}>Al Shifa Medical Center</h2>
+                        </Grid>
+                        <Grid item xs={5}  sm={4} style={{marginTop:35}} >
+                            <img src={drambreen} alt="err" height="100px" width="100px" />
+
+                        </Grid>
+                        <Grid item xs={4} > </Grid>
+                    </Grid>
+
                 </div>
-            </div>     
+            </div>
         )
     }
 }
 
 
 function mapStateToProps(state) {
-console.log(state.AppReducer)
+    console.log(state.AppReducer)
     return {
         loader: state.AppReducer.loader,
         aboutdataa: state.AppReducer.aboutdataa,

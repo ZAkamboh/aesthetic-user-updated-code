@@ -116,7 +116,7 @@ class Homechild extends React.Component {
 
                                 <div >
                                     <div className="containImage" style={{ height: screenHeight / 1.4, width: "100%", backgroundColor: "#123889", backgroundImage: `url(${stem3})` }}>
-                                        <div className="centerDiv2" style={{ height: screenHeight / 1.4, width: "100%", backgroundColor: "rgba(17, 23, 118, 0.40)" }}>
+                                        <div className="centerDiv2" style={{ height: screenHeight / 1.4, width: "100%", background: "linear-gradient(45deg, #133054 60%, #ba093f 90%)" }}>
                                             <div style={{ width: "70%", textAlign: "center" }}>
                                                 <h1 style={{ color: "#ffffff" }} >
                                                     Your resource for Al-Shifa-Medical-Center
