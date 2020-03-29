@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { TextField, Button } from '@material-ui/core';
 import firebase from "../../../database"
 import background from "../../../Assets/Images/wall6.jpg"
-import { Link } from "react-router-dom";
 
 class Adminabout extends React.Component {
     constructor(){

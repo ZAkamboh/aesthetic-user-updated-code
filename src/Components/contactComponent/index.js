@@ -1,5 +1,4 @@
 import React from "react"
-import { connect } from "react-redux";
 import GoogleMapReact from 'google-map-react';
 import Logo9 from "../../Assets/Images/logo9.png"
 import AddIcCallIcon from '@material-ui/icons/AddIcCall';
@@ -48,18 +47,6 @@ class Contact extends React.Component {
 
   }
 }
-function mapState(state) {
-  return {
 
-  };
-}
-function mapDispatch(dispatch) {
-  return {
-
-  };
-}
-export default connect(
-  mapState,
-  mapDispatch
-)(Contact);
+export default Contact
 

@@ -4,9 +4,6 @@ import { connect } from "react-redux";
 import Background from "../../../Assets/Images/wall4.jpg"
 import "./index.css"
 var screenHeight = window.screen.availHeight;
-var screenWidth = window.screen.availWidth
-
-
 
 class Adminhome extends React.Component {
 
@@ -25,6 +22,8 @@ class Adminhome extends React.Component {
                 <div style={{width:"100%",height:screenHeight/1.3,textAlign:"center",paddingTop:200}}>
 
                     <h1 style={{ color: "#ffffff", fontSize: "70px" }}>Al-Shifa-Medical-Center</h1>
+                    <h1 style={{ color: "#ffffff", fontSize: "70px" }}>ADMIN PANEL</h1>
+
                 </div>
             </div>
         )

@@ -1,6 +1,5 @@
 import React from "react"
 import { AppActions } from "../../store/actions"
-//import { makeStyles } from '@material-ui/core/styles';
 import { Slide } from 'react-slideshow-image';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -8,12 +7,12 @@ import med1 from "../../Assets/Images/newmed5.jpg"
 import face1 from "../../Assets/Images/face2.jpg"
 import stem3 from "../../Assets/Images/stemcell4.jpg"
 import dentist from "../../Assets/Images/dentist.jpg"
-
 import "./index.css"
 import Truncate from 'react-truncate';
 import { Link } from "react-router-dom";
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import { connect } from "react-redux";
+
 var screenHeight = window.screen.availHeight;
 const properties = {
     duration: 6000,
@@ -56,12 +55,12 @@ class Homechild extends React.Component {
             }
         }.bind(this)
         return (
-            <div className="homeCopyMainClass" style={{background: "linear-gradient(45deg, #133054 60%, #ba093f 90%)"}} >
+            <div className="homeCopyMainClass" style={{ background: "linear-gradient(45deg, #133054 60%, #ba093f 90%)" }} >
                 <Grid style={{ width: "100%", marginTop: "2px" }} container >
                     {
 
                     }
-                    <Grid item xs={12} style={{marginTop:10}}>
+                    <Grid item xs={12} style={{ marginTop: 10 }}>
                         <Paper style={{ height: screenHeight / 1.5 }} >
                             <Slide {...properties}>
                                 <div >

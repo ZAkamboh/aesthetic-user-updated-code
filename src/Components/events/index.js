@@ -41,14 +41,14 @@ class Events extends React.Component {
                     <center>
                         {this.state.data.map((item, index) => {
                             return (
-                                <div style={{ height: "80%", paddingTop: "4%" }}>
+                                <div style={{ height: "40%", paddingTop: "4%" }}>
                                     <Card style={{ maxWidth: 800 }}>
                                         <CardActionArea>
                                             <ReactPlayer
                                                 className='react-player'
                                                 url={item.url}
                                                 controls
-                                                height="6%"
+                                                height="4%"
                                                 width="100%"
                                             />
                                             <CardContent>

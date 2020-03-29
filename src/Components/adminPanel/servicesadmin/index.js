@@ -74,6 +74,7 @@ class Service extends React.Component {
         .push(data)
         .then(response => {
           alert("successfully add")
+          this.props.history.push("/adminhome")
         })
         .catch(error => {
           alert(error)
@@ -90,8 +91,6 @@ class Service extends React.Component {
       <div className="centerDivLogin" style={{backgroundImage: `url(${background})`,  width: "100%",marginTop:70 }}>
           <div>
             <div style={{ textAlign: "center" }}>
-              {/* <img src={TitleLogo} alt="Title" style={{ height: screenHeight / 10, width: screenWidth / 7 }} /> */}
-
             </div>
             <div style={{ marginTop: 20, textAlign: "center" }}>
               <h5 style={{ color: "red", fontFamily: "italic" }}>Service Integration</h5>

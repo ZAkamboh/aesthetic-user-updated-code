@@ -22,54 +22,53 @@ import Adminservicedata from "../Components/adminPanel/servicesadmin/adminservic
 import Eventsadmin from "../Components/adminPanel/eventsadmin"
 import Admineventdata from "../Components/adminPanel/eventsadmin/admineventdata"
 import createBrowserHistory from "history/createBrowserHistory";
-import { Router,Route } from "react-router-dom";
+import { Router, Route } from "react-router-dom";
 import { connect } from "react-redux";
-//import { AppActions } from "../../store/actions"
 
 const customHistory = createBrowserHistory();
 
 class Routing extends React.Component {
-render(){
-  return (
-    <div>
-      <Router history={customHistory}>
-      {!this.props.navbar &&  <Navbar/> } 
-        <Route exact path="/" component={Home} />
-        <Route exact path="/homeDetail" component={Homedetail} />
-        <Route path="/about" component={About} />
-        <Route path="/contact" component={Contact} />
-        <Route path="/services" component={Services} />
-        <Route path="/event" component={Events} />
+  render() {
+    return (
+      <div>
+        <Router history={customHistory}>
+          {!this.props.navbar && <Navbar />}
+          <Route exact path="/" component={Home} />
+          <Route exact path="/homeDetail" component={Homedetail} />
+          <Route path="/about" component={About} />
+          <Route path="/contact" component={Contact} />
+          <Route path="/services" component={Services} />
+          <Route path="/event" component={Events} />
 
 
-        <Route path="/admin" component={AdminLogin} />
-        <Route path="/adminhome" component={Adminhome} />
-        <Route path="/homeintegration" component={Homeinteg} />
-        <Route path="/adminhomedata" component={Adminhomedata} />
-        <Route path="/adminabout" component={Adminabout} />
-        <Route path="/adminaboutdata" component={Adminaboutdata} />
-        <Route path="/adminservices" component={Service} />
-        <Route path="/adminservicedata" component={Adminservicedata} />
-        <Route path="/adminevents" component={Eventsadmin} />
-        <Route path="/admineventdata" component={Admineventdata} />
-        <Route path="/logout" component={Logout} />
-        <Footer/>
-      </Router>
-    </div>
-  );
-}
+          <Route path="/admin" component={AdminLogin} />
+          <Route path="/adminhome" component={Adminhome} />
+          <Route path="/homeintegration" component={Homeinteg} />
+          <Route path="/adminhomedata" component={Adminhomedata} />
+          <Route path="/adminabout" component={Adminabout} />
+          <Route path="/adminaboutdata" component={Adminaboutdata} />
+          <Route path="/adminservices" component={Service} />
+          <Route path="/adminservicedata" component={Adminservicedata} />
+          <Route path="/adminevents" component={Eventsadmin} />
+          <Route path="/admineventdata" component={Admineventdata} />
+          <Route path="/logout" component={Logout} />
+          <Footer />
+        </Router>
+      </div>
+    );
+  }
 
 }
 
 function mapState(state) {
 
   return {
-    navbar:state.AppReducer.navbar
+    navbar: state.AppReducer.navbar
   };
 }
 function mapDispatch(dispatch) {
   return {
-  
+
   };
 }
 export default connect(

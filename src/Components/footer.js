@@ -1,5 +1,4 @@
 import React from "react"
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import dr from "../Assets/Images/drshareef.jpg"
 import MailIcon from '@material-ui/icons/Mail';

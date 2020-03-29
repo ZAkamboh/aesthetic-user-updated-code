@@ -1,5 +1,5 @@
 import firebase from "../../database"
-import { successActionOf } from "./index"
+import { successActionOf, failureActionOf } from "./index"
 
 export default class AppActions {
   static CLICKED = "CLICKED";
@@ -127,6 +127,7 @@ export default class AppActions {
         })
         .catch(error => {
           alert(error.message);
+          dispatch({ type: failureActionOf(AppActions.LOGIN) })
         });
 
     };

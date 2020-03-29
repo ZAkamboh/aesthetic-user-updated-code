@@ -47,6 +47,7 @@ class Eventsadmin extends React.Component {
         .push(data)
         .then(response => {
           alert("successfully add")
+          this.props.history.push("/adminhome")
         })
         .catch(error => {
           alert(error)

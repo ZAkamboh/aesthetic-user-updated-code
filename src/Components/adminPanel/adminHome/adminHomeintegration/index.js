@@ -47,8 +47,8 @@ class Homeinteg extends React.Component {
 
  
     const { file } = this.state
-    const sessionId = new Date().getTime()
-    const uploadTask = storage.ref(`images/${sessionId}`).put(file)
+   // const sessionId = new Date().getTime()
+    const uploadTask = storage.ref(`images/${file.name}`).put(file)
     uploadTask.on('state_changed', (snapshot) => {
       const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
       this.setState({ progress });
@@ -60,7 +60,7 @@ class Homeinteg extends React.Component {
     
       () => {
         storage.ref('images').child(file.name).getDownloadURL().then(url => {
-          
+          console.log(url)
           this.setState({ url: url, })
     
         })
@@ -75,8 +75,8 @@ class Homeinteg extends React.Component {
       title: this.state.title,
       desc: this.state.desc,
       url: this.state.url,
-      file:this.state.file.name
     }
+    console.log(data)
     if (data.title === "") {
       alert("title field is required")
     }
@@ -87,12 +87,14 @@ class Homeinteg extends React.Component {
       alert("please upload any picture")
     }
     else {
+      console.log(data)
       firebase
         .database()
         .ref(`homedata`)
         .push(data)
         .then(response => {
           alert("successfully add")
+          this.props.history.push('/adminhome')
         })
         .catch(error => {
           alert(error)
