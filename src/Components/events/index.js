@@ -72,7 +72,6 @@ class Events extends React.Component {
     }
 }
 
-
 function mapState(state) {
     return {
         loader: state.AppReducer.loader,
