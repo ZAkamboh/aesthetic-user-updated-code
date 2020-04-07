@@ -1,6 +1,7 @@
 {
   "name": "al-shifa-medical-center",
   "version": "0.1.0",
+  "homepage":"https://www.aestheticdoctors.pk",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.9.4",
