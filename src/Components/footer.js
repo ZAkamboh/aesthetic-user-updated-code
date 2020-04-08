@@ -34,7 +34,7 @@ class Footer extends React.Component {
                   <h5 style={{ color: "#ffffff" }}>Working Time:</h5>
                   <p style={{ color: "#dcdadaf5" }}>9.00 AM – 10.00 PM</p>
                   <h5 style={{ color: "#ffffff" }}>Follow us on
-                  <a href="https://www.facebook.com/events/647922219296183/?flite=scwspnss&extid=AYXIhM1uL0rDPp0J">
+                  <a  href="https://www.facebook.com/events/647922219296183/?flite=scwspnss&extid=AYXIhM1uL0rDPp0J" target="_blank">
                   <img src={fb} alt="Title" style={{ height: "4%", width: "9%",marginLeft:5 }} />
                   </a>
                   </h5>

@@ -23,7 +23,7 @@ class Routing extends React.Component {
         <Router history={customHistory}>
          <Navbar />
           <Route exact path="/" component={Home} />
-          <Route exact path="/homeDetail" component={Homedetail} />
+          <Route path="/homeDetail" component={Homedetail} />
           <Route path="/about" component={About} />
           <Route path="/contact" component={Contact} />
           <Route path="/services" component={Services} />

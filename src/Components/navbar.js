@@ -34,11 +34,11 @@ class NavbarComponent extends React.Component {
                             <Navbar.Toggle aria-controls="responsive-navbar-nav" style={{ backgroundColor: "black" }} />
                             <Navbar.Collapse id="responsive-navbar-nav">
                                 <Nav className="mr-auto" >
-                                    <Link to="/" style={{ fontSize: 18, color: "red", marginLeft: 25, fontWeight: "bold" }}>Home</Link>
-                                    <Link to="/services" style={{ fontSize: 18, color: "red", marginLeft: 25, fontWeight: "bold" }}>Services</Link>
-                                    <Link to="/event" style={{ fontSize: 18, color: "red", marginLeft: 25, fontWeight: "bold" }}>Events</Link>
-                                    <Link to="/about" style={{ fontSize: 18, color: "red", marginLeft: 25, fontWeight: "bold" }}>About</Link>
-                                    <Link to="/contact" style={{ fontSize: 18, color: "red", marginLeft: 25, fontWeight: "bold" }}>Contact</Link>
+                                    <Nav.Link href="/" style={{ fontSize: 18, color: "red", marginLeft: 25, fontWeight: "bold" }}>Home</Nav.Link>
+                                    <Nav.Link href="/services" style={{ fontSize: 18, color: "red", marginLeft: 25, fontWeight: "bold" }}>Services</Nav.Link>
+                                    <Nav.Link href="/event" style={{ fontSize: 18, color: "red", marginLeft: 25, fontWeight: "bold" }}>Events</Nav.Link>
+                                    <Nav.Link href="/about" style={{ fontSize: 18, color: "red", marginLeft: 25, fontWeight: "bold" }}>About</Nav.Link>
+                                    <Nav.Link href="/contact" style={{ fontSize: 18, color: "red", marginLeft: 25, fontWeight: "bold" }}>Contact</Nav.Link>
                                 </Nav>
                             </Navbar.Collapse>
                         </Navbar>
