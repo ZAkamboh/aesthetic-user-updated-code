@@ -1,10 +1,8 @@
 import React from "react"
-import GoogleMapReact from 'google-map-react';
-import Logo9 from "../../Assets/Images/logo9.png"
+import map from "../../Assets/Images/map.png"
 import AddIcCallIcon from '@material-ui/icons/AddIcCall';
 
 var screenHeight = window.screen.availHeight;
-const AnyReactComponent = ({ text }) => <div style={{ color: "black" }}><img alt="logo" src={Logo9} height="50px" width="90px" />{text}</div>;
 class Contact extends React.Component {
   constructor(props) {
     super(props);
@@ -26,17 +24,7 @@ class Contact extends React.Component {
     return (
       <div style={{ height: screenHeight, width: "100%", background: "linear-gradient(45deg, #133054 60%, #3667a2 90%)",marginTop:90 }}>
         <div style={{ height: screenHeight / 2, width: "90%", marginLeft: "5%", marginTop: "1%" }}>
-          <GoogleMapReact
-            bootstrapURLKeys={{ key: 'AIzaSyCYjvdwjjkFNhXdFVKYy5CPslDFJDzKvvc' }}
-            defaultCenter={this.props.center}
-            defaultZoom={this.props.zoom}
-          >
-            <AnyReactComponent
-              lat={24.853254}
-              lng={67.064167}
-              text="Al-shifa medical center"
-            />
-          </GoogleMapReact>
+      <img src={map} height="100%" width="100%" alt="map"/>
         </div>
         <div style={{ height: screenHeight / 5, width: "90%", textAlign: "center", marginLeft: "5%", marginTop: "1%", paddingTop: "3%" }}>
           <h1 style={{ color: "#ffffff" }}><AddIcCallIcon style={{ color: "red", fontSize: 50 }} /> +92 336 5777715        +92 21 34325599</h1>
