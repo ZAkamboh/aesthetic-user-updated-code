@@ -1,0 +1,8 @@
+.direction{
+    color:black;
+    opacity: 0.5;
+}
+.direction:hover{
+    font-weight: bold;
+    color:grey;
+}

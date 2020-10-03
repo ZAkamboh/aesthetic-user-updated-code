@@ -44,13 +44,24 @@ class Events extends React.Component {
                                 <div style={{ height: "40%", paddingTop: "4%" }}>
                                     <Card style={{ maxWidth: 800 }}>
                                         <CardActionArea>
-                                            <ReactPlayer
-                                                className='react-player'
-                                                url={item.url}
-                                                controls
-                                                height="4%"
-                                                width="100%"
-                                            />
+                                            {item.type==="video" &&
+                                               <ReactPlayer
+                                               className='react-player'
+                                               url={item.url}
+                                               controls
+                                               height="4%"
+                                               width="100%"
+                                           />
+                                           }
+                                               {item.type==="image" &&
+                                               <img
+                                               className='react-player'
+                                               src={item.url}
+                                               controls
+                                               height="4%"
+                                               width="100%"
+                                           />
+                                           }
                                             <CardContent>
                                                 <Typography variant="body2" color="textSecondary" component="p">
                                                     {item.desc}

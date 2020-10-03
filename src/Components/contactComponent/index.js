@@ -1,7 +1,8 @@
 import React from "react"
 import map from "../../Assets/Images/map.png"
 import AddIcCallIcon from '@material-ui/icons/AddIcCall';
-
+import Fade from 'react-reveal/Fade';
+import "./contact.css"
 var screenHeight = window.screen.availHeight;
 class Contact extends React.Component {
   constructor(props) {
@@ -10,7 +11,7 @@ class Contact extends React.Component {
 
     }
     document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;      
+    document.documentElement.scrollTop = 0;
   }
   static defaultProps = {
     center: {
@@ -22,12 +23,16 @@ class Contact extends React.Component {
   render() {
 
     return (
-      <div style={{ height: screenHeight, width: "100%", background: "linear-gradient(45deg, #133054 60%, #3667a2 90%)",marginTop:90 }}>
-        <div style={{ height: screenHeight / 2, width: "90%", marginLeft: "5%", marginTop: "1%" }}>
-      <img src={map} height="100%" width="100%" alt="map"/>
+      <div style={{ width: "100%", background: "linear-gradient(45deg, #133054 60%, #3667a2 90%)", marginTop: 90 }}>
+        <div style={{ width: "100%", background: "linear-gradient(45deg, #133054 60%, #ba093f 90%)", height: "60vh", display: "flex", justifyContent: "center", alignItems: "center" }}>
+         <Fade top big>
+         <div   className="direction" onClick={() => window.open('https://www.google.com/maps/place/Al-Shifa+Medical+Center/@24.8533427,67.0623634,17.5z/data=!4m8!1m2!2m1!1sal+shifa+medical+center!3m4!1s0x3eb33d101c1d12dd:0x11122f12a31bc251!8m2!3d24.853466!4d67.0645072', '_blank')} style={{ width: "10vw", fontSize: "20px", height: "7vh", display: "flex", justifyContent: "center", alignItems: "center", borderRadius: "10px", cursor: "pointer", background: "linear-gradient(45deg, yellow 60%, #ba093f 90%)" }}>
+            DIRECTION
+          </div>
+         </Fade>
         </div>
-        <div style={{ height: screenHeight / 5, width: "90%", textAlign: "center", marginLeft: "5%", marginTop: "1%", paddingTop: "3%" }}>
-          <h1 style={{ color: "#ffffff" }}><AddIcCallIcon style={{ color: "red", fontSize: 50 }} /> +92 336 5777715        +92 21 34325599</h1>
+        <div style={{ width: "90%", textAlign: "center", marginLeft: "5%", marginTop: "1%", paddingTop: "3%",paddingBottom:"3%" }}>
+          <h1 className="contactDet" style={{ color: "#ffffff" }}><AddIcCallIcon className="callicon" style={{ color: "red", fontSize: 50 }} /> +92 336 5777715        +92 21 34325599</h1>
           <p style={{ color: "#ffffff" }}>Al Shifa Medical center Located at E Market BLOCK 6 P.EC.H.S Imam Ahmed Road Karachi</p>
         </div>
       </div>

@@ -1,87 +1,143 @@
-import React from 'react';
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
 import { AppActions } from "../store/actions"
 import { Navbar, Nav } from "react-bootstrap";
+import Logo from "../Assets/Images/navbarLogoNew.jpg"
+import MenuIcon from "@material-ui/icons/Menu";
+import CloseIcon from "@material-ui/icons/Close";
+import AddIcon from '@material-ui/icons/Add';
+import RemoveIcon from '@material-ui/icons/Remove';
+//material ui App Bar
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import IconButton from "@material-ui/core/IconButton";
+import List from "@material-ui/core/List";
+import Divider from "@material-ui/core/Divider";
+import ListItem from "@material-ui/core/ListItem";
+import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
+import ListItemText from "@material-ui/core/ListItemText";
 
-
-
-class NavbarComponent extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            admin: ""
+export default function SwipeableTemporaryDrawer(props) {
+    const [drawerOpen, setDrawerOpen] = useState(false);
+    const [activeMenu, setActiveMenu] = useState(0);
+  
+    const [state, setState] = React.useState({
+      right: false,
+    });
+    const [expand1Icon, setExpand1Icon] = useState(true);
+    const [expand2Icon, setExpand2Icon] = useState(false);
+    const toggleDrawer = (anchor, open) => (event) => {
+        if (
+          event &&
+          event.type === "keydown" &&
+          (event.key === "Tab" || event.key === "Shift")
+        ) {
+          return;
         }
-        this.props.admin()
-    }
-    state = { showSideNav: false }
+        if (open) {
+          setDrawerOpen(true);
+        }
+        else {
+          setDrawerOpen(false);
+        }
+        setState({ ...state, [anchor]: open });
+      };
+      
+  const Mobilelist = (anchor) => (
+    <div
+      role="presentation"
+    >
+      <List style={{ padding: 10 }}>
 
-    handleSideNavToggle = () => {
-        this.setState((currentState) => {
-            return { showSideNav: !currentState.showSideNav }
-        })
-    }
+            <ListItemText>
+zubair
+        
+            </ListItemText>
 
-    render() {
+    
+
+
+      </List>
+    </div>
+  );
         return (
             <div>
-                {!this.props.adminn ?
-                    < div >
-                        <Navbar collapseOnSelect expand="sm" variant="dark" fixed="top" style={{ marginBottom: 50, background: "linear-gradient(45deg, #133054 60%, #ba093f 90%)" }}>
+                    {/* < div >
+                        <Navbar collapseOnSelect expand="sm" variant="dark" fixed="top" style={{ marginBottom: 50, backgroundColor:"#ffffff" }}>
                             <div style={{ height: 80, width: 150, paddingTop: 12 }}>
-                                <p style={{ color: "#303f72", fontWeight: "bold", fontSize: 20 }} >Al Shifa Medical Center</p>
+                                       <img src={Logo} height="50px" width="200px" alt="logo" />
                             </div>
                             <Navbar.Toggle aria-controls="responsive-navbar-nav" style={{ backgroundColor: "black" }} />
                             <Navbar.Collapse id="responsive-navbar-nav">
                                 <Nav className="mr-auto" >
-                                    <Nav.Link href="/" style={{ fontSize: 18, color: "red", marginLeft: 25, fontWeight: "bold" }}>Home</Nav.Link>
-                                    <Nav.Link href="/services" style={{ fontSize: 18, color: "red", marginLeft: 25, fontWeight: "bold" }}>Services</Nav.Link>
-                                    <Nav.Link href="/event" style={{ fontSize: 18, color: "red", marginLeft: 25, fontWeight: "bold" }}>Events</Nav.Link>
-                                    <Nav.Link href="/about" style={{ fontSize: 18, color: "red", marginLeft: 25, fontWeight: "bold" }}>About</Nav.Link>
-                                    <Nav.Link href="/contact" style={{ fontSize: 18, color: "red", marginLeft: 25, fontWeight: "bold" }}>Contact</Nav.Link>
+                                    <Link to="/" className="homeLink" style={{ fontSize: 18, color: "red", marginLeft: 100, fontWeight: "bold" }}>Home</Link>
+                                    <Link to="/services" style={{ fontSize: 18, color: "red", marginLeft: 25, fontWeight: "bold" }}>Services</Link>
+                                    <Link to="/event" style={{ fontSize: 18, color: "red", marginLeft: 25, fontWeight: "bold" }}>Events</Link>
+                                    <Link to="/about" style={{ fontSize: 18, color: "red", marginLeft: 25, fontWeight: "bold" }}>About</Link>
+                                    <Link to="/contact" style={{ fontSize: 18, color: "red", marginLeft: 25, fontWeight: "bold" }}>Contact</Link>
                                 </Nav>
                             </Navbar.Collapse>
                         </Navbar>
-                    </div>
-                    :
+                     
+                    </div> */}
+                     <AppBar
+        fixed="top"
+        className="appBar"
+        style={{ backgroundColor: "#ffffff" }}
+      >
+        <Toolbar>
 
-                    (
-                        <div style={{ background: "linear-gradient(45deg, #a0114c 30%, #a0114c 90%)" }}>
+          <div  style={{ marginTop: "10px", cursor: "pointer" }}>
+            <img className="protonLogoAppbar" onClick={() => props.history.push('/')} src={Logo} alt="logo" height="40px" width="215px" />
+          </div>
 
-                            <Navbar collapseOnSelect expand="sm" variant="dark" fixed="top" style={{ marginBottom: 50, backgroundColor: "#1A416F" }}>
-                                <p style={{ height: "50px", width: "150", fontWeight: "bold", color: "red" }}>Al Shifa Medical Center Admin Panel</p>
-                                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                                <Navbar.Collapse id="responsive-navbar-nav">
-                                    <Nav className="mr-auto">
-                                        <Link to="/homeintegration" style={{ fontSize: 18, color: "#ffffff", marginLeft: 20 }}>Home</Link>
-                                        <Link to="/adminabout" style={{ fontSize: 18, color: "#ffffff", marginLeft: 20 }}>About</Link>
-                                        <Link to="/adminservices" style={{ fontSize: 18, color: "#ffffff", marginLeft: 20 }}>Services</Link>
-                                        <Link to="/adminevents" style={{ fontSize: 18, color: "#ffffff", marginLeft: 20 }}>Events</Link>
-                                        <Link to="/logout" style={{ fontSize: 18, color: "#ffffff", marginLeft: 20 }}>Logout</Link>
-                                    </Nav>
-                                </Navbar.Collapse>
-                            </Navbar>
-                        </div>
-                    )
-                }
 
+          <Typography variant="h6">
+zubair
+          </Typography>
+    
+
+          <IconButton edge="start" >
+            {(!drawerOpen && (
+              <MenuIcon
+              className="appMenuIcon"
+                onClick={toggleDrawer("right", true)}
+                style={{ color: "#c0c4ca", cursor: "pointer" }}
+              />
+            )) || (
+                <CloseIcon
+                  style={{ color: "#c0c4ca", cursor: "pointer" }}
+                />
+              )}
+          </IconButton>
+        </Toolbar>
+      </AppBar>
+      <React.Fragment key={"top"}>
+        <SwipeableDrawer
+          anchor={"right"}
+          open={state["right"]}
+          onClose={toggleDrawer("right", false)}
+          onOpen={toggleDrawer("right", true)}
+        >
+          {/* {list('right')} */}
+
+          {/* mobile menu */}
+          <div >
+            {["MENU"].map((anchor) => (
+              <div>
+                {Mobilelist(anchor)}
+              </div>
+
+            ))}
+          </div>
+
+          {/* mobile menu end */}
+
+          
+        </SwipeableDrawer>
+      </React.Fragment>
             </div>
         )
-    }
+    
 }
-function mapState(state) {
-    return {
-        adminn: state.AppReducer.admin,
-    };
-}
-function mapDispatch(dispatch) {
-    return {
-        admin: () => {
-            dispatch(AppActions.admin());
-        },
-    };
-}
-export default connect(
-    mapState,
-    mapDispatch
-)(NavbarComponent);

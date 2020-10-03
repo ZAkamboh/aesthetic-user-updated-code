@@ -1,3 +1,26 @@
+
+
+
+@font-face {
+  font-family:'GOTHAM-LIGHT';
+  src: local('GOTHAM-LIGHT'), url(../../Assets/fonts/gothomlight.TTF) format('truetype');
+}
+
+@font-face {
+  font-family:'GothamMedium';
+  src: local('GothamMedium'), url(../../Assets/fonts/GothamMedium.ttf) format('truetype');
+}
+
+
+
+
+.fontstyle{
+  font-family: GOTHAM-LIGHT;
+}
+.fontstyle2{
+  font-family:GothamMedium;
+}
+
 .centerDiv{
     display: flex;
     align-items: center;
@@ -42,8 +65,26 @@
   .homeCopyMainClass{
     margin-top: 90px;
   }
-@media only screen and (max-width: 400px) {
-    
+@media only screen and (max-width: 599px) {
+  .section22{
+    height:35% !important;
+  }
+    .section2{
+      padding-top: 0% !important;
+    }
+    .contactDet{
+      font-size: 13px !important;
+    }
+    .callicon{
+      font-size: 25px !important;
+    }
+    .direction{
+      width:50% !important;
+      height:25% !important;
+    }
+    .homeLink{
+      margin-left: 25px !important;
+    }
 }
    /* @media only screen and (max-width: 599px) {
     .centerDiv2{

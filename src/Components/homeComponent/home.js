@@ -12,6 +12,7 @@ import Truncate from 'react-truncate';
 import { Link } from "react-router-dom";
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import { connect } from "react-redux";
+import Fade from 'react-reveal/Fade';
 
 var screenHeight = window.screen.availHeight;
 const properties = {
@@ -57,7 +58,7 @@ class Homechild extends React.Component {
             }
         }.bind(this)
         return (
-            <div className="homeCopyMainClass" style={{ background: "linear-gradient(45deg, #133054 60%, #ba093f 90%)" }} >
+            <div className="homeCopyMainClass" style={{ }} >
                 <Grid style={{ width: "100%", marginTop: "2px" }} container >
                     {
 
@@ -72,7 +73,7 @@ class Homechild extends React.Component {
                                                 <h1 style={{ color: "#ffffff" }} >
                                                     Your resource for Al-Shifa-Medical-Center
                                              </h1>
-                                                <Truncate style={{ color: "#ffffff", fontFamily: "italic", fontSize: 27 }} lines={2} ellipsis={<span >... <Link style={{ color: "red" }} to='/about'>Read more</Link></span>}>
+                                                <Truncate style={{ color: "#ffffff", fontSize: 27 }} lines={2} ellipsis={<span >... <Link  className="fontstyle2" style={{ color: "red" }} to='/about'>Read more</Link></span>}>
                                                     Al Shifa Medical center Located at E Market Imam Ahmed Road PECHS Karachi. Which is symbol of primary healthcare sector,with a vision to provide specially Stem cell therapy,which is newly introduced in Pakistan and this Stem cell therapy is performed by Dr Asad Ullah Awan Assistant Professor Plastic surgery.
                                             </Truncate>
                                                 <button onClick={() => this.props.history.push('/about')} style={{ backgroundColor: "red", color: "white", borderRadius: 50, marginTop: "5%" }}>Leran more about alShifa </button>
@@ -80,6 +81,7 @@ class Homechild extends React.Component {
                                         </div>
                                     </div>
                                 </div>
+                          
                                 <div >
                                     <div className="containImage" style={{ height: screenHeight / 1.4, width: "100%", backgroundColor: "#123889", backgroundImage: `url(${med1})` }}>
 
@@ -89,7 +91,7 @@ class Homechild extends React.Component {
                                                 <h1 style={{ color: "#ffffff" }} >
                                                     Your resource for Al-Shifa-Medical-Center
                                              </h1>
-                                                <Truncate style={{ color: "#ffffff", fontFamily: "italic", fontSize: 27 }} lines={2} ellipsis={<span >... <Link style={{ color: "red" }} to='/about'>Read more</Link></span>}>
+                                                <Truncate style={{ color: "#ffffff", fontSize: 27 }} lines={2} ellipsis={<span >... <Link  className="fontstyle2" style={{ color: "red" }} to='/about'>Read more</Link></span>}>
                                                     Al Shifa Medical center Located at E Market Imam Ahmed Road PECHS Karachi. Which is symbol of primary healthcare sector,with a vision to provide specially Stem cell therapy,which is newly introduced in Pakistan and this Stem cell therapy is performed by Dr Asad Ullah Awan Assistant Professor Plastic surgery.
                                             </Truncate>
                                                 <button onClick={() => this.props.history.push('/about')} style={{ backgroundColor: "red", color: "white", borderRadius: 50, marginTop: "5%" }}>Leran more about alShifa </button>
@@ -105,7 +107,7 @@ class Homechild extends React.Component {
                                                 <h1 style={{ color: "#ffffff" }} >
                                                     Your resource for Al-Shifa-Medical-Center
                                              </h1>
-                                                <Truncate style={{ color: "#ffffff", fontFamily: "italic", fontSize: 27 }} lines={2} ellipsis={<span >... <Link style={{ color: "red" }} to='/about'>Read more</Link></span>}>
+                                                <Truncate style={{ color: "#ffffff", fontSize: 27 }} lines={2} ellipsis={<span >... <Link  className="fontstyle2" style={{ color: "red" }} to='/about'>Read more</Link></span>}>
                                                     Al Shifa Medical center Located at E Market Imam Ahmed Road PECHS Karachi. Which is symbol of primary healthcare sector,with a vision to provide specially Stem cell therapy,which is newly introduced in Pakistan and this Stem cell therapy is performed by Dr Asad Ullah Awan Assistant Professor Plastic surgery.
                                             </Truncate>
                                                 <button onClick={() => this.props.history.push('/about')} style={{ backgroundColor: "red", color: "white", borderRadius: 50, marginTop: "5%" }}>Leran more about alShifa </button>
@@ -122,7 +124,7 @@ class Homechild extends React.Component {
                                                 <h1 style={{ color: "#ffffff" }} >
                                                     Your resource for Al-Shifa-Medical-Center
                                              </h1>
-                                                <Truncate style={{ color: "#ffffff", fontFamily: "italic", fontSize: 27 }} lines={2} ellipsis={<span >... <Link style={{ color: "red" }} to='/about'>Read more</Link></span>}>
+                                                <Truncate style={{ color: "#ffffff",  fontSize: 27 }} lines={2} ellipsis={<span >... <Link  className="fontstyle2" style={{ color: "red" }} to='/about'>Read more</Link></span>}>
                                                     Al Shifa Medical center Located at E Market Imam Ahmed Road PECHS Karachi. Which is symbol of primary healthcare sector,with a vision to provide specially Stem cell therapy,which is newly introduced in Pakistan and this Stem cell therapy is performed by Dr Asad Ullah Awan Assistant Professor Plastic surgery.
                                             </Truncate>
                                                 <button onClick={() => this.props.history.push('/about')} style={{ backgroundColor: "red", color: "white", borderRadius: 50, marginTop: "5%" }}>Leran more about alShifa </button>
@@ -137,7 +139,7 @@ class Homechild extends React.Component {
                                                 <h1 style={{ color: "#ffffff" }} >
                                                     Your resource for Al-Shifa-Medical-Center
                                              </h1>
-                                                <Truncate style={{ color: "#ffffff", fontFamily: "italic", fontSize: 27 }} lines={2} ellipsis={<span >... <Link style={{ color: "red" }} to='/about'>Read more</Link></span>}>
+                                                <Truncate style={{ color: "#ffffff",fontSize: 27 }} lines={2} ellipsis={<span >... <Link className="fontstyle2" style={{ color: "red" }} to='/about'>Read more</Link></span>}>
                                                     Al Shifa Medical center Located at E Market Imam Ahmed Road PECHS Karachi. Which is symbol of primary healthcare sector,with a vision to provide specially Stem cell therapy,which is newly introduced in Pakistan and this Stem cell therapy is performed by Dr Asad Ullah Awan Assistant Professor Plastic surgery.
                                             </Truncate>
                                                 <button onClick={() => this.props.history.push('/about')} style={{ backgroundColor: "red", color: "white", borderRadius: 50, marginTop: "5%" }}>Leran more about alShifa </button>
@@ -148,7 +150,6 @@ class Homechild extends React.Component {
                             </Slide>
                         </Paper>
                     </Grid>
-
                     {/* one object fetching grid */}
                     <div style={{ width: "100%", paddingBottom: 70, marginTop: 40 }}>
                         {this.state.data.map((item, index) => {
@@ -157,16 +158,17 @@ class Homechild extends React.Component {
                                     <Grid container>
                                         <Grid item xs={0} sm={1} style={{ height: screenHeight / 2.2, marginTop: "3%" }}>
                                             <div style={{ height: screenHeight / 2.2 }} >
-                                                <div style={{ fontFamily: "verdana", height: screenHeight / 2.2 }}>
+                                                <div style={{ height: screenHeight / 2.2 }}>
                                                 </div>
                                             </div>
                                         </Grid>
                                         <Grid item xs={12} sm={7} style={{ height: screenHeight / 2.2, marginTop: "3%" }}>
+                                            <Fade left>
                                             <div style={{ height: screenHeight / 2.2 }} >
-                                                <div style={{ paddingTop: "3%", background: "linear-gradient(45deg, #303f72 30%, #21CBF3 90%)", fontFamily: "verdana", height: screenHeight / 2.2, width: "100%", borderRadius: 50 }}>
-                                                    <h3 style={{ paddingTop: "5%", paddingLeft: "5%", fontFamily: "italic", color: "#ffffff" }}>{item.title}</h3>
-                                                    <div style={{ width: "90%", marginLeft: "5%" }}>
-                                                        <Truncate style={{ color: "#ffffff", fontFamily: "italic", fontSize: 18 }} lines={3}   >
+                                                <div style={{ paddingTop: "3%", background: "linear-gradient(45deg, #303f72 30%, #21CBF3 90%)", height: screenHeight / 2.2, width: "100%", borderRadius: 50 }}>
+                                                    <h3 className="fontstyle2" style={{ paddingTop: "5%", paddingLeft: "5%", color: "#ffffff" }}>{item.title}</h3>
+                                                    <div  className="fontstyle" style={{ width: "90%", marginLeft: "5%" }}>
+                                                        <Truncate style={{ color: "#ffffff", fontSize: 18 }} lines={3}   >
                                                             <p >
                                                                 {item.desc}
                                                             </p>
@@ -176,6 +178,8 @@ class Homechild extends React.Component {
                                                         style={{ marginTop: "3%", background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)", color: "#ffffff", marginLeft: "5%", borderTopLeftRadius: 20, borderBottomRightRadius: 20 }}>Read more about {item.title}</button>
                                                 </div>
                                             </div>
+                                            </Fade>
+                                       
                                         </Grid>
                                         <Grid item xs={12} sm={3} style={{ height: screenHeight / 2.2, marginTop: "3%" }}>
                                             <div style={{ height: screenHeight / 2.2 }} >

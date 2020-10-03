@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import drambreen from "../../Assets/Images/drambreen2.jpg"
 import Loader2 from "../homeloader"
 import Grid from '@material-ui/core/Grid';
+import Fade from 'react-reveal/Fade';
 
 
 class About extends React.Component {
@@ -37,13 +38,15 @@ class About extends React.Component {
                 <div className="childDiv" style={{ height: "100%", paddingTop: 30 }}>
                     {this.state.data.map((item, index) => {
                         return (
-                            <div>
-                                <h1 style={{ textAlign: "center", fontFamily: "italic", color: "#ffffff" }}>{item.title}</h1>
-                                <p style={{ color: "#bbbcc1", fontWeight: "bold" }}>
-                                    {item.desc}
+                            <Fade bottom big>
+                                <div>
+                                    <h1 className="fonstyle2" style={{ textAlign: "center", color: "#ffffff" }}>{item.title}</h1>
+                                    <p style={{ color: "#bbbcc1", fontWeight: "bold" }}>
+                                        {item.desc}
 
-                                </p>
-                            </div>
+                                    </p>
+                                </div>
+                            </Fade>
                         )
                     })}
                     <Grid container >
@@ -52,7 +55,7 @@ class About extends React.Component {
                             <h2 style={{ color: "#ffffff" }}>Director</h2>
                             <h2 style={{ color: "#ffffff" }}>Al Shifa Medical Center</h2>
                         </Grid>
-                        <Grid item xs={5}  sm={4} style={{marginTop:35}} >
+                        <Grid item xs={5} sm={4} style={{ marginTop: 35 }} >
                             <img src={drambreen} alt="err" height="100px" width="100px" />
 
                         </Grid>

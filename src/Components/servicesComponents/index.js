@@ -9,6 +9,8 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { AppActions } from "../../store/actions"
 import Loader2 from "../homeloader"
+import Fade from 'react-reveal/Fade'
+
 import "./index.css"
 class Services extends React.Component {
 
@@ -34,32 +36,35 @@ class Services extends React.Component {
         return (
             <div style={{ width: "100%", background: "linear-gradient(45deg, #133054 60%, #ba093f 90%)", marginTop: 90 }}>
                 <div style={{ width: "100%", paddingBottom: 50 }}>
-                {this.props.loader && <Loader2 />}
+                    {this.props.loader && <Loader2 />}
                     <center>
                         {this.state.data.map((item, index) => {
                             return (
-                                <div style={{ height: "80%", paddingTop: "4%" }}>
-                                    <Card style={{ maxWidth: 800 }}>
-                                        <CardActionArea>
-                                            <CardMedia
-                                                style={{ height: 300 }}
-                                                image={item.url}
-                                                title="Contemplative Reptile"
-                                            />
-                                            <CardContent>
-                                                <Typography gutterBottom variant="h5" component="h2">
-                                                    {item.title}
-                                                </Typography>
-                                                <Typography variant="body2" color="textSecondary" component="p">
-                                                    {item.desc}
-                                                </Typography>
-                                            </CardContent>
-                                        </CardActionArea>
-                                        <CardActions>
-                                         
-                                        </CardActions>
-                                    </Card>
-                                </div>
+                                <Fade bottom big>
+                                    <div style={{ height: "80%", paddingTop: "4%" }}>
+                                        <Card style={{ maxWidth: 800 }}>
+                                            <CardActionArea>
+                                                <CardMedia
+                                                    style={{ height: 300 }}
+                                                    image={item.url}
+                                                    title="Contemplative Reptile"
+                                                />
+                                                <CardContent>
+                                                    <Typography gutterBottom variant="h5" component="h2">
+                                                        {item.title}
+                                                    </Typography>
+                                                    <Typography variant="body2" color="textSecondary" component="p">
+                                                        {item.desc}
+                                                    </Typography>
+                                                </CardContent>
+                                            </CardActionArea>
+                                            <CardActions>
+
+                                            </CardActions>
+                                        </Card>
+                                    </div>
+                                </Fade>
+
                             )
                         })}
                     </center>
