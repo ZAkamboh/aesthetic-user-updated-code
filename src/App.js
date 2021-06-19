@@ -1,12 +1,10 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import  store  from "./store"
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import store from "./store";
 import { Provider } from "react-redux";
-import Routing from "./Routing"
+import Routing from "./Routing";
 
-
-
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
@@ -20,12 +18,9 @@ const useStyles = makeStyles(theme => ({
     width: 250,
   },
   fullList: {
-    width: 'auto',
+    width: "auto",
   },
 }));
-
-
-
 
 function App() {
   const classes = useStyles();

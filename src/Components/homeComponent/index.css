@@ -50,7 +50,7 @@
     z-index: 99; /* Make sure it does not overlap */
     border: none; /* Remove borders */
     outline: none; /* Remove outline */
-    background-color: red; /* Set a background color */
+    background-color: #2b2b35; /* Set a background color */
     color: white; /* Text color */
     cursor: pointer; /* Add a mouse pointer on hover */
     border-radius: 10px; /* Rounded corners */
@@ -63,8 +63,13 @@
     background-color: #555; /* Add a dark-grey background on hover */
   }
   .homeCopyMainClass{
-    margin-top: 90px;
+    margin-top: 65px;
   }
+@media only screen and (min-width:1000px){
+  .homeCopyMainClass{
+    margin-top: 3.5vw;
+  }
+}
 @media only screen and (max-width: 599px) {
   .section22{
     height:35% !important;

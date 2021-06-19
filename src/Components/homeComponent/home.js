@@ -1,227 +1,199 @@
-import React from "react"
-import { AppActions } from "../../store/actions"
-import { Slide } from 'react-slideshow-image';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-import med1 from "../../Assets/Images/newmed5.jpg"
-import face1 from "../../Assets/Images/face2.jpg"
-import stem3 from "../../Assets/Images/stemcell4.jpg"
-import dentist from "../../Assets/Images/dentist.jpg"
-import "./index.css"
-import Truncate from 'react-truncate';
-import { Link } from "react-router-dom";
-import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
+import React from "react";
+import { AppActions } from "store/actions";
+import "./index.css";
+import { Container, Row, Col } from "react-bootstrap";
+import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
 import { connect } from "react-redux";
-import Fade from 'react-reveal/Fade';
-
-var screenHeight = window.screen.availHeight;
-const properties = {
-    duration: 6000,
-    transitionDuration: 500,
-    infinite: true,
-    indicators: true,
-    arrows: false,
-    onChange: (oldIndex, newIndex) => {
-        console.log(`slide transition from ${oldIndex} to ${newIndex}`);
-    }
-}
+import styled from "styled-components";
+import {
+  colors,
+  gilroyBold,
+  gilroyMedium,
+  gilroySemibold,
+} from "shared-components";
+import Truncate from "react-truncate";
+import Fade from "react-reveal/Fade";
 
 class Homechild extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            data: [],
-            scrolled: false
-        }
-        this.props.fetchhomedata()
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: [],
+      scrolled: false,
+    };
+    this.props.fetchhomedata();
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps && nextProps.homedata.length > 0) {
+      nextProps.homedata.sort((a, b) => a - b).reverse();
+      this.setState({ data: nextProps.homedata });
     }
+  }
 
-    componentWillReceiveProps(nextProps) {
-        if (nextProps && nextProps.homedata.length > 0) {
-            nextProps.homedata.sort((a, b) => a - b).reverse()
-            this.setState({ data: nextProps.homedata })
-        }
-    }
-
-    gotoTop() {
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
-    }
-    render() {
-        window.onscroll = function () {
-            if (document.body.scrollTop > 60 || document.documentElement.scrollTop > 60) {
-                this.setState({ scrolled: true })
-            } else {
-                this.setState({ scrolled: false })
-            }
-        }.bind(this)
-        return (
-            <div className="homeCopyMainClass" style={{ }} >
-                <Grid style={{ width: "100%", marginTop: "2px" }} container >
-                    {
-
-                    }
-                    <Grid item xs={12} style={{ marginTop: 10 }}>
-                        <Paper style={{ height: screenHeight / 1.5 }} >
-                            <Slide {...properties}>
-                                <div >
-                                    <div className="containImage" style={{ height: screenHeight / 1.4, width: "100%", backgroundColor: "#123889", backgroundImage: `url(${med1})` }}>
-                                        <div className="centerDiv2" style={{ height: screenHeight / 1.4, width: "100%", backgroundColor: "rgba(17, 23, 118, 0.40)" }}>
-                                            <div style={{ width: "70%", textAlign: "center" }}>
-                                                <h1 style={{ color: "#ffffff" }} >
-                                                    Your resource for Al-Shifa-Medical-Center
-                                             </h1>
-                                                <Truncate style={{ color: "#ffffff", fontSize: 27 }} lines={2} ellipsis={<span >... <Link  className="fontstyle2" style={{ color: "red" }} to='/about'>Read more</Link></span>}>
-                                                    Al Shifa Medical center Located at E Market Imam Ahmed Road PECHS Karachi. Which is symbol of primary healthcare sector,with a vision to provide specially Stem cell therapy,which is newly introduced in Pakistan and this Stem cell therapy is performed by Dr Asad Ullah Awan Assistant Professor Plastic surgery.
-                                            </Truncate>
-                                                <button onClick={() => this.props.history.push('/about')} style={{ backgroundColor: "red", color: "white", borderRadius: 50, marginTop: "5%" }}>Leran more about alShifa </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                          
-                                <div >
-                                    <div className="containImage" style={{ height: screenHeight / 1.4, width: "100%", backgroundColor: "#123889", backgroundImage: `url(${med1})` }}>
-
-                                        <div className="centerDiv2" style={{ height: screenHeight / 1.4, width: "100%", backgroundColor: "rgba(17, 23, 118, 0.40)" }}>
-
-                                            <div style={{ width: "70%", textAlign: "center" }}>
-                                                <h1 style={{ color: "#ffffff" }} >
-                                                    Your resource for Al-Shifa-Medical-Center
-                                             </h1>
-                                                <Truncate style={{ color: "#ffffff", fontSize: 27 }} lines={2} ellipsis={<span >... <Link  className="fontstyle2" style={{ color: "red" }} to='/about'>Read more</Link></span>}>
-                                                    Al Shifa Medical center Located at E Market Imam Ahmed Road PECHS Karachi. Which is symbol of primary healthcare sector,with a vision to provide specially Stem cell therapy,which is newly introduced in Pakistan and this Stem cell therapy is performed by Dr Asad Ullah Awan Assistant Professor Plastic surgery.
-                                            </Truncate>
-                                                <button onClick={() => this.props.history.push('/about')} style={{ backgroundColor: "red", color: "white", borderRadius: 50, marginTop: "5%" }}>Leran more about alShifa </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div >
-                                    <div className="containImage" style={{ height: screenHeight / 1.4, width: "100%", backgroundColor: "#123889", backgroundImage: `url(${dentist})` }}>
-                                        <div className="centerDiv2" style={{ height: screenHeight / 1.4, width: "100%", backgroundColor: "rgba(17, 23, 118, 0.40)" }}>
-                                            <div style={{ width: "70%", textAlign: "center" }}>
-                                                <h1 style={{ color: "#ffffff" }} >
-                                                    Your resource for Al-Shifa-Medical-Center
-                                             </h1>
-                                                <Truncate style={{ color: "#ffffff", fontSize: 27 }} lines={2} ellipsis={<span >... <Link  className="fontstyle2" style={{ color: "red" }} to='/about'>Read more</Link></span>}>
-                                                    Al Shifa Medical center Located at E Market Imam Ahmed Road PECHS Karachi. Which is symbol of primary healthcare sector,with a vision to provide specially Stem cell therapy,which is newly introduced in Pakistan and this Stem cell therapy is performed by Dr Asad Ullah Awan Assistant Professor Plastic surgery.
-                                            </Truncate>
-                                                <button onClick={() => this.props.history.push('/about')} style={{ backgroundColor: "red", color: "white", borderRadius: 50, marginTop: "5%" }}>Leran more about alShifa </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div >
-                                    <div className="containImage" style={{ height: screenHeight / 1.4, width: "100%", backgroundColor: "#123889", backgroundImage: `url(${stem3})` }}>
-                                        <div className="centerDiv2" style={{ height: screenHeight / 1.4, width: "100%", background: "linear-gradient(45deg, #133054 60%, #ba093f 90%)" }}>
-                                            <div style={{ width: "70%", textAlign: "center" }}>
-                                                <h1 style={{ color: "#ffffff" }} >
-                                                    Your resource for Al-Shifa-Medical-Center
-                                             </h1>
-                                                <Truncate style={{ color: "#ffffff",  fontSize: 27 }} lines={2} ellipsis={<span >... <Link  className="fontstyle2" style={{ color: "red" }} to='/about'>Read more</Link></span>}>
-                                                    Al Shifa Medical center Located at E Market Imam Ahmed Road PECHS Karachi. Which is symbol of primary healthcare sector,with a vision to provide specially Stem cell therapy,which is newly introduced in Pakistan and this Stem cell therapy is performed by Dr Asad Ullah Awan Assistant Professor Plastic surgery.
-                                            </Truncate>
-                                                <button onClick={() => this.props.history.push('/about')} style={{ backgroundColor: "red", color: "white", borderRadius: 50, marginTop: "5%" }}>Leran more about alShifa </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div >
-                                    <div className="containImage" style={{ height: screenHeight / 1.4, width: "100%", backgroundColor: "#123889", backgroundImage: `url(${face1})` }}>
-                                        <div className="centerDiv2" style={{ height: screenHeight / 1.4, width: "100%", backgroundColor: "rgba(17, 23, 118, 0.40)" }}>
-                                            <div style={{ width: "70%", textAlign: "center" }}>
-                                                <h1 style={{ color: "#ffffff" }} >
-                                                    Your resource for Al-Shifa-Medical-Center
-                                             </h1>
-                                                <Truncate style={{ color: "#ffffff",fontSize: 27 }} lines={2} ellipsis={<span >... <Link className="fontstyle2" style={{ color: "red" }} to='/about'>Read more</Link></span>}>
-                                                    Al Shifa Medical center Located at E Market Imam Ahmed Road PECHS Karachi. Which is symbol of primary healthcare sector,with a vision to provide specially Stem cell therapy,which is newly introduced in Pakistan and this Stem cell therapy is performed by Dr Asad Ullah Awan Assistant Professor Plastic surgery.
-                                            </Truncate>
-                                                <button onClick={() => this.props.history.push('/about')} style={{ backgroundColor: "red", color: "white", borderRadius: 50, marginTop: "5%" }}>Leran more about alShifa </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </Slide>
-                        </Paper>
-                    </Grid>
-                    {/* one object fetching grid */}
-                    <div style={{ width: "100%", paddingBottom: 70, marginTop: 40 }}>
-                        {this.state.data.map((item, index) => {
-                            return (
-                                <div className="centerDiv3" style={{ width: "100%" }}>
-                                    <Grid container>
-                                        <Grid item xs={0} sm={1} style={{ height: screenHeight / 2.2, marginTop: "3%" }}>
-                                            <div style={{ height: screenHeight / 2.2 }} >
-                                                <div style={{ height: screenHeight / 2.2 }}>
-                                                </div>
-                                            </div>
-                                        </Grid>
-                                        <Grid item xs={12} sm={7} style={{ height: screenHeight / 2.2, marginTop: "3%" }}>
-                                            <Fade left>
-                                            <div style={{ height: screenHeight / 2.2 }} >
-                                                <div style={{ paddingTop: "3%", background: "linear-gradient(45deg, #303f72 30%, #21CBF3 90%)", height: screenHeight / 2.2, width: "100%", borderRadius: 50 }}>
-                                                    <h3 className="fontstyle2" style={{ paddingTop: "5%", paddingLeft: "5%", color: "#ffffff" }}>{item.title}</h3>
-                                                    <div  className="fontstyle" style={{ width: "90%", marginLeft: "5%" }}>
-                                                        <Truncate style={{ color: "#ffffff", fontSize: 18 }} lines={3}   >
-                                                            <p >
-                                                                {item.desc}
-                                                            </p>
-                                                        </Truncate>
-                                                    </div>
-                                                    <button onClick={() => this.props.history.push("/homeDetail", { item: item })}
-                                                        style={{ marginTop: "3%", background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)", color: "#ffffff", marginLeft: "5%", borderTopLeftRadius: 20, borderBottomRightRadius: 20 }}>Read more about {item.title}</button>
-                                                </div>
-                                            </div>
-                                            </Fade>
-                                       
-                                        </Grid>
-                                        <Grid item xs={12} sm={3} style={{ height: screenHeight / 2.2, marginTop: "3%" }}>
-                                            <div style={{ height: screenHeight / 2.2 }} >
-                                                <div style={{ fontFamily: "verdana", height: screenHeight / 2 }}>
-                                                    <img src={item.url} alt="Title" style={{ height: "90%", width: "100%", borderRadius: 20 }} />
-
-                                                </div>
-                                            </div>
-                                        </Grid>
-                                        <Grid item xs={0} sm={1} style={{ height: screenHeight / 2.2, marginTop: "3%" }}>
-                                            <div style={{ height: screenHeight / 2.2 }} >
-                                                <div style={{ fontFamily: "verdana", height: screenHeight / 2 }}>
-                                                </div>
-                                            </div>
-                                        </Grid>
-                                    </Grid>
-                                </div>
-                            )
-                        })}
-                    </div>
-                    <div id="myBtn" style={{ display: this.state.scrolled ? "block" : "none" }} onClick={() => this.gotoTop()}>
-                        <ArrowUpwardIcon />
-                    </div>
-                </Grid>
-
-            </div>
-        )
-    }
+  gotoTop() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+  render() {
+    window.onscroll = function () {
+      if (
+        document.body.scrollTop > 60 ||
+        document.documentElement.scrollTop > 60
+      ) {
+        this.setState({ scrolled: true });
+      } else {
+        this.setState({ scrolled: false });
+      }
+    }.bind(this);
+    return (
+      <div className="homeCopyMainClass">
+        <ImportantTopic>
+          <Container>
+            <Row>
+              <Col col={8}>
+                <SectionHeading>What's new This Week</SectionHeading>
+              </Col>
+              <Col col={4}>
+                <ImportTopSubHead>
+                  In this week we are giving some information about the stem
+                  cells treatments.In this week we are giving some information about the stem
+                  cells treatments.In this week we are giving some information about the stem
+                  cells treatmentsIn this week we are giving some information about the stem
+                  cells treatments.In this week we are giving some information about the stem
+                  cells treatments
+                </ImportTopSubHead>
+              </Col>
+            </Row>
+            <Row noGutter>
+              {this.state.data.map((item, index) => {
+                console.log(item);
+                return (
+                  <Fade bottom delay={1000}>
+                    <TopicCard key={index} lg={12}>
+                      <CustomCol lg={8}>
+                        <TopicDetails>
+                          <TopicTitle>{item.title}</TopicTitle>
+                          <TopicPara>
+                            <Truncate lines={5}>{item.desc}</Truncate>
+                          </TopicPara>
+                          <ReadMoreBtn>Read More</ReadMoreBtn>
+                        </TopicDetails>
+                      </CustomCol>
+                      <CustomCol lg={4}>
+                        <TopicImg>
+                          <img src={item.url} alt="-" />
+                        </TopicImg>
+                      </CustomCol>
+                    </TopicCard>
+                  </Fade>
+                );
+              })}
+            </Row>
+          </Container>
+        </ImportantTopic>
+        <div
+          id="myBtn"
+          style={{ display: this.state.scrolled ? "block" : "none" }}
+          onClick={() => this.gotoTop()}
+        >
+          <ArrowUpwardIcon />
+        </div>
+      </div>
+    );
+  }
 }
 function mapState(state) {
-    return {
-        homedata: state.AppReducer.homedata
-    };
+  return {
+    homedata: state.AppReducer.homedata,
+  };
 }
 function mapDispatch(dispatch) {
-    return {
-        fetchhomedata: () => {
-            dispatch(AppActions.fetchhomedata());
-        }
-    };
+  return {
+    fetchhomedata: () => {
+      dispatch(AppActions.fetchhomedata());
+    },
+  };
 }
-export default connect(
-    mapState,
-    mapDispatch
-)(Homechild);
+const ImportantTopic = styled.section`
+  background-color: ${colors.secondaryBG};
+  padding: 50px 0;
+  position: relative;
+  margin-bottom: 200px;
+  .react-reveal {
+    width: 100%;
+  }
+`;
+const TopicCard = styled(Col)`
+  border: 1px solid ${colors.borderColor};
+  margin-top: 50px;
+  height: 400px;
+  display: flex;
+  background-color: ${colors.secondaryColor};
+  padding: 0;
+  width: 100%;
+  position: relative;
+`;
+const CustomCol = styled(Col)`
+  height: 100%;
+  padding: 0;
+`;
+const TopicImg = styled.div`
+  height: 100%;
+  width: 100%;
+  position: relative;
+  z-index: 0;
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    opacity: 0.5;
+  }
+  &:before {
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 100%;
+    background-color: ${colors.secondaryColor + "70"};
+    z-index: 9;
+  }
+`;
+const TopicDetails = styled.div`
+  padding: 50px;
+`;
+const TopicTitle = styled.h1`
+  color: white;
+  font-size: 42px;
+  font-family: ${gilroyBold};
+  margin-bottom: 15px;
+`;
+const TopicPara = styled.p`
+  color: white;
+  font-size: 18px;
+  font-family: ${gilroyMedium};
+`;
+const ReadMoreBtn = styled.button`
+  background-color: white;
+  border: none;
+  margin-top: 20px;
+  padding: 10px 40px;
+  font-size: 16px;
+  border-radius: 20px;
+  font-family: ${gilroySemibold};
+  &:focus {
+    outline: none;
+  }
+`;
+const SectionHeading = styled.h1`
+  font-size:62px;
+  font-family:${gilroyBold};
+  color:white;
+`;
+const ImportTopSubHead = styled.p`
+  font-size:18px;
+  font-family:${gilroySemibold};
+  color:white;
+`;
+export default connect(mapState, mapDispatch)(Homechild);

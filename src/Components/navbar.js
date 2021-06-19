@@ -1,143 +1,143 @@
-import React, { useState } from "react";
+import React from "react";
+import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { AppActions } from "../store/actions"
-import { Navbar, Nav } from "react-bootstrap";
-import Logo from "../Assets/Images/navbarLogoNew.jpg"
-import MenuIcon from "@material-ui/icons/Menu";
-import CloseIcon from "@material-ui/icons/Close";
-import AddIcon from '@material-ui/icons/Add';
-import RemoveIcon from '@material-ui/icons/Remove';
-//material ui App Bar
+import { colors, Media } from "shared-components";
 import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import IconButton from "@material-ui/core/IconButton";
-import List from "@material-ui/core/List";
-import Divider from "@material-ui/core/Divider";
-import ListItem from "@material-ui/core/ListItem";
-import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
-import ListItemText from "@material-ui/core/ListItemText";
+import { gilroySemibold } from "shared-components/fonts";
 
 export default function SwipeableTemporaryDrawer(props) {
-    const [drawerOpen, setDrawerOpen] = useState(false);
-    const [activeMenu, setActiveMenu] = useState(0);
-  
-    const [state, setState] = React.useState({
-      right: false,
-    });
-    const [expand1Icon, setExpand1Icon] = useState(true);
-    const [expand2Icon, setExpand2Icon] = useState(false);
-    const toggleDrawer = (anchor, open) => (event) => {
-        if (
-          event &&
-          event.type === "keydown" &&
-          (event.key === "Tab" || event.key === "Shift")
-        ) {
-          return;
-        }
-        if (open) {
-          setDrawerOpen(true);
-        }
-        else {
-          setDrawerOpen(false);
-        }
-        setState({ ...state, [anchor]: open });
-      };
-      
-  const Mobilelist = (anchor) => (
-    <div
-      role="presentation"
-    >
-      <List style={{ padding: 10 }}>
-
-            <ListItemText>
-zubair
-        
-            </ListItemText>
-
-    
-
-
-      </List>
-    </div>
-  );
-        return (
-            <div>
-                    {/* < div >
-                        <Navbar collapseOnSelect expand="sm" variant="dark" fixed="top" style={{ marginBottom: 50, backgroundColor:"#ffffff" }}>
-                            <div style={{ height: 80, width: 150, paddingTop: 12 }}>
-                                       <img src={Logo} height="50px" width="200px" alt="logo" />
-                            </div>
-                            <Navbar.Toggle aria-controls="responsive-navbar-nav" style={{ backgroundColor: "black" }} />
-                            <Navbar.Collapse id="responsive-navbar-nav">
-                                <Nav className="mr-auto" >
-                                    <Link to="/" className="homeLink" style={{ fontSize: 18, color: "red", marginLeft: 100, fontWeight: "bold" }}>Home</Link>
-                                    <Link to="/services" style={{ fontSize: 18, color: "red", marginLeft: 25, fontWeight: "bold" }}>Services</Link>
-                                    <Link to="/event" style={{ fontSize: 18, color: "red", marginLeft: 25, fontWeight: "bold" }}>Events</Link>
-                                    <Link to="/about" style={{ fontSize: 18, color: "red", marginLeft: 25, fontWeight: "bold" }}>About</Link>
-                                    <Link to="/contact" style={{ fontSize: 18, color: "red", marginLeft: 25, fontWeight: "bold" }}>Contact</Link>
-                                </Nav>
-                            </Navbar.Collapse>
-                        </Navbar>
-                     
-                    </div> */}
-                     <AppBar
+  return (
+    <div>
+      <AppBar
         fixed="top"
         className="appBar"
         style={{ backgroundColor: "#ffffff" }}
       >
-        <Toolbar>
-
-          <div  style={{ marginTop: "10px", cursor: "pointer" }}>
-            <img className="protonLogoAppbar" onClick={() => props.history.push('/')} src={Logo} alt="logo" height="40px" width="215px" />
-          </div>
-
-
-          <Typography variant="h6">
-zubair
-          </Typography>
-    
-
-          <IconButton edge="start" >
-            {(!drawerOpen && (
-              <MenuIcon
-              className="appMenuIcon"
-                onClick={toggleDrawer("right", true)}
-                style={{ color: "#c0c4ca", cursor: "pointer" }}
-              />
-            )) || (
-                <CloseIcon
-                  style={{ color: "#c0c4ca", cursor: "pointer" }}
-                />
-              )}
-          </IconButton>
-        </Toolbar>
+        <NavbarWrapper>
+          <NavBarRight>
+            <NabarMenus className="navbar__content">
+              <MenuItem>
+                <Link to="/">Home</Link>
+              </MenuItem>
+              <MenuItem>
+                <Link to="/services">Services</Link>
+              </MenuItem>
+              <MenuItem>
+                <Link to="/event">Events</Link>
+              </MenuItem>
+              <MenuItem>
+                <Link to="/about">About</Link>
+              </MenuItem>
+              <MenuItem>
+                <Link to="/contact">Contact</Link>
+              </MenuItem>
+              <BookAppoint>Book an Appointment</BookAppoint>
+            </NabarMenus>
+          </NavBarRight>
+        </NavbarWrapper>
       </AppBar>
-      <React.Fragment key={"top"}>
-        <SwipeableDrawer
-          anchor={"right"}
-          open={state["right"]}
-          onClose={toggleDrawer("right", false)}
-          onOpen={toggleDrawer("right", true)}
-        >
-          {/* {list('right')} */}
-
-          {/* mobile menu */}
-          <div >
-            {["MENU"].map((anchor) => (
-              <div>
-                {Mobilelist(anchor)}
-              </div>
-
-            ))}
-          </div>
-
-          {/* mobile menu end */}
-
-          
-        </SwipeableDrawer>
-      </React.Fragment>
-            </div>
-        )
-    
+    </div>
+  );
 }
+const NavbarWrapper = styled.div`
+  height: 50px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-bottom: 0.1px solid white;
+  background-color: white;
+  ${Media("xlscreens")} {
+    height: 4vw;
+  }
+`;
+const NabarMenus = styled.div`
+  display: flex;
+`;
+const MenuItem = styled.div`
+  font-size: 16px;
+  font-family: ${gilroySemibold};
+  position: relative;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 20px;
+  cursor: pointer;
+  a {
+    text-decoration: none;
+    color: ${colors.secondaryColor};
+    height:inherit;
+    display:flex;
+    align-items:center;
+  }
+  &::after {
+    position: absolute;
+    content: "";
+    height: 5px;
+    width: 100%;
+    background-color: ${colors.secondaryColor};
+    bottom: 1px;
+    width: 0px;
+    transition: all 0.3s ease;
+  }
+  &:hover {
+    &::after {
+      width: 100%;
+    }
+  }
+  ${Media("xlscreens")} {
+    font-size: 1vw;
+    height: 4vw;
+    padding: 0 1.46vw;
+    &::after {
+      height: 0.25vw;
+    }
+  }
+`;
+const NavBarRight = styled.div`
+  display: flex;
+  position: absolute;
+  right: 0;
+`;
+const BookAppoint = styled.button`
+  background: ${colors.secondaryColor};
+  height: 100%;
+  padding: 0px 15px;
+  color: white;
+  font-size: 15px;
+  font-family: ${gilroySemibold};
+  border: none;
+  position: relative;
+  z-index: 9;
+  border: 3px solid ${colors.secondaryColor};
+  margin-left: 5px;
+  &:focus {
+    outline: none;
+  }
+  &:after {
+    position: absolute;
+    content: "";
+    transform: scale(0.5);
+    visibility: hidden;
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -9;
+    background-color: white;
+    left: 0;
+    top: 0;
+    transition: all 0.3s ease;
+  }
+  &:hover {
+    border-color: ${colors.secondaryColor};
+    color: ${colors.secondaryColor};
+    &:after {
+      visibility: visible;
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  ${Media("xlscreens")} {
+    font-size: 1vw;
+  }
+`;

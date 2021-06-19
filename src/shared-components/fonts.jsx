@@ -1,0 +1,11 @@
+export const gilroyRegular = '"gilroyregular", sans-serif';
+export const gilroySemibold = '"gilroysemibold", sans-serif';
+export const gilroyBold = '"gilroybold", sans-serif';
+export const gilroyBlack = '"gilroyblack", sans-serif';
+export const gilroyExtrabold = '"gilroyextrabold", sans-serif';
+export const gilroyExtraboldItalic = '"gilroyextrabold_italic", sans-serif';
+export const gilroyHeavy = '"gilroyheavy", sans-serif';
+export const gilroyLight = '"gilroylight", sans-serif';
+export const gilroyMedium = '"gilroymedium", sans-serif';
+export const gilroyMediumItalic = '"gilroymedium_italic", sans-serif';
+export const sourceSansPro = '"Source Sans Pro", sans-serif';
