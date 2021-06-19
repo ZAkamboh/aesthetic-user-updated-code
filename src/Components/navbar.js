@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { colors, Media } from "shared-components";
+import { Container, Row, Col } from "react-bootstrap";
 import AppBar from "@material-ui/core/AppBar";
 import { gilroySemibold } from "shared-components/fonts";
 
@@ -11,30 +12,33 @@ export default function SwipeableTemporaryDrawer(props) {
       <AppBar
         fixed="top"
         className="appBar"
-        style={{ backgroundColor: "#ffffff" }}
+        style={{ backgroundColor: "#ffffff95" }}
       >
-        <NavbarWrapper>
-          <NavBarRight>
-            <NabarMenus className="navbar__content">
-              <MenuItem>
-                <Link to="/">Home</Link>
-              </MenuItem>
-              <MenuItem>
-                <Link to="/services">Services</Link>
-              </MenuItem>
-              <MenuItem>
-                <Link to="/event">Events</Link>
-              </MenuItem>
-              <MenuItem>
-                <Link to="/about">About</Link>
-              </MenuItem>
-              <MenuItem>
-                <Link to="/contact">Contact</Link>
-              </MenuItem>
-              <BookAppoint>Book an Appointment</BookAppoint>
-            </NabarMenus>
-          </NavBarRight>
-        </NavbarWrapper>
+        <Container>
+          <NavbarWrapper>
+            <Col lg={4}></Col>
+            <Col lg={8}>
+              <NabarMenus>
+                <MenuItem>
+                  <Link to="/">Home</Link>
+                </MenuItem>
+                <MenuItem>
+                  <Link to="/services">Services</Link>
+                </MenuItem>
+                <MenuItem>
+                  <Link to="/event">Events</Link>
+                </MenuItem>
+                <MenuItem>
+                  <Link to="/about">About</Link>
+                </MenuItem>
+                <MenuItem>
+                  <Link to="/contact">Contact</Link>
+                </MenuItem>
+                <BookAppoint>Book an Appointment</BookAppoint>
+              </NabarMenus>
+            </Col>
+          </NavbarWrapper>
+        </Container>
       </AppBar>
     </div>
   );
@@ -43,15 +47,16 @@ const NavbarWrapper = styled.div`
   height: 50px;
   display: flex;
   align-items: center;
-  width: 100%;
   border-bottom: 0.1px solid white;
-  background-color: white;
+  backgroundcolor: "#ffffff95";
   ${Media("xlscreens")} {
     height: 4vw;
   }
 `;
 const NabarMenus = styled.div`
   display: flex;
+  justify-content:flex-end;
+  align-items:center;
 `;
 const MenuItem = styled.div`
   font-size: 16px;
@@ -66,9 +71,9 @@ const MenuItem = styled.div`
   a {
     text-decoration: none;
     color: ${colors.secondaryColor};
-    height:inherit;
-    display:flex;
-    align-items:center;
+    height: inherit;
+    display: flex;
+    align-items: center;
   }
   &::after {
     position: absolute;
@@ -86,7 +91,7 @@ const MenuItem = styled.div`
     }
   }
   ${Media("xlscreens")} {
-    font-size: 1vw;
+    font-size: 0.9vw;
     height: 4vw;
     padding: 0 1.46vw;
     &::after {
@@ -94,23 +99,19 @@ const MenuItem = styled.div`
     }
   }
 `;
-const NavBarRight = styled.div`
-  display: flex;
-  position: absolute;
-  right: 0;
-`;
 const BookAppoint = styled.button`
   background: ${colors.secondaryColor};
-  height: 100%;
   padding: 0px 15px;
   color: white;
-  font-size: 15px;
+  font-size: 14px;
   font-family: ${gilroySemibold};
   border: none;
   position: relative;
   z-index: 9;
   border: 3px solid ${colors.secondaryColor};
   margin-left: 5px;
+  border-radius:50px;
+  height:50px;
   &:focus {
     outline: none;
   }
@@ -127,6 +128,7 @@ const BookAppoint = styled.button`
     left: 0;
     top: 0;
     transition: all 0.3s ease;
+    border-radius:50px;
   }
   &:hover {
     border-color: ${colors.secondaryColor};
@@ -138,6 +140,7 @@ const BookAppoint = styled.button`
     }
   }
   ${Media("xlscreens")} {
-    font-size: 1vw;
+    font-size: 0.9vw;
+    height:2.66vw;
   }
 `;

@@ -1,7 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import {
-  gilroyRegular,
-} from "shared-components";
+import { gilroyRegular } from "shared-components";
 
 export default createGlobalStyle`
     @font-face {
@@ -136,5 +134,10 @@ export default createGlobalStyle`
         font-weight: 400;
         font-size: 14px;
         overflow-x: hidden;  
+    }
+    .container{
+        box-sizing: border-box;
+        max-width: 100% !important;
+        padding: 0px 13vw !important;
     }
 `;

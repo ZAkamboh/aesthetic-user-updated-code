@@ -62,14 +62,6 @@
   #myBtn:hover {
     background-color: #555; /* Add a dark-grey background on hover */
   }
-  .homeCopyMainClass{
-    margin-top: 65px;
-  }
-@media only screen and (min-width:1000px){
-  .homeCopyMainClass{
-    margin-top: 3.5vw;
-  }
-}
 @media only screen and (max-width: 599px) {
   .section22{
     height:35% !important;

@@ -28,7 +28,7 @@ class Routing extends React.Component {
           <Route path="/contact" component={Contact} />
           <Route path="/services" component={Services} />
           <Route path="/event" component={Events} />
-          {/* <Footer /> */}
+          <Footer />
         </Router>
       </div>
     );

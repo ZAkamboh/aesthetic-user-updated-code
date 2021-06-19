@@ -1,15 +1,17 @@
 import React from "react";
 import { AppActions } from "store/actions";
-import "./index.css";
 import { Container, Row, Col } from "react-bootstrap";
 import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
 import { connect } from "react-redux";
 import styled from "styled-components";
+import IntroBg from "../../Assets/Images/introBg.jpg";
 import {
   colors,
   gilroyBold,
   gilroyMedium,
   gilroySemibold,
+  gilroyExtrabold,
+  Media,
 } from "shared-components";
 import Truncate from "react-truncate";
 import Fade from "react-reveal/Fade";
@@ -50,21 +52,43 @@ class Homechild extends React.Component {
     }.bind(this);
     return (
       <div className="homeCopyMainClass">
+        <IntroSection>
+          <Container>
+            <IntroTagLine>WELCOME TO ASMC</IntroTagLine>
+            <IntroTitle>
+              We are always Here <br />
+              for your Care
+            </IntroTitle>
+            <IntroPara>
+              Get instant and affordable Medical Consultation <br />
+              from our top specialists. Anywhere, Anytime!. Our mission is to
+              provide best treatment of knee joint, <br />
+              Ankle joints, Elbow joints, Shoulder joints, Hip joints <br />
+              and spinal injuries with stem cell therapy.
+            </IntroPara>
+            <BookAppoint>Book an Appointment</BookAppoint>
+          </Container>
+        </IntroSection>
         <ImportantTopic>
           <Container>
             <Row>
               <Col col={8}>
-                <SectionHeading>What's new This Week</SectionHeading>
+                <Fade left delay={1000}>
+                  <SectionHeading>What's new This Week</SectionHeading>
+                </Fade>
               </Col>
               <Col col={4}>
-                <ImportTopSubHead>
-                  In this week we are giving some information about the stem
-                  cells treatments.In this week we are giving some information about the stem
-                  cells treatments.In this week we are giving some information about the stem
-                  cells treatmentsIn this week we are giving some information about the stem
-                  cells treatments.In this week we are giving some information about the stem
-                  cells treatments
-                </ImportTopSubHead>
+                <Fade right delay={1500}>
+                  <ImportTopSubHead>
+                    In this week we are giving some information about the stem
+                    cells treatments.In this week we are giving some information
+                    about the stem cells treatments.In this week we are giving
+                    some information about the stem cells treatmentsIn this week
+                    we are giving some information about the stem cells
+                    treatments.In this week we are giving some information about
+                    the stem cells treatments
+                  </ImportTopSubHead>
+                </Fade>
               </Col>
             </Row>
             <Row noGutter>
@@ -117,9 +141,19 @@ function mapDispatch(dispatch) {
     },
   };
 }
+const IntroSection = styled.div`
+  min-height: 100vh;
+  background-image: url(${IntroBg});
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+`;
 const ImportantTopic = styled.section`
   background-color: ${colors.secondaryBG};
-  padding: 50px 0;
+  padding: 100px 0;
   position: relative;
   margin-bottom: 200px;
   .react-reveal {
@@ -187,13 +221,75 @@ const ReadMoreBtn = styled.button`
   }
 `;
 const SectionHeading = styled.h1`
-  font-size:62px;
-  font-family:${gilroyBold};
-  color:white;
+  font-size: 62px;
+  font-family: ${gilroyBold};
+  color: white;
 `;
 const ImportTopSubHead = styled.p`
-  font-size:18px;
-  font-family:${gilroySemibold};
-  color:white;
+  font-size: 18px;
+  font-family: ${gilroySemibold};
+  color: white;
+`;
+const IntroTagLine = styled.div`
+  font-size: 22px;
+  letter-spacing: 1px;
+  font-family: ${gilroyBold};
+`;
+const IntroTitle = styled.h1`
+  font-size: 80px;
+  font-family: ${gilroyExtrabold};
+  line-height: 1;
+  margin: 30px 0;
+  letter-spacing: -1.5px;
+`;
+const IntroPara = styled.p`
+  font-size: 24px;
+  font-family: ${gilroyMedium};
+`;
+const BookAppoint = styled.button`
+  background: ${colors.secondaryColor};
+  padding: 0px 15px;
+  color: white;
+  font-size: 14px;
+  font-family: ${gilroySemibold};
+  border: none;
+  position: relative;
+  z-index: 9;
+  border: 3px solid ${colors.secondaryColor};
+  margin-left: 5px;
+  margin-top: 20px;
+  border-radius: 50px;
+  height: 50px;
+  &:focus {
+    outline: none;
+  }
+  &:after {
+    position: absolute;
+    content: "";
+    transform: scale(0.5);
+    visibility: hidden;
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -9;
+    background-color: white;
+    left: 0;
+    top: 0;
+    transition: all 0.3s ease;
+    border-radius: 50px;
+  }
+  &:hover {
+    border-color: ${colors.secondaryColor};
+    color: ${colors.secondaryColor};
+    &:after {
+      visibility: visible;
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  ${Media("xlscreens")} {
+    font-size: 0.9vw;
+    height: 2.66vw;
+  }
 `;
 export default connect(mapState, mapDispatch)(Homechild);
