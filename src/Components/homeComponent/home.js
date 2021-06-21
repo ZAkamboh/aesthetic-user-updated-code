@@ -61,8 +61,8 @@ class Homechild extends React.Component {
             </IntroTitle>
             <IntroPara>
               Get instant and affordable Medical Consultation <br />
-              from our top specialists. Anywhere, Anytime!. Our mission is to
-              provide best treatment of knee joint, <br />
+              from our top specialists. Anywhere, Anytime!. <br />
+              Our mission is to provide best treatment of knee joint, <br />
               Ankle joints, Elbow joints, Shoulder joints, Hip joints <br />
               and spinal injuries with stem cell therapy.
             </IntroPara>
@@ -93,7 +93,6 @@ class Homechild extends React.Component {
             </Row>
             <Row noGutter>
               {this.state.data.map((item, index) => {
-                console.log(item);
                 return (
                   <Fade bottom delay={1000}>
                     <TopicCard key={index} lg={12}>
@@ -150,12 +149,24 @@ const IntroSection = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
+  .container {
+    position: relative;
+    z-index: 9;
+  }
+  &:before {
+    position: absolute;
+    z-index: 9;
+    content: "";
+    background-color: ${colors.secondaryColor + "50"};
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+  }
 `;
 const ImportantTopic = styled.section`
   background-color: ${colors.secondaryBG};
-  padding: 100px 0;
   position: relative;
-  margin-bottom: 200px;
   .react-reveal {
     width: 100%;
   }
@@ -234,6 +245,7 @@ const IntroTagLine = styled.div`
   font-size: 22px;
   letter-spacing: 1px;
   font-family: ${gilroyBold};
+  color:${colors.secondaryColor};
 `;
 const IntroTitle = styled.h1`
   font-size: 80px;
@@ -241,10 +253,12 @@ const IntroTitle = styled.h1`
   line-height: 1;
   margin: 30px 0;
   letter-spacing: -1.5px;
+  color:${colors.secondaryColor};
 `;
 const IntroPara = styled.p`
   font-size: 24px;
   font-family: ${gilroyMedium};
+  color:${colors.secondaryColor};
 `;
 const BookAppoint = styled.button`
   background: ${colors.secondaryColor};

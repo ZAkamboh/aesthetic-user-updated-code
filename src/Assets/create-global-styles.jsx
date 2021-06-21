@@ -123,6 +123,7 @@ export default createGlobalStyle`
     }
     html, body {
         height: 100%;
+        scroll-behavior:smooth;
     }
     * {
         list-style: none;
@@ -133,11 +134,14 @@ export default createGlobalStyle`
         font-family: ${gilroyRegular};
         font-weight: 400;
         font-size: 14px;
-        overflow-x: hidden;  
+        overflow-x: hidden;
     }
     .container{
         box-sizing: border-box;
         max-width: 100% !important;
         padding: 0px 13vw !important;
+    }
+    section{
+        padding:100px 0;
     }
 `;
