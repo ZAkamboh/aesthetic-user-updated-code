@@ -2,8 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { colors, Media } from "shared-components";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Col } from "react-bootstrap";
 import AppBar from "@material-ui/core/AppBar";
+import LogoURL from '../Assets/Images/logo.png'
 import { gilroySemibold } from "shared-components/fonts";
 
 export default function SwipeableTemporaryDrawer(props) {
@@ -16,7 +17,9 @@ export default function SwipeableTemporaryDrawer(props) {
       >
         <Container>
           <NavbarWrapper>
-            <Col lg={4}></Col>
+            <Col lg={4}>
+              <Logo src={LogoURL} alt="Al-Shifa Logo"/>
+            </Col>
             <Col lg={8}>
               <NabarMenus>
                 <MenuItem>
@@ -43,6 +46,9 @@ export default function SwipeableTemporaryDrawer(props) {
     </div>
   );
 }
+const Logo = styled.img`
+  height:70px;
+`;
 const NavbarWrapper = styled.div`
   height: 50px;
   display: flex;

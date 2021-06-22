@@ -3,18 +3,16 @@ import { connect } from "react-redux";
 import { Container, Row, Col } from "react-bootstrap";
 import { AppActions } from "../../store/actions";
 import Loader2 from "../homeloader";
-import "./index.css";
 import styled from "styled-components";
 import EventVideoBg from "../../Assets/video/event-video.mp4";
 import Fade from "react-reveal/Fade";
 import ReactPlayer from "react-player";
+import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
 import {
   colors,
   gilroyBold,
   gilroyMedium,
-  gilroySemibold,
   gilroyExtrabold,
-  Media,
 } from "shared-components";
 class Events extends React.Component {
   constructor(props) {
@@ -35,8 +33,21 @@ class Events extends React.Component {
       this.setState({ data: nextProps.eventdataa });
     }
   }
-
+  gotoTop() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
   render() {
+    window.onscroll = function () {
+      if (
+        document.body.scrollTop > 60 ||
+        document.documentElement.scrollTop > 60
+      ) {
+        this.setState({ scrolled: true });
+      } else {
+        this.setState({ scrolled: false });
+      }
+    }.bind(this);
     return (
       <Wrapper>
         <IntroSection>
@@ -94,6 +105,13 @@ class Events extends React.Component {
             })}
           </Row>
         </Container>
+        <div
+          id="myBtn"
+          style={{ display: this.state.scrolled ? "block" : "none" }}
+          onClick={() => this.gotoTop()}
+        >
+          <ArrowUpwardIcon />
+        </div>
       </Wrapper>
     );
   }
@@ -113,8 +131,9 @@ function mapDispatch(dispatch) {
   };
 }
 const VideoBg = styled.video`
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
+  object-fit: cover;
 `;
 const Wrapper = styled.div`
   margin-bottom: 50px;
@@ -130,7 +149,6 @@ const IntroSection = styled.div`
   position: relative;
   text-align: center;
   .container {
-    position: relative;
     z-index: 9;
     position: absolute;
   }
@@ -188,12 +206,6 @@ const CustomCol = styled(Col)`
 `;
 const TopicDetails = styled.div`
   padding: 50px;
-`;
-const TopicTitle = styled.h1`
-  color: white;
-  font-size: 42px;
-  font-family: ${gilroyBold};
-  margin-bottom: 15px;
 `;
 const TopicPara = styled.p`
   color: white;

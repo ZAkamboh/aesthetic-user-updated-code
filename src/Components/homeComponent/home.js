@@ -102,7 +102,15 @@ class Homechild extends React.Component {
                           <TopicPara>
                             <Truncate lines={5}>{item.desc}</Truncate>
                           </TopicPara>
-                          <ReadMoreBtn>Read More</ReadMoreBtn>
+                          <ReadMoreBtn
+                            onClick={() =>
+                              this.props.history.push("/homeDetail", {
+                                item: item,
+                              })
+                            }
+                          >
+                            Read More
+                          </ReadMoreBtn>
                         </TopicDetails>
                       </CustomCol>
                       <CustomCol lg={4}>
@@ -149,6 +157,7 @@ const IntroSection = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
+  padding-top: 76px;
   .container {
     position: relative;
     z-index: 9;
@@ -245,7 +254,7 @@ const IntroTagLine = styled.div`
   font-size: 22px;
   letter-spacing: 1px;
   font-family: ${gilroyBold};
-  color:${colors.secondaryColor};
+  color: ${colors.secondaryColor};
 `;
 const IntroTitle = styled.h1`
   font-size: 80px;
@@ -253,12 +262,12 @@ const IntroTitle = styled.h1`
   line-height: 1;
   margin: 30px 0;
   letter-spacing: -1.5px;
-  color:${colors.secondaryColor};
+  color: ${colors.secondaryColor};
 `;
 const IntroPara = styled.p`
   font-size: 24px;
   font-family: ${gilroyMedium};
-  color:${colors.secondaryColor};
+  color: ${colors.secondaryColor};
 `;
 const BookAppoint = styled.button`
   background: ${colors.secondaryColor};

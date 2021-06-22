@@ -149,6 +149,7 @@ const IntroSection = styled.div`
   justify-content: center;
   flex-direction: column;
   position: relative;
+  padding-top:76px;
   .container {
     position: relative;
     z-index: 9;

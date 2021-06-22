@@ -1,12 +1,12 @@
 import React from "react";
-import About from "../Components/aboutComponent";
-import Contact from "../Components/contactComponent";
-import Navbar from "../Components/navbar";
-import Home from "../Components/homeComponent";
-import Homedetail from "../Components/homeComponent/homedetail";
-import Footer from "../Components/footer";
-import Services from "../Components/servicesComponents";
-import Events from "../Components/events";
+import About from "Components/aboutComponent";
+import Contact from "Components/contactComponent";
+import Navbar from "Components/navbar";
+import Home from "Components/homeComponent";
+import Homedetail from "Components/homeComponent/homedetail";
+import Footer from "Components/footer";
+import Services from "Components/servicesComponents";
+import Events from "Components/events";
 
 import createBrowserHistory from "history/createBrowserHistory";
 import { Router, Route } from "react-router-dom";
