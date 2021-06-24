@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { colors, Media } from "shared-components";
 import { Container, Col } from "react-bootstrap";
 import AppBar from "@material-ui/core/AppBar";
-import LogoURL from '../Assets/Images/logo.png'
+import LogoURL from "../Assets/Images/logo.png";
 import { gilroySemibold } from "shared-components/fonts";
 
 export default function SwipeableTemporaryDrawer(props) {
@@ -18,7 +18,7 @@ export default function SwipeableTemporaryDrawer(props) {
         <Container>
           <NavbarWrapper>
             <Col lg={4}>
-              <Logo src={LogoURL} alt="Al-Shifa Logo"/>
+              <Logo src={LogoURL} alt="Al-Shifa Logo" />
             </Col>
             <Col lg={8}>
               <NabarMenus>
@@ -47,13 +47,15 @@ export default function SwipeableTemporaryDrawer(props) {
   );
 }
 const Logo = styled.img`
-  height:70px;
+  height: 70px;
+  ${Media("xlscreens")} {
+    height: 3.64vw;
+  }
 `;
 const NavbarWrapper = styled.div`
   height: 50px;
   display: flex;
   align-items: center;
-  border-bottom: 0.1px solid white;
   backgroundcolor: "#ffffff95";
   ${Media("xlscreens")} {
     height: 4vw;
@@ -61,8 +63,8 @@ const NavbarWrapper = styled.div`
 `;
 const NabarMenus = styled.div`
   display: flex;
-  justify-content:flex-end;
-  align-items:center;
+  justify-content: flex-end;
+  align-items: center;
 `;
 const MenuItem = styled.div`
   font-size: 16px;
@@ -116,8 +118,8 @@ const BookAppoint = styled.button`
   z-index: 9;
   border: 3px solid ${colors.secondaryColor};
   margin-left: 5px;
-  border-radius:50px;
-  height:50px;
+  border-radius: 50px;
+  height: 50px;
   &:focus {
     outline: none;
   }
@@ -134,7 +136,7 @@ const BookAppoint = styled.button`
     left: 0;
     top: 0;
     transition: all 0.3s ease;
-    border-radius:50px;
+    border-radius: 50px;
   }
   &:hover {
     border-color: ${colors.secondaryColor};
@@ -147,6 +149,12 @@ const BookAppoint = styled.button`
   }
   ${Media("xlscreens")} {
     font-size: 0.9vw;
-    height:2.66vw;
+    height: 2.66vw;
+    padding: 0 0.78vw;
+    margin-left: 0.26vw;
+    border-radius: 2.66vw;
+    &:after {
+      border-radius: 2.66vw;
+    }
   }
 `;

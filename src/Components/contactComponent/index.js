@@ -7,6 +7,7 @@ import { gilroyMedium } from "shared-components/fonts";
 import PhoneIcon from "@material-ui/icons/Phone";
 import DirectionsIcon from "@material-ui/icons/Directions";
 import { gilroySemibold } from "shared-components/fonts";
+import { Media } from "shared-components/media";
 class Contact extends React.Component {
   constructor(props) {
     super(props);
@@ -54,10 +55,15 @@ class Contact extends React.Component {
                     Al Shifa Medical centre Located at E Market BLOCK 6 P.EC.H.S
                     Imam Ahmed Road Karachi.
                     <br />
-                    09am - 10pm (Sunday
-                    off).
+                    09am - 10pm (Sunday off).
                   </p>
-                  <a rel="noopener noreferrer" target="_blank" href="https://www.google.com/maps/place/Al-Shifa+Medical+Center/@24.8533427,67.0623634,17.5z/data=!4m8!1m2!2m1!1sal+shifa+medical+center!3m4!1s0x3eb33d101c1d12dd:0x11122f12a31bc251!8m2!3d24.853466!4d67.0645072">Get Direction</a>
+                  <a
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    href="https://www.google.com/maps/place/Al-Shifa+Medical+Center/@24.8533427,67.0623634,17.5z/data=!4m8!1m2!2m1!1sal+shifa+medical+center!3m4!1s0x3eb33d101c1d12dd:0x11122f12a31bc251!8m2!3d24.853466!4d67.0645072"
+                  >
+                    Get Direction
+                  </a>
                 </ContactBox>
               </Col>
             </Row>
@@ -70,6 +76,9 @@ class Contact extends React.Component {
 const Wrapper = styled.div`
   min-height: 100vh;
   margin-top: 76px;
+  ${Media("xlscreens")} {
+    margin-top: 3.95vw;
+  }
 `;
 const ContactIntro = styled.div`
   min-height: 50vh;
@@ -99,11 +108,22 @@ const ContactIntro = styled.div`
     position: absolute;
     z-index: -9;
   }
+  ${Media("xlscreens")} {
+    h1 {
+      font-size: 2.7vw;
+    }
+    p {
+      font-size: 1.14vw;
+    }
+  }
 `;
 const GetinTouch = styled.div`
   margin-top: -100px;
   position: relative;
   z-index: 9999;
+  ${Media("xlscreens")} {
+    margin-top: -5.2vw;
+  }
 `;
 const ContactBox = styled.div`
   background-color: white;
@@ -133,10 +153,32 @@ const ContactBox = styled.div`
   svg {
     font-size: 60px;
   }
-  a{
-    font-size:20px;
+  a {
+    font-size: 20px;
     font-family: ${gilroySemibold};
     color: #2b93c5;
+  }
+  ${Media("xlscreens")} {
+    min-height: 20.83vw;
+    padding: 0 4.16vw;
+    h2 {
+      font-size: 1.66vw;
+      margin: 0.53vw 0;
+    }
+    p {
+      font-size: 1.04vw;
+      margin: 0.78vw 0;
+      margin-bottom: 1.04vw;
+    }
+    h3 {
+      font-size: 1.04vw;
+    }
+    svg {
+      font-size: 3.125vw;
+    }
+    a {
+      font-size: 1.04vw;
+    }
   }
 `;
 export default Contact;

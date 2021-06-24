@@ -14,6 +14,7 @@ import {
   gilroyMedium,
   gilroyExtrabold,
 } from "shared-components";
+import { Media } from "shared-components/media";
 class Events extends React.Component {
   constructor(props) {
     super(props);
@@ -75,7 +76,6 @@ class Events extends React.Component {
           </Row>
           <Row>
             {this.state.data.map((item, index) => {
-              console.log(item);
               return (
                 <Fade bottom delay={1000} key={index}>
                   <TopicCard lg={12}>
@@ -105,13 +105,12 @@ class Events extends React.Component {
             })}
           </Row>
         </Container>
-        <div
-          id="myBtn"
-          style={{ display: this.state.scrolled ? "block" : "none" }}
+        <GoToTop
+          style={{ display: this.state.scrolled ? "flex" : "none" }}
           onClick={() => this.gotoTop()}
         >
           <ArrowUpwardIcon />
-        </div>
+        </GoToTop>
       </Wrapper>
     );
   }
@@ -139,6 +138,9 @@ const Wrapper = styled.div`
   margin-bottom: 50px;
   .react-reveal {
     width: 100%;
+  }
+  ${Media("xlscreens")} {
+    margin-bottom: 2.66vw;
   }
 `;
 const IntroSection = styled.div`
@@ -168,6 +170,9 @@ const IntroTagLine = styled.div`
   letter-spacing: 1px;
   font-family: ${gilroyBold};
   color: ${colors.secondaryColor};
+  ${Media("xlscreens")} {
+    font-size: 1.14vw;
+  }
 `;
 const IntroTitle = styled.h1`
   font-size: 80px;
@@ -176,11 +181,18 @@ const IntroTitle = styled.h1`
   margin: 30px 0;
   letter-spacing: -1.5px;
   color: ${colors.secondaryColor};
+  ${Media("xlscreens")} {
+    font-size: 4.166vw;
+    margin: 1.56vw 0;
+  }
 `;
 const IntroPara = styled.p`
   font-size: 24px;
   font-family: ${gilroyMedium};
   color: ${colors.secondaryColor};
+  ${Media("xlscreens")} {
+    font-size: 1.25vw;
+  }
 `;
 const SectionHeading = styled.h1`
   font-size: 62px;
@@ -188,6 +200,10 @@ const SectionHeading = styled.h1`
   color: ${colors.secondaryColor};
   text-align: center;
   margin: 50px 0;
+  ${Media("xlscreens")} {
+    font-size: 3.22vw;
+    margin: 2.66vw 0;
+  }
 `;
 const TopicCard = styled(Col)`
   border: 1px solid ${colors.borderColor};
@@ -199,6 +215,10 @@ const TopicCard = styled(Col)`
   padding: 0;
   width: 100%;
   position: relative;
+  ${Media("xlscreens")} {
+    margin-top: 2.66vw;
+    min-height: 20.83vw;
+  }
 `;
 const CustomCol = styled(Col)`
   height: 100%;
@@ -206,11 +226,17 @@ const CustomCol = styled(Col)`
 `;
 const TopicDetails = styled.div`
   padding: 50px;
+  ${Media("xlscreens")} {
+    padding: 2.66vw;
+  }
 `;
 const TopicPara = styled.p`
   color: white;
   font-size: 18px;
   font-family: ${gilroyMedium};
+  ${Media("xlscreens")} {
+    font-size: 0.93vw;
+  }
 `;
 const TopicImg = styled.div`
   height: 100%;
@@ -230,6 +256,39 @@ const TopicImg = styled.div`
     width: 100%;
     background-color: ${colors.secondaryColor + "70"};
     z-index: 9;
+  }
+`;
+const GoToTop = styled.div`
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: ${colors.secondaryColor};
+  color: white;
+  cursor: pointer;
+  border-radius: 10px;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  svg {
+    font-size: 24px;
+  }
+  &:hover {
+    background-color: #555;
+  }
+  ${Media("xlscreens")} {
+    bottom: 1.04vw;
+    right: 1.57vw;
+    border-radius: 0.53vw;
+    height: 2.66vw;
+    width: 2.66vw;
+    svg {
+      font-size: 1.25vw;
+    }
   }
 `;
 export default connect(mapState, mapDispatch)(Events);

@@ -4,7 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
 import { connect } from "react-redux";
 import styled from "styled-components";
-import IntroBg from "../../Assets/Images/introBg.jpg";
+import IntroBg from "Assets/Images/introBg.jpg";
 import {
   colors,
   gilroyBold,
@@ -51,7 +51,7 @@ class Homechild extends React.Component {
       }
     }.bind(this);
     return (
-      <div className="homeCopyMainClass">
+      <div style={{ overflow: "hidden" }}>
         <IntroSection>
           <Container>
             <IntroTagLine>WELCOME TO ASMC</IntroTagLine>
@@ -125,13 +125,12 @@ class Homechild extends React.Component {
             </Row>
           </Container>
         </ImportantTopic>
-        <div
-          id="myBtn"
-          style={{ display: this.state.scrolled ? "block" : "none" }}
+        <GoToTop
+          style={{ display: this.state.scrolled ? "flex" : "none" }}
           onClick={() => this.gotoTop()}
         >
           <ArrowUpwardIcon />
-        </div>
+        </GoToTop>
       </div>
     );
   }
@@ -172,6 +171,9 @@ const IntroSection = styled.div`
     top: 0;
     left: 0;
   }
+  ${Media("xlscreens")} {
+    padding-top: 3.95vw;
+  }
 `;
 const ImportantTopic = styled.section`
   background-color: ${colors.secondaryBG};
@@ -189,6 +191,10 @@ const TopicCard = styled(Col)`
   padding: 0;
   width: 100%;
   position: relative;
+  ${Media("xlscreens")} {
+    margin-top: 2.66vw;
+    height: 20.83vw;
+  }
 `;
 const CustomCol = styled(Col)`
   height: 100%;
@@ -216,17 +222,27 @@ const TopicImg = styled.div`
 `;
 const TopicDetails = styled.div`
   padding: 50px;
+  ${Media("xlscreens")} {
+    padding: 2.66vw;
+  }
 `;
 const TopicTitle = styled.h1`
   color: white;
   font-size: 42px;
   font-family: ${gilroyBold};
   margin-bottom: 15px;
+  ${Media("xlscreens")} {
+    font-size: 2.18vw;
+    margin-bottom: 0.78vw;
+  }
 `;
 const TopicPara = styled.p`
   color: white;
   font-size: 18px;
   font-family: ${gilroyMedium};
+  ${Media("xlscreens")} {
+    font-size: 0.93vw;
+  }
 `;
 const ReadMoreBtn = styled.button`
   background-color: white;
@@ -239,22 +255,37 @@ const ReadMoreBtn = styled.button`
   &:focus {
     outline: none;
   }
+  ${Media("xlscreens")} {
+    margin-top: 1.04vw;
+    padding: 0.53vw 2.08vw;
+    font-size: 0.83vw;
+    border-radius: 1.04vw;
+  }
 `;
 const SectionHeading = styled.h1`
   font-size: 62px;
   font-family: ${gilroyBold};
   color: white;
+  ${Media("xlscreens")} {
+    font-size: 3.22vw;
+  }
 `;
 const ImportTopSubHead = styled.p`
   font-size: 18px;
   font-family: ${gilroySemibold};
   color: white;
+  ${Media("xlscreens")} {
+    font-size: 0.93vw;
+  }
 `;
 const IntroTagLine = styled.div`
   font-size: 22px;
   letter-spacing: 1px;
   font-family: ${gilroyBold};
   color: ${colors.secondaryColor};
+  ${Media("xlscreens")} {
+    font-size: 1.14vw;
+  }
 `;
 const IntroTitle = styled.h1`
   font-size: 80px;
@@ -263,11 +294,18 @@ const IntroTitle = styled.h1`
   margin: 30px 0;
   letter-spacing: -1.5px;
   color: ${colors.secondaryColor};
+  ${Media("xlscreens")} {
+    font-size: 4.166vw;
+    margin: 1.56vw 0;
+  }
 `;
 const IntroPara = styled.p`
   font-size: 24px;
   font-family: ${gilroyMedium};
   color: ${colors.secondaryColor};
+  ${Media("xlscreens")} {
+    font-size: 1.25vw;
+  }
 `;
 const BookAppoint = styled.button`
   background: ${colors.secondaryColor};
@@ -313,6 +351,45 @@ const BookAppoint = styled.button`
   ${Media("xlscreens")} {
     font-size: 0.9vw;
     height: 2.66vw;
+    padding: 0 0.78vw;
+    margin-left: 0.26vw;
+    border-radius: 2.66vw;
+    &:after {
+      border-radius: 2.66vw;
+    }
+  }
+`;
+const GoToTop = styled.div`
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: ${colors.secondaryColor};
+  color: white;
+  cursor: pointer;
+  border-radius: 10px;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  justify-content:center;
+  align-items:center;
+  svg {
+    font-size: 24px;
+  }
+  &:hover {
+    background-color: #555;
+  }
+  ${Media("xlscreens")} {
+    bottom: 1.04vw;
+    right: 1.57vw;
+    border-radius: 0.53vw;
+    height: 2.66vw;
+    width: 2.66vw;
+    svg {
+      font-size: 1.25vw;
+    }
   }
 `;
 export default connect(mapState, mapDispatch)(Homechild);

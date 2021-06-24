@@ -1,9 +1,9 @@
 import React from "react";
-import { AppActions } from "../../store/actions";
+import { AppActions } from "store/actions";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import { Container } from "react-bootstrap";
-import IntroBg from "../../Assets/Images/aboutBg.jpg";
+import IntroBg from "Assets/Images/aboutBg.jpg";
 import {
   colors,
   gilroyBold,
@@ -11,6 +11,7 @@ import {
   gilroyExtrabold,
 } from "shared-components";
 import { gilroySemibold } from "shared-components/fonts";
+import { Media } from "shared-components/media";
 class About extends React.Component {
   constructor() {
     super();
@@ -64,7 +65,9 @@ class About extends React.Component {
               Center, the most reputed primary health care destination in
               Karachi.
             </IntroPara>
-            <Author>Dr.Ambreen Khan <span>- Director at ASMC</span></Author>
+            <Author>
+              Dr.Ambreen Khan <span>- Director at ASMC</span>
+            </Author>
           </Container>
         </IntroSection>
       </Wrapper>
@@ -73,7 +76,6 @@ class About extends React.Component {
 }
 
 function mapStateToProps(state) {
-  console.log(state.AppReducer);
   return {
     loader: state.AppReducer.loader,
     aboutdataa: state.AppReducer.aboutdataa,
@@ -121,6 +123,9 @@ const IntroTagLine = styled.div`
   letter-spacing: 1px;
   font-family: ${gilroyBold};
   color: white;
+  ${Media("xlscreens")} {
+    font-size: 1.14vw;
+  }
 `;
 const IntroTitle = styled.h1`
   font-size: 80px;
@@ -129,20 +134,34 @@ const IntroTitle = styled.h1`
   margin: 30px 0;
   letter-spacing: -1.5px;
   color: white;
+  ${Media("xlscreens")} {
+    font-size: 4.166vw;
+    margin: 1.56vw 0;
+  }
 `;
 const IntroPara = styled.p`
   font-size: 22px;
   font-family: ${gilroyMedium};
   color: white;
+  ${Media("xlscreens")} {
+    font-size: 1.14vw;
+  }
 `;
 const Author = styled.div`
   margin-top: 30px;
   font-size: 28px;
   color: white;
-  font-family:${gilroyBold};
-  span{
-    font-size:18px;
-    font-family:${gilroySemibold};
+  font-family: ${gilroyBold};
+  span {
+    font-size: 18px;
+    font-family: ${gilroySemibold};
+  }
+  ${Media("xlscreens")} {
+    margin-top: 1.57vw;
+    font-size: 1.45vw;
+    span {
+      font-size: 0.93vw;
+    }
   }
 `;
 export default connect(mapStateToProps, mapDispatch)(About);

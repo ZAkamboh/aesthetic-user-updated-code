@@ -7,8 +7,8 @@ import Homedetail from "Components/homeComponent/homedetail";
 import Footer from "Components/footer";
 import Services from "Components/servicesComponents";
 import Events from "Components/events";
-
 import createBrowserHistory from "history/createBrowserHistory";
+import BookAppointment from "Components/book-appointment";
 import { Router, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import GlobalStyles from "Assets/create-global-styles";
@@ -28,6 +28,7 @@ class Routing extends React.Component {
           <Route path="/contact" component={Contact} />
           <Route path="/services" component={Services} />
           <Route path="/event" component={Events} />
+          <Route path="/book-appointment" component={BookAppointment}></Route>
           <Footer />
         </Router>
       </div>
