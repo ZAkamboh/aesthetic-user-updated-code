@@ -37,7 +37,7 @@ class BookAppointment extends React.Component {
     return (
       <Wrapper>
         <Row>
-          <Col lg={6}>
+          <Col lg={6} sm={12}>
             <TextWrapper>
               <Title>Book Appointment</Title>
               <ShortDesc>
@@ -48,17 +48,19 @@ class BookAppointment extends React.Component {
               </ShortDesc>
             </TextWrapper>
           </Col>
-          <Col lg={6}>
+          <Col lg={6} sm={12}>
             <FormWrapper>
               <Form>
-                <FormTitle>Fill Your Complete Information</FormTitle>
-                <Col lg={6}>
+                <Col lg={12} sm={12} md={12}>
+                  <FormTitle>Fill Your Complete Information</FormTitle>
+                </Col>
+                <Col lg={6} sm={12} md={6}>
                   <TextField id="standard-basic" label="First Name" required />
                 </Col>
-                <Col lg={6}>
+                <Col lg={6} sm={12} md={6}>
                   <TextField id="standard-basic" label="Last Name" required />
                 </Col>
-                <Col lg={6}>
+                <Col lg={6} sm={12} md={6}>
                   <TextField
                     type="email"
                     id="standard-basic"
@@ -66,7 +68,7 @@ class BookAppointment extends React.Component {
                     required
                   />
                 </Col>
-                <Col lg={6}>
+                <Col lg={6} sm={12} md={6}>
                   <TextField
                     id="standard-basic"
                     label="Mobile Number"
@@ -81,7 +83,7 @@ class BookAppointment extends React.Component {
                     }}
                   />
                 </Col>
-                <Col lg={6}>
+                <Col lg={6} sm={12} md={6}>
                   <FormControl>
                     <InputLabel id="demo-simple-select-label">
                       Select Appointement
@@ -118,7 +120,7 @@ class BookAppointment extends React.Component {
                     </Select>
                   </FormControl>
                 </Col>
-                <Col lg={6}>
+                <Col lg={6} sm={12} md={6}>
                   <MuiPickersUtilsProvider utils={DateFnsUtils}>
                     <KeyboardDatePicker
                       margin="normal"
@@ -135,7 +137,7 @@ class BookAppointment extends React.Component {
                     />
                   </MuiPickersUtilsProvider>
                 </Col>
-                <Col lg={6}>
+                <Col lg={6} sm={12} md={6}>
                   <FormControl>
                     <InputLabel id="demo-simple-select-label">
                       Select Available Shift
@@ -181,7 +183,7 @@ class BookAppointment extends React.Component {
                     </Select>
                   </FormControl>
                 </Col>
-                <Col lg={12}>
+                <Col lg={12} sm={12}>
                   <SubmitFormButton>Finalize Appointment</SubmitFormButton>
                 </Col>
               </Form>
@@ -198,10 +200,14 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 76px;
   ${Media("xlscreens")} {
     min-height: calc(100vh - 3.95vw);
     margin-top: 3.95vw;
+  }
+  ${Media("tablet")} {
+    margin-top: 60px;
+    padding-top: 50px;
+    overflow-x: hidden;
   }
 `;
 const TextWrapper = styled.div`
@@ -213,6 +219,9 @@ const TextWrapper = styled.div`
   ${Media("xlscreens")} {
     padding: 0 4.16vw;
   }
+  ${Media("tablet")} {
+    padding: 0px 30px;
+  }
 `;
 const Title = styled.h1`
   font-size: 70px;
@@ -223,6 +232,9 @@ const Title = styled.h1`
     font-size: 3.64vw;
     margin-bottom: 1.57vw;
   }
+  ${Media("tablet")} {
+    font-size: 38px;
+  }
 `;
 const ShortDesc = styled.p`
   font-size: 24px;
@@ -231,11 +243,17 @@ const ShortDesc = styled.p`
   ${Media("xlscreens")} {
     font-size: 1.25vw;
   }
+  ${Media("tablet")} {
+    font-size: 14px;
+  }
 `;
 const FormWrapper = styled.div`
   padding: 80px;
   ${Media("xlscreens")} {
     padding: 4.166vw;
+  }
+  ${Media("tablet")} {
+    padding: 20px;
   }
 `;
 const Form = styled.form`
@@ -262,12 +280,23 @@ const Form = styled.form`
       margin-bottom: 1.04vw;
     }
   }
+  ${Media("tablet")} {
+    padding: 50px 10px;
+  }
 `;
 const FormTitle = styled.h3`
   margin-bottom: 30px;
   font-size: 30px;
   font-family: ${gilroySemibold};
-  padding-left: 10px;
+  display: block;
+  ${Media("xlscreens")} {
+    margin-bottom: 1.56vw;
+    font-size: 1.56vw;
+  }
+  ${Media("tablet")} {
+    font-size: 24px;
+    margin-bottom:10px;
+  }
 `;
 const SubmitFormButton = styled.button`
   height: 50px;
@@ -306,6 +335,17 @@ const SubmitFormButton = styled.button`
       opacity: 1;
       transform: scale(1);
     }
+  }
+  ${Media("xlscreens")} {
+    height: 2.66vw;
+    margin-top: 1.56vw;
+    font-size: 1.04vw;
+  }
+  ${Media("tablet")} {
+    font-size: 16px;
+  }
+  ${Media("mobile")} {
+    width: 100%;
   }
 `;
 export default BookAppointment;

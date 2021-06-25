@@ -73,37 +73,39 @@ class Services extends React.Component {
             <Loader2 />
           </LoaderWrapper>
         )}
-        <Container>
-          <Row>
-            <Col col={12}>
-              <Fade left delay={1000}>
-                <SectionHeading>Services We Offers</SectionHeading>
-              </Fade>
-            </Col>
-          </Row>
-          <Row noGutter>
-            {this.state.data.map((item, index) => {
-              return (
-                <Fade bottom delay={1000}>
-                  <TopicCard key={index} lg={12}>
-                    <CustomCol lg={8}>
-                      <TopicDetails>
-                        <TopicTitle>{item.title}</TopicTitle>
-                        <TopicPara>{item.desc}</TopicPara>
-                        <Rate>{item.rate ?? "PKR 40,000"}</Rate>
-                      </TopicDetails>
-                    </CustomCol>
-                    <CustomCol lg={4}>
-                      <TopicImg>
-                        <img src={item.url} alt="-" />
-                      </TopicImg>
-                    </CustomCol>
-                  </TopicCard>
+        <ServicesWrapper>
+          <Container>
+            <Row>
+              <Col col={12}>
+                <Fade left delay={1000}>
+                  <SectionHeading>Services We Offers</SectionHeading>
                 </Fade>
-              );
-            })}
-          </Row>
-        </Container>
+              </Col>
+            </Row>
+            <Row noGutter>
+              {this.state.data.map((item, index) => {
+                return (
+                  <Fade bottom delay={500} key={index}>
+                    <TopicCard lg={12}>
+                      <CustomCol lg={8} xs={12} md={12}>
+                        <TopicDetails>
+                          <TopicTitle>{item.title}</TopicTitle>
+                          <TopicPara>{item.desc}</TopicPara>
+                          <Rate>{item.rate ?? "PKR 40,000"}</Rate>
+                        </TopicDetails>
+                      </CustomCol>
+                      <CustomCol lg={4} xs={0} md={0}>
+                        <TopicImg>
+                          <img src={item.url} alt="-" />
+                        </TopicImg>
+                      </CustomCol>
+                    </TopicCard>
+                  </Fade>
+                );
+              })}
+            </Row>
+          </Container>
+        </ServicesWrapper>
         <GoToTop
           style={{ display: this.state.scrolled ? "flex" : "none" }}
           onClick={() => this.gotoTop()}
@@ -128,6 +130,11 @@ function mapDispatch(dispatch) {
     },
   };
 }
+const ServicesWrapper = styled.div`
+  ${Media("tablet")} {
+    padding: 0px 15px;
+  }
+`;
 const Wrapper = styled.div`
   margin-bottom: 50px;
   overflow: hidden;
@@ -172,6 +179,12 @@ const IntroSection = styled.div`
   ${Media("xlscreens")} {
     padding-top: 3.95vw;
   }
+  ${Media("tablet")} {
+    text-align: center;
+    padding: 0px 15px;
+    padding-top: 90px;
+    padding-bottom: 30px;
+  }
 `;
 const SectionHeading = styled.h1`
   font-size: 62px;
@@ -183,11 +196,13 @@ const SectionHeading = styled.h1`
     font-size: 3.22vw;
     margin: 2.66vw 0;
   }
+  ${Media("tablet")} {
+    font-size: 40px;
+  }
 `;
 const TopicCard = styled(Col)`
   border: 1px solid ${colors.borderColor};
   margin-top: 50px;
-  min-height: 400px;
   display: flex;
   align-items: center;
   background-color: ${colors.secondaryColor};
@@ -197,6 +212,9 @@ const TopicCard = styled(Col)`
   ${Media("xlscreens")} {
     margin-top: 2.66vw;
     min-height: 20.83vw;
+  }
+  ${Media("tablet")} {
+    margin-top: 30px;
   }
 `;
 const CustomCol = styled(Col)`
@@ -228,6 +246,9 @@ const TopicDetails = styled.div`
   ${Media("xlscreens")} {
     padding: 2.66vw;
   }
+  ${Media("tablet")} {
+    padding: 20px;
+  }
 `;
 const TopicTitle = styled.h1`
   color: white;
@@ -238,6 +259,9 @@ const TopicTitle = styled.h1`
     font-size: 2.18vw;
     margin-bottom: 0.78vw;
   }
+  ${Media("tablet")} {
+    font-size: 26px;
+  }
 `;
 const TopicPara = styled.p`
   color: white;
@@ -245,6 +269,9 @@ const TopicPara = styled.p`
   font-family: ${gilroyMedium};
   ${Media("xlscreens")} {
     font-size: 0.93vw;
+  }
+  ${Media("tablet")} {
+    font-size: 14px;
   }
 `;
 const Rate = styled.div`
@@ -264,6 +291,11 @@ const Rate = styled.div`
     border-radius: 0.53vw;
     font-size: 1.25vw;
   }
+  ${Media("tablet")} {
+    font-size: 16px;
+    max-width: 100%;
+    min-width: 50%;
+  }
 `;
 const IntroTagLine = styled.div`
   font-size: 22px;
@@ -272,6 +304,9 @@ const IntroTagLine = styled.div`
   color: white;
   ${Media("xlscreens")} {
     font-size: 1.14vw;
+  }
+  ${Media("tablet")} {
+    font-size: 16px;
   }
 `;
 const IntroTitle = styled.h1`
@@ -285,6 +320,13 @@ const IntroTitle = styled.h1`
     font-size: 4.166vw;
     margin: 1.56vw 0;
   }
+  ${Media("tablet")} {
+    font-size: 38px;
+    margin: 20px 0;
+    br {
+      display: none;
+    }
+  }
 `;
 const IntroPara = styled.p`
   font-size: 24px;
@@ -292,6 +334,13 @@ const IntroPara = styled.p`
   color: white;
   ${Media("xlscreens")} {
     font-size: 1.25vw;
+  }
+  ${Media("tablet")} {
+    font-size: 16px;
+    font-family: ${gilroySemibold};
+    br {
+      display: none;
+    }
   }
 `;
 const BookAppoint = styled.button`

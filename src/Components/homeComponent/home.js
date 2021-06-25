@@ -72,12 +72,12 @@ class Homechild extends React.Component {
         <ImportantTopic>
           <Container>
             <Row>
-              <Col col={8}>
+              <Col lg={8}>
                 <Fade left delay={1000}>
                   <SectionHeading>What's new This Week</SectionHeading>
                 </Fade>
               </Col>
-              <Col col={4}>
+              <Col lg={4}>
                 <Fade right delay={1500}>
                   <ImportTopSubHead>
                     In this week we are giving some information about the stem
@@ -94,9 +94,9 @@ class Homechild extends React.Component {
             <Row noGutter>
               {this.state.data.map((item, index) => {
                 return (
-                  <Fade bottom delay={1000}>
-                    <TopicCard key={index} lg={12}>
-                      <CustomCol lg={8}>
+                  <Fade bottom delay={500} key={index}>
+                    <TopicCard lg={12}>
+                      <CustomCol lg={8} xs={12} md={8}>
                         <TopicDetails>
                           <TopicTitle>{item.title}</TopicTitle>
                           <TopicPara>
@@ -113,7 +113,7 @@ class Homechild extends React.Component {
                           </ReadMoreBtn>
                         </TopicDetails>
                       </CustomCol>
-                      <CustomCol lg={4}>
+                      <CustomCol lg={4} xs={0} md={4}>
                         <TopicImg>
                           <img src={item.url} alt="-" />
                         </TopicImg>
@@ -156,7 +156,6 @@ const IntroSection = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  padding-top: 76px;
   .container {
     position: relative;
     z-index: 9;
@@ -174,6 +173,15 @@ const IntroSection = styled.div`
   ${Media("xlscreens")} {
     padding-top: 3.95vw;
   }
+  ${Media("tablet")} {
+    text-align: center;
+    padding:0px 15px;
+    padding-top:90px;
+    padding-bottom:30px;
+    &:before {
+      background-color:#ffffff40;
+    }
+  }
 `;
 const ImportantTopic = styled.section`
   background-color: ${colors.secondaryBG};
@@ -181,11 +189,13 @@ const ImportantTopic = styled.section`
   .react-reveal {
     width: 100%;
   }
+  ${Media('tablet')}{
+    padding:50px 15px;
+  }
 `;
 const TopicCard = styled(Col)`
   border: 1px solid ${colors.borderColor};
   margin-top: 50px;
-  height: 400px;
   display: flex;
   background-color: ${colors.secondaryColor};
   padding: 0;
@@ -194,6 +204,9 @@ const TopicCard = styled(Col)`
   ${Media("xlscreens")} {
     margin-top: 2.66vw;
     height: 20.83vw;
+  }
+  ${Media('tablet')}{
+    align-items:center;
   }
 `;
 const CustomCol = styled(Col)`
@@ -225,6 +238,9 @@ const TopicDetails = styled.div`
   ${Media("xlscreens")} {
     padding: 2.66vw;
   }
+  ${Media('tablet')}{
+    padding:20px;
+  }
 `;
 const TopicTitle = styled.h1`
   color: white;
@@ -235,6 +251,9 @@ const TopicTitle = styled.h1`
     font-size: 2.18vw;
     margin-bottom: 0.78vw;
   }
+  ${Media('tablet')}{
+    font-size:26px;
+  }
 `;
 const TopicPara = styled.p`
   color: white;
@@ -242,6 +261,9 @@ const TopicPara = styled.p`
   font-family: ${gilroyMedium};
   ${Media("xlscreens")} {
     font-size: 0.93vw;
+  }
+  ${Media('tablet')}{
+    font-size:14px;
   }
 `;
 const ReadMoreBtn = styled.button`
@@ -269,6 +291,9 @@ const SectionHeading = styled.h1`
   ${Media("xlscreens")} {
     font-size: 3.22vw;
   }
+  ${Media('tablet')}{
+    font-size:40px;
+  }
 `;
 const ImportTopSubHead = styled.p`
   font-size: 18px;
@@ -277,34 +302,50 @@ const ImportTopSubHead = styled.p`
   ${Media("xlscreens")} {
     font-size: 0.93vw;
   }
+  ${Media('tablet')}{
+    font-size: 16px;
+  }
 `;
 const IntroTagLine = styled.div`
-  font-size: 22px;
   letter-spacing: 1px;
   font-family: ${gilroyBold};
   color: ${colors.secondaryColor};
   ${Media("xlscreens")} {
     font-size: 1.14vw;
   }
+  ${Media("tablet")} {
+    font-size: 16px;
+  }
 `;
 const IntroTitle = styled.h1`
-  font-size: 80px;
   font-family: ${gilroyExtrabold};
   line-height: 1;
-  margin: 30px 0;
   letter-spacing: -1.5px;
   color: ${colors.secondaryColor};
   ${Media("xlscreens")} {
     font-size: 4.166vw;
     margin: 1.56vw 0;
   }
+  ${Media("tablet")} {
+    font-size: 38px;
+    margin: 20px 0;
+    br {
+      display: none;
+    }
+  }
 `;
 const IntroPara = styled.p`
-  font-size: 24px;
   font-family: ${gilroyMedium};
   color: ${colors.secondaryColor};
   ${Media("xlscreens")} {
     font-size: 1.25vw;
+  }
+  ${Media("tablet")} {
+    font-size: 16px;
+    font-family: ${gilroySemibold};
+    br {
+      display: none;
+    }
   }
 `;
 const BookAppoint = styled.button`
@@ -373,8 +414,8 @@ const GoToTop = styled.div`
   height: 50px;
   width: 50px;
   text-align: center;
-  justify-content:center;
-  align-items:center;
+  justify-content: center;
+  align-items: center;
   svg {
     font-size: 24px;
   }

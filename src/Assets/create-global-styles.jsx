@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import { gilroyRegular } from "shared-components";
+import { Media } from "shared-components/media";
 
 export default createGlobalStyle`
     @font-face {
@@ -139,9 +140,14 @@ export default createGlobalStyle`
     .container{
         box-sizing: border-box;
         max-width: 100% !important;
-        padding: 0px 13vw !important;
+        ${Media('xlscreens')}{
+            padding: 0px 13vw !important;
+        }
     }
     section{
-        padding:100px 0;
+        padding:50px 0;
+        ${Media('xlscreens')}{
+            padding:100px 0;
+        }
     }
 `;

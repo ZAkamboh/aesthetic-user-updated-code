@@ -2,6 +2,7 @@ import React from "react";
 import { colors } from "shared-components/colors";
 import { gilroyMedium } from "shared-components/fonts";
 import { gilroySemibold } from "shared-components/fonts";
+import { Media } from "shared-components/media";
 import styled from "styled-components";
 
 class Homedetail extends React.Component {
@@ -47,6 +48,13 @@ const Wrapper = styled.div`
     content: "";
     z-index:0;
   }
+  ${Media('xlscreens')}{
+    padding:0 5.2vw;
+  }
+  ${Media('tablet')}{
+    padding:0px 15px;
+    padding-top:75px;
+  }
 `;
 const ItemTitle = styled.h1`
   font-size: 46px;
@@ -55,6 +63,13 @@ const ItemTitle = styled.h1`
   position:relative;
   z-index:9;
   margin:20px 0;
+  ${Media('xlscreens')}{
+    font-size:2.34vw;
+    margin:1.04vw 0;
+  }
+  ${Media('tablet')}{
+    font-size:32px;
+  }
 `;
 const ItemDescription = styled.p`
   color: white;
@@ -62,5 +77,11 @@ const ItemDescription = styled.p`
   font-family: ${gilroyMedium};
   position:relative;
   z-index:9;
+  ${Media('xlscreens')}{
+    font-size:1.04vw;
+  }
+  ${Media('tablet')}{
+    font-size:14px;
+  }
 `;
 export default Homedetail;

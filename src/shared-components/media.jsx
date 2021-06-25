@@ -5,7 +5,7 @@ export const Media = (val) => {
     case "tablet":
       return "@media only screen and (max-width: 999px)";
     case "xlscreens":
-      return "@media only screen and (min-width: 100px)";
+      return "@media only screen and (min-width: 1000px)";
     default:
       return "";
   }

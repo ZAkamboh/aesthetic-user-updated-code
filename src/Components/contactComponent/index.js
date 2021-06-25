@@ -35,7 +35,7 @@ class Contact extends React.Component {
         <GetinTouch>
           <Container>
             <Row>
-              <Col lg={6}>
+              <Col lg={6} md={6}>
                 <ContactBox>
                   <PhoneIcon />
                   <h2>Talk to us.</h2>
@@ -47,7 +47,7 @@ class Contact extends React.Component {
                   <h3>+92 21 34325599</h3>
                 </ContactBox>
               </Col>
-              <Col lg={6}>
+              <Col lg={6} md={6}>
                 <ContactBox>
                   <DirectionsIcon />
                   <h2>Reach us.</h2>
@@ -78,6 +78,9 @@ const Wrapper = styled.div`
   margin-top: 76px;
   ${Media("xlscreens")} {
     margin-top: 3.95vw;
+  }
+  ${Media('tablet')}{
+    margin-top:60px;
   }
 `;
 const ContactIntro = styled.div`
@@ -116,18 +119,29 @@ const ContactIntro = styled.div`
       font-size: 1.14vw;
     }
   }
+  ${Media("tablet")} {
+    text-align: center;
+    padding: 0px 15px;
+    min-height: 60vh;
+    h1{
+      font-size:40px;
+    }
+    p{
+      font-size:18px;
+    }
+  }
 `;
 const GetinTouch = styled.div`
   margin-top: -100px;
   position: relative;
-  z-index: 9999;
+  z-index: 99;
   ${Media("xlscreens")} {
     margin-top: -5.2vw;
   }
 `;
 const ContactBox = styled.div`
   background-color: white;
-  min-height: 400px;
+  min-height: 300px;
   box-shadow: 0px 0px 10px #00000050;
   display: flex;
   flex-direction: column;
@@ -178,6 +192,28 @@ const ContactBox = styled.div`
     }
     a {
       font-size: 1.04vw;
+    }
+  }
+  ${Media('tablet')}{
+    padding: 0px 20px;
+    margin-bottom:20px;
+    h2 {
+      font-size: 30px;
+      margin: 10px 0;
+    }
+    p {
+      font-size: 14px;
+      margin: 15px 0;
+      margin-bottom: 20px;
+    }
+    h3 {
+      font-size: 18px;
+    }
+    svg {
+      font-size: 36px;
+    }
+    a {
+      font-size: 18px;
     }
   }
 `;

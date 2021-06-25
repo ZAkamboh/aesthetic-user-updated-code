@@ -117,6 +117,12 @@ const IntroSection = styled.div`
     top: 0;
     left: 0;
   }
+  ${Media("tablet")} {
+    text-align: center;
+    padding: 0px 15px;
+    padding-top: 90px;
+    padding-bottom:30px;
+  }
 `;
 const IntroTagLine = styled.div`
   font-size: 22px;
@@ -125,6 +131,9 @@ const IntroTagLine = styled.div`
   color: white;
   ${Media("xlscreens")} {
     font-size: 1.14vw;
+  }
+  ${Media("tablet")} {
+    font-size: 16px;
   }
 `;
 const IntroTitle = styled.h1`
@@ -138,6 +147,13 @@ const IntroTitle = styled.h1`
     font-size: 4.166vw;
     margin: 1.56vw 0;
   }
+  ${Media("tablet")} {
+    font-size: 38px;
+    margin: 20px 0;
+    br {
+      display: none;
+    }
+  }
 `;
 const IntroPara = styled.p`
   font-size: 22px;
@@ -145,6 +161,13 @@ const IntroPara = styled.p`
   color: white;
   ${Media("xlscreens")} {
     font-size: 1.14vw;
+  }
+  ${Media("tablet")} {
+    font-size: 14px;
+    font-family: ${gilroySemibold};
+    br {
+      display: none;
+    }
   }
 `;
 const Author = styled.div`
@@ -161,6 +184,12 @@ const Author = styled.div`
     font-size: 1.45vw;
     span {
       font-size: 0.93vw;
+    }
+  }
+  ${Media('tablet')}{
+    font-size:22px;
+    span{
+      font-size:14px;
     }
   }
 `;

@@ -15,6 +15,7 @@ import {
   gilroyExtrabold,
 } from "shared-components";
 import { Media } from "shared-components/media";
+import { gilroySemibold } from "shared-components/fonts";
 class Events extends React.Component {
   constructor(props) {
     super(props);
@@ -66,45 +67,47 @@ class Events extends React.Component {
           </Container>
         </IntroSection>
         {this.props.loader && <Loader2 />}
-        <Container>
-          <Row>
-            <Col col={12}>
-              <Fade left delay={1000}>
-                <SectionHeading>Events</SectionHeading>
-              </Fade>
-            </Col>
-          </Row>
-          <Row>
-            {this.state.data.map((item, index) => {
-              return (
-                <Fade bottom delay={1000} key={index}>
-                  <TopicCard lg={12}>
-                    <CustomCol lg={item.type === "video" ? 4 : 7}>
-                      <TopicDetails>
-                        <TopicPara>{item.desc}</TopicPara>
-                      </TopicDetails>
-                    </CustomCol>
-                    <CustomCol lg={item.type === "video" ? 8 : 5}>
-                      {(item.type === "video" && (
-                        <ReactPlayer
-                          className="react-player"
-                          url={item.url}
-                          controls
-                          height="4%"
-                          width="100%"
-                        />
-                      )) || (
-                        <TopicImg>
-                          <img src={item.url} alt="-" />
-                        </TopicImg>
-                      )}
-                    </CustomCol>
-                  </TopicCard>
+        <EventsWrapper>
+          <Container>
+            <Row>
+              <Col col={12}>
+                <Fade left delay={1000}>
+                  <SectionHeading>Events</SectionHeading>
                 </Fade>
-              );
-            })}
-          </Row>
-        </Container>
+              </Col>
+            </Row>
+            <Row>
+              {this.state.data.map((item, index) => {
+                return (
+                  <Fade bottom delay={1000} key={index}>
+                    <TopicCard lg={12}>
+                      <CustomCol lg={item.type === "video" ? 4 : 7} xs={12}>
+                        <TopicDetails>
+                          <TopicPara>{item.desc}</TopicPara>
+                        </TopicDetails>
+                      </CustomCol>
+                      <CustomCol lg={item.type === "video" ? 8 : 5} xs={12}>
+                        {(item.type === "video" && (
+                          <ReactPlayer
+                            className="react-player"
+                            url={item.url}
+                            controls
+                            height="4%"
+                            width="100%"
+                          />
+                        )) || (
+                          <TopicImg>
+                            <img src={item.url} alt="-" />
+                          </TopicImg>
+                        )}
+                      </CustomCol>
+                    </TopicCard>
+                  </Fade>
+                );
+              })}
+            </Row>
+          </Container>
+        </EventsWrapper>
         <GoToTop
           style={{ display: this.state.scrolled ? "flex" : "none" }}
           onClick={() => this.gotoTop()}
@@ -129,6 +132,11 @@ function mapDispatch(dispatch) {
     },
   };
 }
+const EventsWrapper = styled.div`
+  ${Media("tablet")} {
+    padding: 0px 15px;
+  }
+`;
 const VideoBg = styled.video`
   height: 100vh;
   width: 100vw;
@@ -136,6 +144,7 @@ const VideoBg = styled.video`
 `;
 const Wrapper = styled.div`
   margin-bottom: 50px;
+  overflow-x: hidden;
   .react-reveal {
     width: 100%;
   }
@@ -164,6 +173,9 @@ const IntroSection = styled.div`
     top: 0;
     left: 0;
   }
+  ${Media("tablet")} {
+    text-align: center;
+  }
 `;
 const IntroTagLine = styled.div`
   font-size: 22px;
@@ -172,6 +184,9 @@ const IntroTagLine = styled.div`
   color: ${colors.secondaryColor};
   ${Media("xlscreens")} {
     font-size: 1.14vw;
+  }
+  ${Media("tablet")} {
+    font-size: 16px;
   }
 `;
 const IntroTitle = styled.h1`
@@ -185,6 +200,13 @@ const IntroTitle = styled.h1`
     font-size: 4.166vw;
     margin: 1.56vw 0;
   }
+  ${Media("tablet")} {
+    font-size: 38px;
+    margin: 20px 0;
+    br {
+      display: none;
+    }
+  }
 `;
 const IntroPara = styled.p`
   font-size: 24px;
@@ -192,6 +214,13 @@ const IntroPara = styled.p`
   color: ${colors.secondaryColor};
   ${Media("xlscreens")} {
     font-size: 1.25vw;
+  }
+  ${Media("tablet")} {
+    font-size: 16px;
+    font-family: ${gilroySemibold};
+    br {
+      display: none;
+    }
   }
 `;
 const SectionHeading = styled.h1`
@@ -204,11 +233,13 @@ const SectionHeading = styled.h1`
     font-size: 3.22vw;
     margin: 2.66vw 0;
   }
+  ${Media("tablet")} {
+    font-size: 40px;
+  }
 `;
 const TopicCard = styled(Col)`
   border: 1px solid ${colors.borderColor};
   margin-top: 50px;
-  min-height: 400px;
   display: flex;
   align-items: center;
   background-color: ${colors.secondaryColor};
@@ -218,6 +249,10 @@ const TopicCard = styled(Col)`
   ${Media("xlscreens")} {
     margin-top: 2.66vw;
     min-height: 20.83vw;
+  }
+  ${Media("tablet")} {
+    flex-wrap: wrap;
+    margin-top: 30px;
   }
 `;
 const CustomCol = styled(Col)`
@@ -229,6 +264,9 @@ const TopicDetails = styled.div`
   ${Media("xlscreens")} {
     padding: 2.66vw;
   }
+  ${Media("tablet")} {
+    padding: 20px;
+  }
 `;
 const TopicPara = styled.p`
   color: white;
@@ -236,6 +274,9 @@ const TopicPara = styled.p`
   font-family: ${gilroyMedium};
   ${Media("xlscreens")} {
     font-size: 0.93vw;
+  }
+  ${Media("tablet")} {
+    font-size: 14px;
   }
 `;
 const TopicImg = styled.div`
