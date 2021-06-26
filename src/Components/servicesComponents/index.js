@@ -65,7 +65,7 @@ class Services extends React.Component {
               Ankle joints, Elbow joints, Shoulder joints, Hip joints <br />
               and spinal injuries with stem cell therapy.
             </IntroPara>
-            <BookAppoint>Book an Appointment</BookAppoint>
+            <BookAppoint onClick={()=>this.props.history.push("/book-appointment")}>Book an Appointment</BookAppoint>
           </Container>
         </IntroSection>
         {this.props.loader && (

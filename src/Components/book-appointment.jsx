@@ -10,6 +10,7 @@ import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import InputLabel from "@material-ui/core/InputLabel";
 import DateFnsUtils from "@date-io/date-fns";
+import axios from 'axios';
 import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
@@ -23,16 +24,58 @@ class BookAppointment extends React.Component {
     super(props);
     this.state = {
       selectedDate: new Date(),
+
+      firstName: "",
+      lastName: "",
+      email: "",
+      phone: "",
+      appointment: "",
+      timing: "",
+      response: {},
+
     };
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
+
+
   }
+
   handleDateChange = (date) => {
     this.setState({ selectedDate: date });
   };
   disableSunday = (date) => {
     return date.getDay() === 0 || date.getDay() === 7;
   };
+
+  _handleChange(key, event) {
+    this.setState({ [key]: event.target.value })
+  }
+
+  _handleSubmit() {
+    var data = {
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      phone: this.state.phone,
+      email: this.state.email,
+      appointment: this.state.appointment,
+      timing: this.state.timing,
+      selectedDate: this.state.selectedDate.toLocaleDateString('de-DE'),
+    }
+
+    if (data.firstName === "" || data.lastName === "" || data.phone === "" || data.email === "" || data.appointment === "" || data.timing === "" || data.selectedDate === "") {
+      alert("All Fields Are Required")
+    }
+    else {
+      axios.post(`https://alshifaofficial.herokuapp.com/data/appointment`, data)
+      // axios.post(`http://localhost:8080/data/appointment`, data)
+        .then(res => {
+          alert("your appointment successfully appoint")
+         console.log(res)
+        })
+
+    }
+
+  }
   render() {
     return (
       <Wrapper>
@@ -55,10 +98,10 @@ class BookAppointment extends React.Component {
                   <FormTitle>Fill Your Complete Information</FormTitle>
                 </Col>
                 <Col lg={6} sm={12} md={6}>
-                  <TextField id="standard-basic" label="First Name" required />
+                  <TextField id="standard-basic" label="First Name" required onChange={this._handleChange.bind(this, "firstName")} />
                 </Col>
                 <Col lg={6} sm={12} md={6}>
-                  <TextField id="standard-basic" label="Last Name" required />
+                  <TextField id="standard-basic" label="Last Name" required onChange={this._handleChange.bind(this, "lastName")} />
                 </Col>
                 <Col lg={6} sm={12} md={6}>
                   <TextField
@@ -66,6 +109,7 @@ class BookAppointment extends React.Component {
                     id="standard-basic"
                     label="Email"
                     required
+                    onChange={this._handleChange.bind(this, "email")}
                   />
                 </Col>
                 <Col lg={6} sm={12} md={6}>
@@ -76,6 +120,7 @@ class BookAppointment extends React.Component {
                     inputProps={{
                       maxLength: 11,
                     }}
+                    onChange={this._handleChange.bind(this, "phone")}
                     InputProps={{
                       startAdornment: (
                         <InputAdornment position="start">+92</InputAdornment>
@@ -93,6 +138,7 @@ class BookAppointment extends React.Component {
                       id="demo-simple-select"
                       label="Select Appointement"
                       required
+                      onChange={(event) => this.setState({ appointment: event.target.value })}
                     >
                       <MenuItem value={"Liposuction"}>Liposuction</MenuItem>
                       <MenuItem value={"Face Uplift"}>Face Uplift</MenuItem>
@@ -142,11 +188,15 @@ class BookAppointment extends React.Component {
                     <InputLabel id="demo-simple-select-label">
                       Select Available Shift
                     </InputLabel>
+
+
                     <Select
                       labelId="demo-simple-select-label"
                       id="demo-simple-select"
                       label="Select Available Shift"
+                      onChange={(event) => this.setState({ timing: event.target.value })}
                     >
+
                       <MenuItem value={"09:00am - 10:00am"}>
                         09:00am - 10:00am
                       </MenuItem>
@@ -156,8 +206,14 @@ class BookAppointment extends React.Component {
                       <MenuItem value={"11:00am - 12:00pm"}>
                         11:00am - 12:00pm
                       </MenuItem>
+                      <MenuItem value={"12:00pm - 01:00pm"}>
+                        12:00pm - 01:00pm
+                      </MenuItem>
                       <MenuItem value={"01:00pm - 02:00pm"}>
                         01:00pm - 02:00pm
+                      </MenuItem>
+                      <MenuItem value={"02:00pm - 03:00pm"}>
+                        02:00pm - 03:00pm
                       </MenuItem>
                       <MenuItem value={"03:00pm - 04:00pm"}>
                         03:00pm - 04:00pm
@@ -177,6 +233,7 @@ class BookAppointment extends React.Component {
                       <MenuItem value={"08:00pm - 09:00pm"}>
                         08:00pm - 09:00pm
                       </MenuItem>
+
                       <MenuItem value={"09:00pm - 10:00pm"}>
                         09:00pm - 10:00pm
                       </MenuItem>
@@ -184,7 +241,7 @@ class BookAppointment extends React.Component {
                   </FormControl>
                 </Col>
                 <Col lg={12} sm={12}>
-                  <SubmitFormButton>Finalize Appointment</SubmitFormButton>
+                  <SubmitFormButton onClick={this._handleSubmit.bind(this)}>Finalize Appointment</SubmitFormButton>
                 </Col>
               </Form>
             </FormWrapper>
