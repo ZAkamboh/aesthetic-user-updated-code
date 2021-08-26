@@ -77,6 +77,8 @@ const ItemDescription = styled.p`
   font-family: ${gilroyMedium};
   position:relative;
   z-index:9;
+  text-align:justify;
+
   ${Media('xlscreens')}{
     font-size:1.04vw;
   }

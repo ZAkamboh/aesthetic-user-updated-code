@@ -66,7 +66,7 @@ class Homechild extends React.Component {
               Ankle joints, Elbow joints, Shoulder joints, Hip joints <br />
               and spinal injuries with stem cell therapy.
             </IntroPara>
-            <BookAppoint onClick={()=>this.props.history.push("/book-appointment")}>Book an Appointment</BookAppoint>
+            <BookAppoint onClick={() => this.props.history.push("/book-appointment")}>Book an Appointment</BookAppoint>
           </Container>
         </IntroSection>
         <ImportantTopic>
@@ -74,19 +74,13 @@ class Homechild extends React.Component {
             <Row>
               <Col lg={8}>
                 <Fade left delay={1000}>
-                  <SectionHeading>What's new This Week</SectionHeading>
+                  <SectionHeading>What's New This Year</SectionHeading>
                 </Fade>
               </Col>
               <Col lg={4}>
                 <Fade right delay={1500}>
                   <ImportTopSubHead>
-                    In this week we are giving some information about the stem
-                    cells treatments.In this week we are giving some information
-                    about the stem cells treatments.In this week we are giving
-                    some information about the stem cells treatmentsIn this week
-                    we are giving some information about the stem cells
-                    treatments.In this week we are giving some information about
-                    the stem cells treatments
+                    Al Shifa Medical center please to announce that we are starting covid 19 vaccination from mid of March 2021 . The World Health Organization approved the AstraZeneca/Oxford Covid-19 vaccine for emergency use Monday, which could help developing countries access the vaccine and make it easier for Pakistan
                   </ImportTopSubHead>
                 </Fade>
               </Col>

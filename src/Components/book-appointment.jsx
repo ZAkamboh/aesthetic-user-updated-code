@@ -18,6 +18,8 @@ import {
 import { gilroySemibold } from "shared-components/fonts";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import { Media } from "shared-components/media";
+import ClipLoader from "react-spinners/ClipLoader";
+
 
 class BookAppointment extends React.Component {
   constructor(props) {
@@ -32,7 +34,8 @@ class BookAppointment extends React.Component {
       appointment: "",
       timing: "",
       response: {},
-
+      processing: false,
+      disabled: true
     };
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
@@ -52,6 +55,8 @@ class BookAppointment extends React.Component {
   }
 
   _handleSubmit() {
+  
+
     var data = {
       firstName: this.state.firstName,
       lastName: this.state.lastName,
@@ -59,18 +64,29 @@ class BookAppointment extends React.Component {
       email: this.state.email,
       appointment: this.state.appointment,
       timing: this.state.timing,
-      selectedDate: this.state.selectedDate.toLocaleDateString('de-DE'),
     }
 
     if (data.firstName === "" || data.lastName === "" || data.phone === "" || data.email === "" || data.appointment === "" || data.timing === "" || data.selectedDate === "") {
       alert("All Fields Are Required")
     }
     else {
+      this.setState({
+        processing: true
+      })
       axios.post(`https://alshifaofficial.herokuapp.com/data/appointment`, data)
-      // axios.post(`http://localhost:8080/data/appointment`, data)
+        // axios.post(`http://localhost:8080/data/appointment`, data)
         .then(res => {
-          alert("your appointment successfully appoint")
-         console.log(res)
+          alert("Your appointment successfuly appoint")
+          this.setState({
+            firstName: "",
+            lastName: "",
+            phone: "",
+            email: "",
+            appointment: "",
+            timing: "",
+            selectedDate: "",
+            processing: false
+          })
         })
 
     }
@@ -93,15 +109,15 @@ class BookAppointment extends React.Component {
           </Col>
           <Col lg={6} sm={12}>
             <FormWrapper>
-              <Form>
+              <F>
                 <Col lg={12} sm={12} md={12}>
                   <FormTitle>Fill Your Complete Information</FormTitle>
                 </Col>
                 <Col lg={6} sm={12} md={6}>
-                  <TextField id="standard-basic" label="First Name" required onChange={this._handleChange.bind(this, "firstName")} />
+                  <TextField value={this.state.firstName} id="standard-basic" label="First Name" required onChange={this._handleChange.bind(this, "firstName")} />
                 </Col>
                 <Col lg={6} sm={12} md={6}>
-                  <TextField id="standard-basic" label="Last Name" required onChange={this._handleChange.bind(this, "lastName")} />
+                  <TextField value={this.state.lastName} id="standard-basic" label="Last Name" required onChange={this._handleChange.bind(this, "lastName")} />
                 </Col>
                 <Col lg={6} sm={12} md={6}>
                   <TextField
@@ -109,10 +125,12 @@ class BookAppointment extends React.Component {
                     id="standard-basic"
                     label="Email"
                     required
+                    value={this.state.email}
                     onChange={this._handleChange.bind(this, "email")}
                   />
                 </Col>
                 <Col lg={6} sm={12} md={6}>
+
                   <TextField
                     id="standard-basic"
                     label="Mobile Number"
@@ -120,17 +138,24 @@ class BookAppointment extends React.Component {
                     inputProps={{
                       maxLength: 11,
                     }}
+
+                    value={this.state.phone}
+
                     onChange={this._handleChange.bind(this, "phone")}
+
                     InputProps={{
                       startAdornment: (
                         <InputAdornment position="start">+92</InputAdornment>
                       ),
                     }}
+
                   />
+
                 </Col>
                 <Col lg={6} sm={12} md={6}>
                   <FormControl>
                     <InputLabel id="demo-simple-select-label">
+
                       Select Appointement
                     </InputLabel>
                     <Select
@@ -138,6 +163,9 @@ class BookAppointment extends React.Component {
                       id="demo-simple-select"
                       label="Select Appointement"
                       required
+
+                      value={this.state.appointment}
+
                       onChange={(event) => this.setState({ appointment: event.target.value })}
                     >
                       <MenuItem value={"Liposuction"}>Liposuction</MenuItem>
@@ -194,6 +222,7 @@ class BookAppointment extends React.Component {
                       labelId="demo-simple-select-label"
                       id="demo-simple-select"
                       label="Select Available Shift"
+                      value={this.state.timing}
                       onChange={(event) => this.setState({ timing: event.target.value })}
                     >
 
@@ -241,9 +270,22 @@ class BookAppointment extends React.Component {
                   </FormControl>
                 </Col>
                 <Col lg={12} sm={12}>
-                  <SubmitFormButton onClick={this._handleSubmit.bind(this)}>Finalize Appointment</SubmitFormButton>
+
+                  {!this.state.processing ?
+
+                    <SubmitFormButton disabled={this.state.processing && this.state.disabled} onClick={this._handleSubmit.bind(this)}>Finalize Appointment</SubmitFormButton>
+
+
+                    :
+
+                    <span style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>      <ClipLoader color={"red"}
+                    />
+                    </span>
+
+
+                  }
                 </Col>
-              </Form>
+              </F>
             </FormWrapper>
           </Col>
         </Row>
@@ -313,7 +355,7 @@ const FormWrapper = styled.div`
     padding: 20px;
   }
 `;
-const Form = styled.form`
+const F = styled.div`
   background-color: white;
   padding: 80px 50px;
   display: flex;

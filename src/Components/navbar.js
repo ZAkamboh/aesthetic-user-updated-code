@@ -108,7 +108,7 @@ export default function SwipeableTemporaryDrawer(props) {
       <AppBar
         fixed="top"
         className="appBar"
-        style={{ backgroundColor: "#ffffff95" }}
+        style={{ backgroundColor: "#ffffffff" }}
       >
         <Container>
           <NavbarWrapper>

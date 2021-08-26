@@ -91,7 +91,7 @@ class Services extends React.Component {
                         <TopicDetails>
                           <TopicTitle>{item.title}</TopicTitle>
                           <TopicPara>{item.desc}</TopicPara>
-                          <Rate>{item.rate ?? "PKR 40,000"}</Rate>
+                          <Rate>{`PKR ${item.price}`}</Rate>
                         </TopicDetails>
                       </CustomCol>
                       <CustomCol lg={4} xs={0} md={0}>
@@ -267,6 +267,7 @@ const TopicPara = styled.p`
   color: white;
   font-size: 18px;
   font-family: ${gilroyMedium};
+  text-align:justify;
   ${Media("xlscreens")} {
     font-size: 0.93vw;
   }

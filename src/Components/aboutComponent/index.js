@@ -159,6 +159,7 @@ const IntroPara = styled.p`
   font-size: 22px;
   font-family: ${gilroyMedium};
   color: white;
+  text-align:justify;
   ${Media("xlscreens")} {
     font-size: 1.14vw;
   }
